@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:payment_getway/data/bean/paytm_respo.dart';
 import 'package:payment_getway/data/repo/welcome_repo.dart';
 import 'package:payment_getway/utils/apiutils/api_response.dart';
-import 'package:payment_getway/utils/constant/str_const.dart';
+import 'package:payment_getway/utils/constant/string_const.dart';
 import 'package:payment_getway/utils/widget_helper.dart';
 
 class PaytmPaymentController extends GetxController {
@@ -49,7 +49,7 @@ class PaytmPaymentController extends GetxController {
         callBackUrl,
         testing,
         txnToken);
-    makePaytmRespo.value.status = ApiStatus.COMPLETED;
+    makePaytmRespo.value.status = ApiStatus.completed;
     makePaytmRespo.value.data = paytmRespo;
     Get.back();
     if (paytmRespo.status == "0") {
@@ -57,12 +57,12 @@ class PaytmPaymentController extends GetxController {
       if (paytmRespo.respmsg != null && paytmRespo.respmsg!.isNotEmpty) {
         msg = paytmRespo.respmsg!;
       }
-      getSnackbar(title: StrConst.ERROR, subTitle: msg, isSuccess: false);
+      getSnackbar(title: StringConst.error, subTitle: msg, isSuccess: false);
     } else {
       Get.back();
       // print("paytmRespo.status == 1");
       getSnackbar(
-          title: StrConst.SUCCESS,
+          title: StringConst.success,
           subTitle: paytmRespo.respmsg!,
           isSuccess: true);
       // confirmPayment(orderId, req.rideType);

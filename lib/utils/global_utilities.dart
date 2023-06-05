@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 Color colorFromHex(String hexColor) {
@@ -13,4 +14,10 @@ delay({int durationSec = 1, required Function click}){
   Future.delayed(Duration(milliseconds: sec), () {
     click();
   });
+}
+
+printLog(String msg){
+  if (kDebugMode) {
+    print(msg);
+  }
 }

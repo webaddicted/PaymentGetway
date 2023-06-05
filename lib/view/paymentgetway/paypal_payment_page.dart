@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:payment_getway/utils/constant/color_const.dart';
-import 'package:payment_getway/utils/constant/str_const.dart';
+import 'package:payment_getway/utils/constant/string_const.dart';
 import 'package:payment_getway/utils/widget_helper.dart';
 import 'package:payment_getway/view/paypal/paypal_payment.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
@@ -23,14 +23,14 @@ class _PaypalPaymentPageState extends State<PaypalPaymentPage> {
     var homeIcon = IconButton(
         icon: const Icon(
           Icons.arrow_back_ios,
-          color: ColorConst.WHITE_COLOR,
+          color: ColorConst.whiteColor,
         ),
         onPressed: () => Navigator.pop(context));
     return Scaffold(
       appBar: getAppBarWithBackBtn(
-          title: StrConst.TITLE_PAYPAL_PAYMENT,
-          txtColor: ColorConst.WHITE_COLOR,
-          bgColor: ColorConst.APP_COLOR,
+          title: StringConst.titlePaypalPayment,
+          txtColor: ColorConst.whiteColor,
+          bgColor: ColorConst.appColor,
           actions: [
             Stack(
               children: <Widget>[

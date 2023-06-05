@@ -4,7 +4,7 @@ import 'package:payment_getway/data/bean/paytm_respo.dart';
 import 'package:payment_getway/data/controller/paytm_controller.dart';
 import 'package:payment_getway/utils/apiutils/api_response.dart';
 import 'package:payment_getway/utils/constant/color_const.dart';
-import 'package:payment_getway/utils/constant/str_const.dart';
+import 'package:payment_getway/utils/constant/string_const.dart';
 import 'package:payment_getway/utils/widget_helper.dart';
 import 'package:payment_getway/view/paymentgetway/paytm_config.dart';
 
@@ -24,14 +24,14 @@ class PaytmPage extends GetView<PaytmPaymentController> {
     var homeIcon = IconButton(
         icon: const Icon(
           Icons.arrow_back_ios,
-          color: ColorConst.WHITE_COLOR,
+          color: ColorConst.whiteColor,
         ),
         onPressed: () => Navigator.pop(context));
     return Scaffold(
         appBar: getAppBarWithBackBtn(
-            title: StrConst.TITLE_PAYTM,
-            txtColor: ColorConst.WHITE_COLOR,
-            bgColor: ColorConst.APP_COLOR,
+            title: StringConst.titlePaytm,
+            txtColor: ColorConst.whiteColor,
+            bgColor: ColorConst.appColor,
             icon: homeIcon),
         body: _createUi());
   }
@@ -56,7 +56,7 @@ class PaytmPage extends GetView<PaytmPaymentController> {
   observeMakePaymentRespo() {
     return Obx(() {
       ApiResponse<PaytmRespo?> respo = _paymentController.makePaytmRespo.value;
-      if (respo.status == ApiStatus.COMPLETED) {
+      if (respo.status == ApiStatus.completed) {
         return Container(
           child: getTxtBlackColor(msg: "Complete"),
         );

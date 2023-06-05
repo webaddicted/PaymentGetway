@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:payment_getway/utils/constant/assets_const.dart';
 import 'package:payment_getway/utils/constant/color_const.dart';
 import 'package:payment_getway/utils/widget_helper.dart';
 
@@ -7,6 +8,8 @@ import 'package:payment_getway/utils/widget_helper.dart';
 /// Profile : https://github.com/webaddicted
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -25,19 +28,19 @@ class _HomePageState extends State<HomePage> {
   }
 
   void sliderImage() {
-    listImage.add("images/shoes.jpg");
-    listImage.add("images/shoes.jpg");
-    listImage.add("images/shoes.jpg");
+    listImage.add(AssetsConst.shoes);
+    listImage.add(AssetsConst.shoes);
+    listImage.add(AssetsConst.shoes);
   }
 
   void shoesImage() {
-    listShoesImage.add("images/shoes.jpg");
-    listShoesImage.add("images/shoes.jpg");
-    listShoesImage.add("images/shoes.jpg");
-    listShoesImage.add("images/shoes.jpg");
-    listShoesImage.add("images/shoes.jpg");
-    listShoesImage.add("images/shoes.jpg");
-    listShoesImage.add("images/shoes.jpg");
+    listShoesImage.add(AssetsConst.shoes);
+    listShoesImage.add(AssetsConst.shoes);
+    listShoesImage.add(AssetsConst.shoes);
+    listShoesImage.add(AssetsConst.shoes);
+    listShoesImage.add(AssetsConst.shoes);
+    listShoesImage.add(AssetsConst.shoes);
+    listShoesImage.add(AssetsConst.shoes);
   }
 
   @override
@@ -53,7 +56,7 @@ class _HomePageState extends State<HomePage> {
                 Stack(
                   children: <Widget>[
                     Container(
-                      color: ColorConst.APP_COLOR,
+                      color: ColorConst.appColor,
                       height: height / 4,
                     ),
                     /*Search Section*/
@@ -84,7 +87,7 @@ class _HomePageState extends State<HomePage> {
                     Container(
                         height: (height / 4) + 75,
                         alignment: Alignment.bottomCenter,
-                        child: Container(
+                        child: SizedBox(
                           height: height / 5,
                           child: PageView.builder(
                             itemBuilder: (context, position) {
@@ -117,7 +120,7 @@ class _HomePageState extends State<HomePage> {
                               fontSize: 15,
                               fontWeight: FontWeight.w700)),
                       Container(
-                        margin: EdgeInsets.only(top: 10),
+                        margin: const EdgeInsets.only(top: 10),
                         child: Row(
                           children: <Widget>[
                             getTxtAppColor(
@@ -135,7 +138,7 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(height: 10),
                 /*Group By Product Listing*/
                 ConstrainedBox(
-                  constraints: BoxConstraints(maxHeight: 200),
+                  constraints: const BoxConstraints(maxHeight: 200),
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
@@ -147,7 +150,7 @@ class _HomePageState extends State<HomePage> {
                 ),
 
                 /*Most Big Product Listing*/
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -158,7 +161,7 @@ class _HomePageState extends State<HomePage> {
                             fontSize: 15,
                             fontWeight: FontWeight.w700)),
                     Container(
-                      margin: EdgeInsets.only(top: 10),
+                      margin: const EdgeInsets.only(top: 10),
                       child: Row(
                         children: <Widget>[
                           getTxtAppColor(
@@ -195,12 +198,12 @@ class _HomePageState extends State<HomePage> {
 
   createSlider(String image) {
     return Card(
-      margin: EdgeInsets.all(10),
-      shape: RoundedRectangleBorder(
+      margin: const EdgeInsets.all(10),
+      shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(14))),
       child: Container(
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(14)),
+            borderRadius: const BorderRadius.all(Radius.circular(14)),
             image: DecorationImage(image: AssetImage(image), fit: BoxFit.cover)),
       ),
     );
@@ -218,29 +221,35 @@ class _HomePageState extends State<HomePage> {
     return Container(
       margin: EdgeInsets.only(left: leftMargin, right: rightMargin),
       decoration:
-          BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8))),
+          const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8))),
       child: Column(
         children: <Widget>[
           Expanded(
+            flex: 75,
             child: Container(
               width: 200,
               height: 200,
               decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(image),
+                      fit: BoxFit.cover
                   ),
                   color: Colors.blue.shade200,
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(8),
                       topRight: Radius.circular(8))),
             ),
-            flex: 75,
           ),
           Expanded(
             flex: 25,
             child: Container(
               padding: EdgeInsets.only(left: leftMargin, right: rightMargin),
               width: 200,
+              decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(8),
+                      bottomRight: Radius.circular(8))),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -258,11 +267,6 @@ class _HomePageState extends State<HomePage> {
                       txtColor: Colors.black.withOpacity(.7)),
                 ],
               ),
-              decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(8),
-                      bottomRight: Radius.circular(8))),
             ),
           )
         ],
@@ -290,11 +294,13 @@ class _HomePageState extends State<HomePage> {
           children: <Widget>[
             Hero(
               tag: "$image,$index",
+              transitionOnUserGestures: true,
               child: Container(
                 height: 180,
                 decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage(image),
+                        fit: BoxFit.cover
                     ),
                     color: Colors.teal.shade200,
                     // borderRadius: BorderRadius.only(
@@ -302,7 +308,6 @@ class _HomePageState extends State<HomePage> {
                     //     topRight: Radius.circular(radius))
                       ),
               ),
-              transitionOnUserGestures: true,
             ),
             const SizedBox(height: 8),
             getTxtColor(

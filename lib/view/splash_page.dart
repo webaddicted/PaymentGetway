@@ -37,7 +37,7 @@ class _SplashPageState extends State<SplashPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorConst.WHITE_COLOR,
+      backgroundColor: ColorConst.whiteColor,
       body: Center(
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
@@ -47,7 +47,7 @@ class _SplashPageState extends State<SplashPage>
               SizedBox(
                   width: animation.value * 250,
                   height: animation.value * 250, //Adapt.px(500),
-                  child: Image.asset(AssetsConst.LOGO_IMG)),
+                  child: Image.asset(AssetsConst.logoImg)),
               const SizedBox(height: 180),
               Align(
                 alignment: Alignment.bottomCenter,
@@ -55,7 +55,7 @@ class _SplashPageState extends State<SplashPage>
                   margin: const EdgeInsets.only(bottom: 70),
                   child: CircularProgressIndicator(
                     valueColor:
-                        AlwaysStoppedAnimation<Color>(ColorConst.APP_COLOR),
+                        AlwaysStoppedAnimation<Color>(ColorConst.appColor),
                   ),
                 ),
               )

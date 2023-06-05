@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:payment_getway/utils/constant/str_const.dart';
+import 'package:payment_getway/utils/constant/string_const.dart';
 
 import 'api_base_helper.dart';
 
@@ -15,12 +15,12 @@ class ApiResponse<T> {
 
   /// loading
   static ApiResponse<T> loading<T>() {
-    return ApiResponse<T>(status: ApiStatus.LOADING);
+    return ApiResponse<T>(status: ApiStatus.loading);
   }
 
   /// success
   static ApiResponse success<T>(T data) {
-    return ApiResponse<T>(status: ApiStatus.COMPLETED, data: data);
+    return ApiResponse<T>(status: ApiStatus.completed, data: data);
   }
 
   /// error
@@ -28,20 +28,20 @@ class ApiResponse<T> {
     var apiError =
         ApiError(statusCode: errCode!, errorMessage: errMsg!, errorBody: errBdy);
     return ApiResponse.withoutData(
-        status: ApiStatus.ERROR, apiError: apiError);
+        status: ApiStatus.error, apiError: apiError);
   }
 
   /// method wraps response in ApiResponse class
   static ApiResponse<dynamic> returnResponse<T>(Response response, T apiResponse) {
-    if (response.statusCode == ApiResponseCode.INTERNET_UNAVAILABLE) {
+    if (response.statusCode == ApiResponseCode.internetUnavailable) {
       return ApiResponse.error(
           errCode: response.statusCode,
-          errMsg: StrConst.NO_DATA_FOUND);
-    } else if (response.statusCode == ApiResponseCode.SUCCESS_201 ||
-        response.statusCode == ApiResponseCode.SUCCESS_200) {
+          errMsg: StringConst.noDataFound);
+    } else if (response.statusCode == ApiResponseCode.success201 ||
+        response.statusCode == ApiResponseCode.success200) {
       return ApiResponse.success(apiResponse);
-    } else if (response.statusCode! >= ApiResponseCode.ERROR_400 &&
-        response.statusCode! <= ApiResponseCode.ERROR_499) {
+    } else if (response.statusCode! >= ApiResponseCode.error400 &&
+        response.statusCode! <= ApiResponseCode.error499) {
       return ApiResponse.error(
           errCode: response.statusCode,
           errMsg: response.statusMessage,
@@ -49,9 +49,9 @@ class ApiResponse<T> {
           data: apiResponse);
     } else {
       return ApiResponse.error(
-          errCode: ApiResponseCode.ERROR_500,
-          errMsg: StrConst.SOMETHING_WENT_WRONG,
-          errBdy: StrConst.SOMETHING_WENT_WRONG,
+          errCode: ApiResponseCode.error500,
+          errMsg: StringConst.somethingWentWrong,
+          errBdy: StringConst.somethingWentWrong,
           data: null);
     }
   }
@@ -72,4 +72,4 @@ class ApiError<T> {
 }
 
 /// Enum to check Api Status
-enum ApiStatus { LOADING, COMPLETED, ERROR }
+enum ApiStatus { loading, completed, error }

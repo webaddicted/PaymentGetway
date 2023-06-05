@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:payment_getway/utils/common/initial_binding.dart';
 import 'package:payment_getway/utils/constant/routers_const.dart';
-import 'package:payment_getway/utils/constant/str_const.dart';
+import 'package:payment_getway/utils/constant/string_const.dart';
 import 'package:payment_getway/utils/routes_page.dart';
 void main() {
   runApp(MyApp());
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // Get.put(AppController());
     return GetMaterialApp(
-      title: StrConst.APP_NAME,
+      title: StringConst.appName,
       debugShowCheckedModeBanner: false,
       defaultTransition: Transition.rightToLeft,
       initialBinding: InitialBinding(),

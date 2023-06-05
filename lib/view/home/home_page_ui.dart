@@ -116,7 +116,7 @@ class TopPromoSlider extends StatelessWidget {
       child: Container(
           height: 150.0,
           width: double.infinity,
-color: ColorConst.APP_COLOR,
+color: ColorConst.appColor,
 child: Container(),
 //           child: Carousel(
 //             images: [

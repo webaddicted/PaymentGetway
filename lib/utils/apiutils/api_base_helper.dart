@@ -1,10 +1,9 @@
 import 'dart:async';
 import 'dart:io';
-
-// import 'package:alice/alice.dart';
 import 'package:dio/dio.dart';
 import 'package:payment_getway/utils/constant/api_constant.dart';
-import 'package:payment_getway/utils/constant/str_const.dart';
+import 'package:payment_getway/utils/constant/string_const.dart';
+import 'package:payment_getway/utils/global_utilities.dart';
 
 /// Helper class for configuring Api calls
 class ApiBaseHelper {
@@ -15,16 +14,14 @@ class ApiBaseHelper {
   ApiBaseHelper() {
     // alice = Alice(showNotification: true);
     var options = BaseOptions(
-        receiveTimeout: ApiConstant.TIMEOUT,
-        connectTimeout: ApiConstant.TIMEOUT);
-    options.baseUrl = ApiConstant.BASE_URL;
+        receiveTimeout: const Duration(seconds: ApiConstant.timeout),
+        connectTimeout: const Duration(seconds: ApiConstant.timeout));
+    options.baseUrl = ApiConstant.baseUrl;
 
     var map = <String, dynamic>{};
     // map['Authorization'] = 'Client-ID ${ApiConstant.UnsplashApiKey}';
 
-    _dio = Dio(
-      options,
-    );
+    _dio = Dio(options);
     _dio!.options.headers = map;
     // _dio.options.headers['content-Type'] = 'application/json';
     // _dio.options.headers["authorization"] = "token ${token}";
@@ -49,20 +46,20 @@ class ApiBaseHelper {
       response = (await _dio?.get(url,
           queryParameters: params,
           options: Options(responseType: ResponseType.json)))!;
-    } on SocketException catch (_) {
-      print('object SocketException');
+    } on SocketException catch (e) {
+      printLog("SocketException $e");
       response = Response(requestOptions: RequestOptions(path: 'path'));
-      response.statusCode = ApiResponseCode.INTERNET_UNAVAILABLE;
-      response.statusMessage = StrConst.NO_INTERNET_CONNECTION;
+      response.statusCode = ApiResponseCode.internetUnavailable;
+      response.statusMessage = StringConst.noInternetConnection;
     } on Exception catch (e) {
-      print('object Exception');
+      printLog('object Exception');
       response = Response(requestOptions: RequestOptions(path: 'path'));
-      response.statusCode = ApiResponseCode.UNKNOWN;
+      response.statusCode = ApiResponseCode.unknown;
       response.statusMessage =
-          e.toString() + " " + StrConst.SOMETHING_WENT_WRONG;
+          "$e ${StringConst.somethingWentWrong}";
       // response.data = e;
     }
-    print('response : $response');
+    printLog('response : $response');
     return response;
   }
 
@@ -93,15 +90,15 @@ class ApiBaseHelper {
 
 /// Api Response codes
 class ApiResponseCode {
-  static const int SUCCESS_200 = 200;
-  static const int SUCCESS_201 = 201;
-  static const int ERROR_400 = 400;
-  static const int ERROR_499 = 499;
-  static const int ERROR_401 = 201;
-  static const int ERROR_404 = 201;
-  static const int ERROR_500 = 500;
-  static const int INTERNET_UNAVAILABLE = 999;
-  static const int UNKNOWN = 533;
+  static const int success200 = 200;
+  static const int success201 = 201;
+  static const int error400 = 400;
+  static const int error499 = 499;
+  static const int error401 = 201;
+  static const int error404 = 201;
+  static const int error500 = 500;
+  static const int internetUnavailable = 999;
+  static const int unknown = 533;
 }
 
 final apiHelper = ApiBaseHelper();
