@@ -1,9 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:payment_getway/utils/constant/color_const.dart';
-import 'package:payment_getway/utils/constant/routers_const.dart';
-import 'package:payment_getway/utils/constant/string_const.dart';
-import 'package:payment_getway/utils/widget_helper.dart';
 import 'package:payment_getway/view/home/cart_page.dart';
 import 'package:payment_getway/view/home/home_page.dart';
 import 'package:payment_getway/view/home/profile_page.dart';
@@ -26,7 +21,6 @@ class _HomeState extends State<Home> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     addHomePage();
   }

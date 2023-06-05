@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-
+import 'package:payment_getway/utils/constant/assets_const.dart';
+import 'package:payment_getway/utils/constant/color_const.dart';
+import 'package:payment_getway/utils/global_utilities.dart';
+import 'package:payment_getway/utils/widget_helper.dart';
+import 'package:get/get.dart';
 class SeeAllProductPage extends StatefulWidget {
   @override
   _SeeAllProductPageState createState() => _SeeAllProductPageState();
@@ -37,27 +41,26 @@ class _SeeAllProductPageState extends State<SeeAllProductPage> {
         backgroundColor: Colors.white,
         bottom: PreferredSize(
             child: filterSortListOption(),
-            preferredSize: Size(double.infinity, 44)),
-        title: Text(
-          "GROUP BY",
-          // style: CustomTextStyle.textFormFieldBold.copyWith(fontSize: 16),
-        ),
+            preferredSize: const Size(double.infinity, 44)),
+        title: getTxtAppColor(msg: "GROUP BY",),
         elevation: 1,
         centerTitle: true,
-        actions: <Widget>[
-          Image(
-            image: AssetImage("images/ic_search.png"),
-            width: 48,
-            height: 16,
+        actions: const <Widget>[
+         Icon(
+            Icons.search,
+            color: Colors.black,
+            weight: 48,
+         ),
+          SizedBox(width: 15),
+          Icon(
+            Icons.shop,
+            color: Colors.black,
+            weight: 48,
           ),
-          Image(
-            image: AssetImage("images/ic_shopping_cart.png"),
-            width: 48,
-            height: 16,
-          )
+          SizedBox(width: 15)
         ],
         leading: IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back,
               color: Colors.black,
             ),
@@ -69,15 +72,15 @@ class _SeeAllProductPageState extends State<SeeAllProductPage> {
         builder: (context) {
           return Container(
             color: Colors.grey.shade100,
+            margin: const EdgeInsets.only(bottom: 8, left: 4, right: 4, top: 8),
             child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, childAspectRatio: 0.68),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3),
               itemBuilder: (context, position) {
                 return gridItem(context, position);
               },
               itemCount: listImage.length,
             ),
-            margin: EdgeInsets.only(bottom: 8, left: 4, right: 4, top: 8),
           );
         },
       ),
@@ -86,7 +89,7 @@ class _SeeAllProductPageState extends State<SeeAllProductPage> {
 
   filterSortListOption() {
     return Container(
-      padding: EdgeInsets.only(top: 8, bottom: 8),
+      padding: const EdgeInsets.only(top: 8, bottom: 8),
       color: Colors.white,
       child: Row(
         children: <Widget>[
@@ -138,6 +141,62 @@ class _SeeAllProductPageState extends State<SeeAllProductPage> {
     );
   }
 
+  gridBottomView() {
+    return Column(
+      children: <Widget>[
+        Container(
+          alignment: Alignment.topLeft,
+          child: const Text(
+            "Chair Dacey li - Black",
+            // style: CustomTextStyle.textFormFieldBold.copyWith(fontSize: 12),
+            // textAlign: TextAlign.start,
+          ),
+        ),
+        const SizedBox(height: 6),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: const <Widget>[
+            Text(
+              "\$50.00",
+              // style: CustomTextStyle.textFormFieldBold
+              //     .copyWith(color: Colors.indigo.shade700, fontSize: 14),
+            ),
+            SizedBox(width: 8),
+            Text(
+              "\$80.00",
+              // style: CustomTextStyle.textFormFieldBold.copyWith(
+              //     color: Colors.grey,
+              //     fontSize: 14,
+              //     decoration: TextDecoration.lineThrough),
+            ),
+          ],
+        ),
+        const SizedBox(height: 6),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: const <Widget>[
+
+            // FlutterRatingBar(
+            //   initialRating: 4,
+            //   itemSize: 14,
+            //   itemCount: 5,
+            //   fillColor: Colors.amber,
+            //   borderColor: Colors.amber.withAlpha(50),
+            //   allowHalfRating: true,
+            //   onRatingUpdate: (rating) {},
+            // ),
+            SizedBox(width: 4),
+            Text(
+              "4.5",
+              // style: CustomTextStyle.textFormFieldMedium
+              //     .copyWith(color: Colors.black, fontSize: 14),
+            ),
+          ],
+        )
+      ],
+    );
+  }
+
   gridItem(BuildContext context, int position) {
     return GestureDetector(
       onTap: () {
@@ -146,22 +205,22 @@ class _SeeAllProductPageState extends State<SeeAllProductPage> {
       child: Container(
         decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.all(Radius.circular(6)),
+            borderRadius: const BorderRadius.all(Radius.circular(6)),
             border: Border.all(color: Colors.grey.shade200)),
-        padding: EdgeInsets.only(left: 10, top: 10),
-        margin: EdgeInsets.all(8),
+        padding: const EdgeInsets.only(left: 10, top: 10),
+        margin: const EdgeInsets.all(8),
         child: Column(
           children: <Widget>[
             Container(
-              margin: EdgeInsets.only(right: 12),
+              margin: const EdgeInsets.only(right: 12),
               alignment: Alignment.topRight,
               child: Container(
                 alignment: Alignment.center,
                 width: 24,
                 height: 24,
                 decoration:
-                BoxDecoration(shape: BoxShape.circle, color: Colors.indigo),
-                child: Text(
+                const BoxDecoration(shape: BoxShape.circle, color: Colors.indigo),
+                child: const Text(
                   "30%",
                   textAlign: TextAlign.center,
                   // style: CustomTextStyle.textFormFieldBold
@@ -171,8 +230,8 @@ class _SeeAllProductPageState extends State<SeeAllProductPage> {
             ),
             Image(
               image: AssetImage(listImage[position]),
-              height: 170,
-              fit: BoxFit.none,
+              height: 130,
+              fit: BoxFit.cover,
             ),
             gridBottomView()
           ],
@@ -181,71 +240,14 @@ class _SeeAllProductPageState extends State<SeeAllProductPage> {
     );
   }
 
-  gridBottomView() {
-    return Container(
-      child: Column(
-        children: <Widget>[
-          Container(
-            child: Text(
-              "Chair Dacey li - Black",
-              // style: CustomTextStyle.textFormFieldBold.copyWith(fontSize: 12),
-              // textAlign: TextAlign.start,
-            ),
-            alignment: Alignment.topLeft,
-          ),
-          const SizedBox(height: 6),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                "\$50.00",
-                // style: CustomTextStyle.textFormFieldBold
-                //     .copyWith(color: Colors.indigo.shade700, fontSize: 14),
-              ),
-              const SizedBox(width: 8),
-              Text(
-                "\$80.00",
-                // style: CustomTextStyle.textFormFieldBold.copyWith(
-                //     color: Colors.grey,
-                //     fontSize: 14,
-                //     decoration: TextDecoration.lineThrough),
-              ),
-            ],
-          ),
-          const SizedBox(height: 6),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-
-              // FlutterRatingBar(
-              //   initialRating: 4,
-              //   itemSize: 14,
-              //   itemCount: 5,
-              //   fillColor: Colors.amber,
-              //   borderColor: Colors.amber.withAlpha(50),
-              //   allowHalfRating: true,
-              //   onRatingUpdate: (rating) {},
-              // ),
-              const SizedBox(width: 4),
-              Text(
-                "4.5",
-                // style: CustomTextStyle.textFormFieldMedium
-                //     .copyWith(color: Colors.black, fontSize: 14),
-              ),
-            ],
-          )
-        ],
-      ),
-    );
-  }
-
   void addImage() {
-    listImage.add("images/ic_chair.png");
-    listImage.add("images/ic_chair1.png");
-    listImage.add("images/ic_chair2.png");
-    listImage.add("images/ic_chair4.png");
-    listImage.add("images/ic_table.png");
-    listImage.add("images/ic_table1.png");
+    listImage.add(AssetsConst.shoes);
+    listImage.add(AssetsConst.shoes);
+    listImage.add(AssetsConst.shoes);
+    listImage.add(AssetsConst.shoes);
+    listImage.add(AssetsConst.shoes);
+    listImage.add(AssetsConst.shoes);
+    listImage.add(AssetsConst.shoes);
   }
 
   filterBottomSheet(BuildContext context) {
@@ -253,7 +255,7 @@ class _SeeAllProductPageState extends State<SeeAllProductPage> {
           (context) {
         return filterBottomSheetContent();
       },
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(16), topLeft: Radius.circular(16))),
     );
@@ -261,11 +263,11 @@ class _SeeAllProductPageState extends State<SeeAllProductPage> {
 
   filterBottomSheetContent() {
     return Container(
-      padding: EdgeInsets.only(left: 16, right: 16, top: 10),
+      padding: const EdgeInsets.only(left: 16, right: 16, top: 10),
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(color: Colors.grey.shade200, width: 1),
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
             topRight: Radius.circular(16), topLeft: Radius.circular(16)),
       ),
       width: double.infinity,
@@ -276,104 +278,83 @@ class _SeeAllProductPageState extends State<SeeAllProductPage> {
           const SizedBox(height: 8),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Icon(
-                Icons.close,
-              ),
-              Text(
-                "Filter",
-                // style: CustomTextStyle.textFormFieldMedium.copyWith(
-                //     color: Colors.black.withOpacity(0.8), fontSize: 16),
-              ),
-              Text(
-                "Reset",
-                // style: CustomTextStyle.textFormFieldBold
-                //     .copyWith(color: Colors.indigo, fontSize: 16),
-              ),
+            children:  <Widget>[
+              InkWell( onTap: () => Get.back(),child: const Icon(Icons.close)),
+              getTxtAppColor(msg: "Filter",fontWeight: FontWeight.w800),
+              getTxt(msg: "Reset",fontWeight: FontWeight.w600),
             ],
           ),
           const SizedBox(height: 28),
           Container(
+            margin: const EdgeInsets.only(left: 4),
             child:
-            Text("Price Range",
-                // style: CustomTextStyle.textFormFieldMedium
-            ),
-            margin: EdgeInsets.only(left: 4),
+            getTxt(msg:"Price Range",fontWeight: FontWeight.w500),
           ),
           const SizedBox(height: 14),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Expanded(
-                child: Container(
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      hintText: "Minimum",
-                      // hintStyle: CustomTextStyle.textFormFieldMedium
-                      //     .copyWith(color: Colors.grey.shade800),
-                      focusedBorder: border,
-                      contentPadding: EdgeInsets.only(
-                          right: 8, left: 8, top: 12, bottom: 12),
-                      border: border,
-                      enabledBorder: border,
-                    ),
+                flex: 47,
+                child: TextFormField(
+                  decoration: InputDecoration(
+                    hintText: "Minimum",
+                    // hintStyle: CustomTextStyle.textFormFieldMedium
+                    //     .copyWith(color: Colors.grey.shade800),
+                    focusedBorder: border,
+                    contentPadding: const EdgeInsets.only(
+                        right: 8, left: 8, top: 12, bottom: 12),
+                    border: border,
+                    enabledBorder: border,
                   ),
                 ),
-                flex: 47,
               ),
               Expanded(
+                flex: 6,
                 child: Container(
-                  margin: EdgeInsets.only(left: 4),
+                  margin: const EdgeInsets.only(left: 4),
                   height: 1,
                   color: Colors.grey,
                 ),
-                flex: 6,
               ),
               Expanded(
+                flex: 47,
                 child: Container(
-                  margin: EdgeInsets.only(left: 4),
+                  margin: const EdgeInsets.only(left: 4),
                   child: TextFormField(
                     decoration: InputDecoration(
                       hintText: "Maximum",
                       // hintStyle: CustomTextStyle.textFormFieldMedium
                       //     .copyWith(color: Colors.grey.shade800),
                       focusedBorder: border,
-                      contentPadding: EdgeInsets.only(
+                      contentPadding: const EdgeInsets.only(
                           right: 8, left: 8, top: 12, bottom: 12),
                       border: border,
                       enabledBorder: border,
                     ),
                   ),
                 ),
-                flex: 47,
               ),
             ],
           ),
           const SizedBox(height: 16),
           Container(
-            child: Text("Item Filter",
-                // style:
-                // CustomTextStyle.textFormFieldMedium.copyWith(fontSize: 16)
-            ),
-            margin: EdgeInsets.only(left: 4),
+            margin: const EdgeInsets.only(left: 4),
+            child: getTxt(msg:"Item Filter"),
           ),
           const SizedBox(height: 8),
           ListView.builder(
             primary: false,
             itemBuilder: (context, position) {
               return Container(
-                margin: EdgeInsets.only(top: 4, bottom: 4, left: 4),
+                margin: const EdgeInsets.only(top: 4, bottom: 4, left: 4),
                 child: Column(
                   children: <Widget>[
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Text(
-                          "Discount",
-                          // style: CustomTextStyle.textFormFieldRegular
-                          //     .copyWith(fontSize: 14, color: Colors.grey),
-                        ),
-                        Icon(
+                      children:  <Widget>[
+                        getTxt(msg: "Discount"),
+                        const Icon(
                           Icons.check,
                           color: Colors.indigo,
                         )
@@ -394,21 +375,19 @@ class _SeeAllProductPageState extends State<SeeAllProductPage> {
           ),
           const SizedBox(height: 16),
           Container(
+            margin: const EdgeInsets.only(left: 4),
             child:
-            Text("Item Color",
-                // style: CustomTextStyle.textFormFieldMedium
-            ),
-            margin: EdgeInsets.only(left: 4),
+            getTxt(msg:"Item Color",fontWeight: FontWeight.w500),
           ),
           const SizedBox(height: 8),
           ConstrainedBox(
-            constraints: BoxConstraints(maxHeight: 30),
+            constraints: const BoxConstraints(maxHeight: 30),
             child: ListView.builder(
               primary: false,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, position) {
                 return Container(
-                  margin: EdgeInsets.only(top: 4, bottom: 4, left: 4),
+                  margin: const EdgeInsets.only(top: 4, bottom: 4, left: 4),
                   width: 24,
                   height: 24,
                   decoration: BoxDecoration(
@@ -420,26 +399,25 @@ class _SeeAllProductPageState extends State<SeeAllProductPage> {
             ),
           ),
           const SizedBox(height: 8),
-          Container(
+          SizedBox(
             width: double.infinity,
             child: MaterialButton(
-              onPressed: () {},
-              shape: RoundedRectangleBorder(
+              onPressed: () {
+                Get.back();
+              },
+              shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(4))),
-              child: Text(
-                "Apply Filter",
-                // style: CustomTextStyle.textFormFieldMedium
-                //     .copyWith(color: Colors.white),
-              ),
-              color: Colors.indigo,
+              color: ColorConst.appColor,
+              child: getTxtBlackColor(msg: "Apply Filter",fontWeight: FontWeight.w500),
             ),
-          )
+          ),
+          const SizedBox(height: 20),
         ],
       ),
     );
   }
 
   var border = OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(8)),
+      borderRadius: const BorderRadius.all(Radius.circular(8)),
       borderSide: BorderSide(color: Colors.grey.shade300, width: 1));
 }

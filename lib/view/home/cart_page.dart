@@ -139,7 +139,7 @@ class _CartPageState extends State<CartPage> {
                     borderRadius: const BorderRadius.all(Radius.circular(14)),
                     color: Colors.blue.shade200,
                     image: const DecorationImage(
-                        image: AssetImage(AssetsConst.shoes))),
+                        image: AssetImage(AssetsConst.shoes),fit: BoxFit.cover)),
               ),
               Expanded(
                 flex: 100,

@@ -14,6 +14,9 @@ class AssetsConst {
   static const String noDataFound = 'assets/images/no_data_found.svg';
   static const String shoes = 'assets/images/shoes.jpg';
   static const String getStartBgImg = 'assets/images/getstart_bg.jpg';
+  static const String qrCode = 'assets/images/qr_code.png';
+  static const String refer = 'assets/images/refer.png';
+  static const String thankYou = 'assets/images/thank_you.jpg';
 
 
 //  {END IMAGES}

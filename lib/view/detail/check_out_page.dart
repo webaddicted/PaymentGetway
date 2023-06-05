@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:payment_getway/utils/constant/assets_const.dart';
+import 'package:payment_getway/utils/constant/color_const.dart';
 /// Author : Deepak Sharma(Webaddicted)
 /// Email : deepaksharmatheboss@gmail.com
 /// Profile : https://github.com/webaddicted
@@ -19,11 +21,11 @@ class _CheckOutPageState extends State<CheckOutPage> {
         // resizeToAvoidBottomPadding: false,
         appBar: AppBar(
           leading: IconButton(
-              icon: Icon(Icons.arrow_back),
+              icon: const Icon(Icons.arrow_back),
               onPressed: () {
                 Navigator.pop(context);
               }),
-          title: Text(
+          title: const Text(
             "ADDRESS",
             style: TextStyle(color: Colors.white, fontSize: 14),
           ),
@@ -32,40 +34,38 @@ class _CheckOutPageState extends State<CheckOutPage> {
           return Column(
             children: <Widget>[
               Expanded(
-                child: Container(
-                  child: ListView(
-                    children: <Widget>[
-                      selectedAddressSection(),
-                      standardDelivery(),
-                      checkoutItem(),
-                      priceSection()
-                    ],
-                  ),
-                ),
                 flex: 90,
+                child: ListView(
+                  children: <Widget>[
+                    selectedAddressSection(),
+                    standardDelivery(),
+                    checkoutItem(),
+                    priceSection()
+                  ],
+                ),
               ),
               Expanded(
+                flex: 10,
                 child: Container(
                   width: double.infinity,
-                  margin: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                  margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
                   child: MaterialButton(
                     onPressed: () {
                       /*Navigator.of(context).push(new MaterialPageRoute(
                           builder: (context) => OrderPlacePage()));*/
                       showThankYouBottomSheet(context);
                     },
-                    child: Text(
+                    color: ColorConst.appColor,
+                    textColor: Colors.white,
+                    child: const Text(
                       "Place Order",
                       // style: CustomTextStyle.textFormFieldMedium.copyWith(
                       //     color: Colors.white,
                       //     fontSize: 14,
                       //     fontWeight: FontWeight.bold),
                     ),
-                    color: Colors.pink,
-                    textColor: Colors.white,
                   ),
                 ),
-                flex: 10,
               )
             ],
           );
@@ -81,30 +81,29 @@ class _CheckOutPageState extends State<CheckOutPage> {
         decoration: BoxDecoration(
             color: Colors.white,
             border: Border.all(color: Colors.grey.shade200, width: 2),
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
                 topRight: Radius.circular(16), topLeft: Radius.circular(16))),
         child: Column(
           children: <Widget>[
-            Expanded(
-              child: Container(
-                child: Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Image(
-                    image: AssetImage("images/ic_thank_you.png"),
-                    width: 300,
-                  ),
+            const Expanded(
+              flex: 5,
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: Image(
+                  image: AssetImage(AssetsConst.thankYou),
+                  width: 300,
                 ),
               ),
-              flex: 5,
             ),
             Expanded(
+              flex: 5,
               child: Container(
-                margin: EdgeInsets.only(left: 16, right: 16),
+                margin: const EdgeInsets.only(left: 16, right: 16),
                 child: Column(
                   children: <Widget>[
                     RichText(
                         textAlign: TextAlign.center,
-                        text: TextSpan(children: [
+                        text: const TextSpan(children: [
                           TextSpan(
                             text:
                             "\n\nThank you for your purchase. Our company values each and every customer. We strive to provide state-of-the-art devices that respond to our clients’ individual needs. If you have any questions or feedback, please don’t hesitate to reach out.",
@@ -112,31 +111,30 @@ class _CheckOutPageState extends State<CheckOutPage> {
                             //     fontSize: 14, color: Colors.grey.shade800),
                           )
                         ])),
-                    SizedBox(
+                    const SizedBox(
                       height: 24,
                     ),
                     MaterialButton(
                       onPressed: () {},
-                      padding: EdgeInsets.only(left: 48, right: 48),
-                      child: Text(
+                      padding: const EdgeInsets.only(left: 48, right: 48),
+                      color: Colors.pink,
+                      shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(24))),
+                      child: const Text(
                         "Track Order",
                         // style: CustomTextStyle.textFormFieldMedium
                         //     .copyWith(color: Colors.white),
                       ),
-                      color: Colors.pink,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(24))),
                     )
                   ],
                 ),
               ),
-              flex: 5,
             )
           ],
         ),
       );
     },
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(16), topRight: Radius.circular(16))),
         backgroundColor: Colors.white,
@@ -145,41 +143,41 @@ class _CheckOutPageState extends State<CheckOutPage> {
 
   selectedAddressSection() {
     return Container(
-      margin: EdgeInsets.all(4),
-      decoration: BoxDecoration(
+      margin: const EdgeInsets.all(4),
+      decoration: const BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(4)),
       ),
       child: Card(
         elevation: 0,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(4))),
         child: Container(
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(4)),
+              borderRadius: const BorderRadius.all(Radius.circular(4)),
               border: Border.all(color: Colors.grey.shade200)),
-          padding: EdgeInsets.only(left: 12, top: 8, right: 12),
+          padding: const EdgeInsets.only(left: 12, top: 8, right: 12),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              SizedBox(
+              const SizedBox(
                 height: 6,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Text(
+                  const Text(
                     "James Francois (Default)",
                     // style: CustomTextStyle.textFormFieldSemiBold
                     //     .copyWith(fontSize: 14),
                   ),
                   Container(
                     padding:
-                    EdgeInsets.only(left: 8, right: 8, top: 4, bottom: 4),
+                    const EdgeInsets.only(left: 8, right: 8, top: 4, bottom: 4),
                     decoration: BoxDecoration(
                         shape: BoxShape.rectangle,
                         color: Colors.grey.shade300,
-                        borderRadius: BorderRadius.all(Radius.circular(16))),
-                    child: Text(
+                        borderRadius: const BorderRadius.all(Radius.circular(16))),
+                    child: const Text(
                       "HOME",
                       // style: CustomTextStyle.textFormFieldBlack.copyWith(
                       //     color: Colors.indigoAccent.shade200, fontSize: 8),
@@ -191,11 +189,11 @@ class _CheckOutPageState extends State<CheckOutPage> {
                   "431, Commerce House, Nagindas Master, Fort", 16),
               createAddressText("Mumbai - 400023", 6),
               createAddressText("Maharashtra", 6),
-              SizedBox(
+              const SizedBox(
                 height: 6,
               ),
               RichText(
-                text: TextSpan(children: [
+                text: const TextSpan(children: [
                   TextSpan(
                       text: "Mobile : ",
                       // style: CustomTextStyle.textFormFieldMedium
@@ -208,7 +206,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
                           ),
                 ]),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               Container(
@@ -236,58 +234,56 @@ class _CheckOutPageState extends State<CheckOutPage> {
   }
 
   addressAction() {
-    return Container(
-      child: Row(
-        children: <Widget>[
-          Spacer(
-            flex: 2,
+    return Row(
+      children: <Widget>[
+        const Spacer(
+          flex: 2,
+        ),
+        MaterialButton(
+          onPressed: () {},
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          child: const Text(
+            "Edit / Change",
+            // style: CustomTextStyle.textFormFieldSemiBold
+            //     .copyWith(fontSize: 12, color: Colors.indigo.shade700),
           ),
-          MaterialButton(
-            onPressed: () {},
-            child: Text(
-              "Edit / Change",
+        ),
+        const Spacer(
+          flex: 3,
+        ),
+        Container(
+          height: 20,
+          width: 1,
+          color: Colors.grey,
+        ),
+        const Spacer(
+          flex: 3,
+        ),
+        MaterialButton(
+          onPressed: () {},
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          child: const Text("Add New Address",
               // style: CustomTextStyle.textFormFieldSemiBold
-              //     .copyWith(fontSize: 12, color: Colors.indigo.shade700),
-            ),
-            splashColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-          ),
-          Spacer(
-            flex: 3,
-          ),
-          Container(
-            height: 20,
-            width: 1,
-            color: Colors.grey,
-          ),
-          Spacer(
-            flex: 3,
-          ),
-          MaterialButton(
-            onPressed: () {},
-            child: Text("Add New Address",
-                // style: CustomTextStyle.textFormFieldSemiBold
-                //     .copyWith(fontSize: 12, color: Colors.indigo.shade700)
-                  ),
-            splashColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-          ),
-          Spacer(
-            flex: 2,
-          ),
-        ],
-      ),
+              //     .copyWith(fontSize: 12, color: Colors.indigo.shade700)
+                ),
+        ),
+        const Spacer(
+          flex: 2,
+        ),
+      ],
     );
   }
 
   standardDelivery() {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(4)),
+          borderRadius: const BorderRadius.all(Radius.circular(4)),
           border:
           Border.all(color: Colors.tealAccent.withOpacity(0.4), width: 1),
           color: Colors.tealAccent.withOpacity(0.2)),
-      margin: EdgeInsets.all(8),
+      margin: const EdgeInsets.all(8),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
@@ -300,7 +296,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
+            children: const <Widget>[
               Text(
                 "Standard Delivery",
                 // style: CustomTextStyle.textFormFieldMedium.copyWith(
@@ -327,19 +323,19 @@ class _CheckOutPageState extends State<CheckOutPage> {
 
   checkoutItem() {
     return Container(
-      margin: EdgeInsets.all(4),
-      decoration: BoxDecoration(
+      margin: const EdgeInsets.all(4),
+      decoration: const BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(4)),
       ),
       child: Card(
         elevation: 0,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(4))),
         child: Container(
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(4)),
+              borderRadius: const BorderRadius.all(Radius.circular(4)),
               border: Border.all(color: Colors.grey.shade200)),
-          padding: EdgeInsets.only(left: 12, top: 8, right: 12, bottom: 8),
+          padding: const EdgeInsets.only(left: 12, top: 8, right: 12, bottom: 8),
           child: ListView.builder(
             itemBuilder: (context, position) {
               return checkoutListItem();
@@ -356,26 +352,26 @@ class _CheckOutPageState extends State<CheckOutPage> {
 
   checkoutListItem() {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 4),
+      margin: const EdgeInsets.symmetric(vertical: 4),
       child: Row(
         children: <Widget>[
           Container(
-            child: Image(
+            decoration:
+            BoxDecoration(border: Border.all(color: Colors.grey, width: 1)),
+            child: const Image(
               image: AssetImage(
-                "images/details_shoes_image.webp",
+                AssetsConst.shoes,
               ),
               width: 35,
               height: 45,
               fit: BoxFit.fitHeight,
             ),
-            decoration:
-            BoxDecoration(border: Border.all(color: Colors.grey, width: 1)),
           ),
-          SizedBox(
+          const SizedBox(
             width: 8,
           ),
           RichText(
-            text: TextSpan(children: [
+            text: const TextSpan(children: [
               TextSpan(
                   text: "Estimated Delivery : ",
                   // style: CustomTextStyle.textFormFieldMedium
@@ -395,42 +391,42 @@ class _CheckOutPageState extends State<CheckOutPage> {
 
   priceSection() {
     return Container(
-      margin: EdgeInsets.all(4),
-      decoration: BoxDecoration(
+      margin: const EdgeInsets.all(4),
+      decoration: const BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(4)),
       ),
       child: Card(
         elevation: 0,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(4))),
         child: Container(
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(4)),
+              borderRadius: const BorderRadius.all(Radius.circular(4)),
               border: Border.all(color: Colors.grey.shade200)),
-          padding: EdgeInsets.only(left: 12, top: 8, right: 12, bottom: 8),
+          padding: const EdgeInsets.only(left: 12, top: 8, right: 12, bottom: 8),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              SizedBox(
+              const SizedBox(
                 height: 4,
               ),
-              Text(
+              const Text(
                 "PRICE DETAILS",
                 // style: CustomTextStyle.textFormFieldMedium.copyWith(
                 //     fontSize: 12,
                 //     color: Colors.black,
                 //     fontWeight: FontWeight.w600),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 4,
               ),
               Container(
                 width: double.infinity,
                 height: 0.5,
-                margin: EdgeInsets.symmetric(vertical: 4),
+                margin: const EdgeInsets.symmetric(vertical: 4),
                 color: Colors.grey.shade400,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 8,
               ),
               createPriceItem("Total MRP", getFormattedCurrency(5197),
@@ -443,23 +439,23 @@ class _CheckOutPageState extends State<CheckOutPage> {
                   Colors.grey.shade700),
               createPriceItem(
                   "Delievery Charges", "FREE", Colors.teal.shade300),
-              SizedBox(
+              const SizedBox(
                 height: 8,
               ),
               Container(
                 width: double.infinity,
                 height: 0.5,
-                margin: EdgeInsets.symmetric(vertical: 4),
+                margin: const EdgeInsets.symmetric(vertical: 4),
                 color: Colors.grey.shade400,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 8,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(
+                  const Text(
                     "Total",
                     // style: CustomTextStyle.textFormFieldSemiBold
                     //     .copyWith(color: Colors.black, fontSize: 12),
@@ -497,7 +493,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
 
   createPriceItem(String key, String value, Color color) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 0, vertical: 3),
+      padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 3),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[

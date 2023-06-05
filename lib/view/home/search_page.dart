@@ -263,7 +263,7 @@ class _SearchPageState extends State<SearchPage> {
               decoration: BoxDecoration(
                 color: Colors.teal.shade200,
                 image: const DecorationImage(
-                    image: AssetImage("images/shoes_1.png"), fit: BoxFit.cover),
+                    image: AssetImage(AssetsConst.shoes), fit: BoxFit.cover),
               ),
             ),
           ),
@@ -350,7 +350,7 @@ class _SearchPageState extends State<SearchPage> {
               decoration: BoxDecoration(
                 color: Colors.teal.shade200,
                 image: const DecorationImage(
-                    image: AssetImage("images/shoes_1.png"), fit: BoxFit.cover),
+                    image: AssetImage(AssetsConst.shoes), fit: BoxFit.cover),
               ),
             ),
           ),

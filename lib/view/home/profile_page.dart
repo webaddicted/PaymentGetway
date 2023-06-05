@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:payment_getway/data/bean/list_profile_section.dart';
+import 'package:payment_getway/utils/common/widget_helper.dart';
+import 'package:payment_getway/utils/constant/api_constant.dart';
 import 'package:payment_getway/view/detail/about_page.dart';
 import 'package:payment_getway/view/detail/check_out_page.dart';
 import 'package:payment_getway/view/detail/notification_page.dart';
 import 'package:payment_getway/view/detail/order_place_page.dart';
-import 'package:payment_getway/view/home/home_page_ui.dart';
 import 'package:payment_getway/view/detail/invite_friends_page.dart';
 import 'package:payment_getway/view/detail/product_detail_page.dart';
 import 'package:payment_getway/view/list/see_all_product_page.dart';
@@ -18,6 +19,7 @@ import 'package:payment_getway/view/paymentgetway/razorpay_page.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
+
 
   @override
   _ProfilePageState createState() => _ProfilePageState();
@@ -71,17 +73,6 @@ class _ProfilePageState extends State<ProfilePage> {
         Icons.account_balance_wallet_outlined,
         Colors.teal.shade800,
         const PaypalPaymentPage()));
-
-    listSection.add(createSection(
-        "Home Page Ui",
-        Icons.account_balance_wallet_outlined,
-        Colors.teal.shade800,
-        const HomePageUi()));
-    listSection.add(createSection(
-        "Payment Method",
-        Icons.account_balance_wallet_outlined,
-        Colors.teal.shade800,
-        Container()));
     listSection.add(createSection(
         "Invite Friends",
         Icons.supervised_user_circle_outlined,
@@ -208,27 +199,10 @@ class _ProfilePageState extends State<ProfilePage> {
                                 ],
                               ),
                             ),
-                            const SizedBox(
-                              height: 8,
-                            ),
-                            const Text(
-                              "Riya Patel",
-                              // style: CustomTextStyle.textFormFieldBlack
-                              //     .copyWith(
-                              //     color: Colors.black,
-                              //     fontSize: 16,
-                              //     fontWeight: FontWeight.w900),
-                            ),
-                            const Text(
-                              "riya@gmail.com",
-                              // style: CustomTextStyle.textFormFieldMedium
-                              //     .copyWith(
-                              //     color: Colors.grey.shade700,
-                              //     fontSize: 14),
-                            ),
-                            const SizedBox(
-                              height: 16,
-                            ),
+                            const SizedBox(height: 8),
+                            getTxtAppColor(msg: "Deepak Sharma",fontWeight: FontWeight.bold),
+                            getTxtAppColor(msg: "deepaksharma040695@gmail.com",fontWeight: FontWeight.bold),
+                            const SizedBox(height: 16),
                             Container(
                               height: 2,
                               width: double.infinity,
@@ -240,18 +214,11 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       Align(
                         alignment: Alignment.topCenter,
-                        child: Container(
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: Colors.grey.shade400, width: 2),
-                              shape: BoxShape.circle,
-                              image: const DecorationImage(
-                                  image: AssetImage(
-                                      "images/ic_user_profile.png"),
-                                  fit: BoxFit.contain)),
-                          width: 100,
-                          height: 100,
-                        ),
+                        child:  getCacheImage(
+                            url: ApiConstant.demoImg,
+                            isCircle: true,
+                            height: 100,
+                            width: 100),
                       ),
                     ],
                   ),

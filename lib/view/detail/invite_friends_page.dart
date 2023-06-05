@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:payment_getway/utils/constant/assets_const.dart';
+import 'package:payment_getway/utils/global_utilities.dart';
+import 'package:payment_getway/utils/widget_helper.dart';
 
 /// Author : Deepak Sharma(Webaddicted)
 /// Email : deepaksharmatheboss@gmail.com
@@ -18,11 +21,10 @@ class _InviteFriendsPageState extends State<InviteFriendsPage> {
     String response = "";
     try {
       String result = await platform.invokeMethod("shareApp");
-      print("METHOD : " + result);
+      printLog("METHOD : $result");
       response = result;
     } on PlatformException catch (e) {
-      response = "Failed "
-          "to shared app";
+      response = "Failed to shared app";
     }
     setState(() {
       shareResponse = response;
@@ -36,12 +38,12 @@ class _InviteFriendsPageState extends State<InviteFriendsPage> {
       backgroundColor: Colors.grey.shade50,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Text(
+        title: const Text(
           "Invite Friends",
           // style: CustomTextStyle.textFormFieldBold.copyWith(fontSize: 18),
         ),
         leading: IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back,
               color: Colors.black,
             ),
@@ -54,10 +56,10 @@ class _InviteFriendsPageState extends State<InviteFriendsPage> {
           return Column(
             children: <Widget>[
               Expanded(
+                flex: 90,
                 child: ListView(
                   children: <Widget>[createHeader(), createMiddle()],
                 ),
-                flex: 90,
               ),
               createFooter(context)
             ],
@@ -69,46 +71,44 @@ class _InviteFriendsPageState extends State<InviteFriendsPage> {
 
   Expanded createFooter(BuildContext context) {
     return Expanded(
+      flex: 10,
       child: Row(
         children: <Widget>[
           Expanded(
+            flex: 85,
             child: Container(
-              margin: EdgeInsets.only(left: 4, right: 4, bottom: 4),
+              margin: const EdgeInsets.only(left: 4, right: 4, bottom: 4),
               child: MaterialButton(
-                padding: EdgeInsets.symmetric(vertical: 16),
+                padding: const EdgeInsets.symmetric(vertical: 16),
                 onPressed: () {
                   shareApp();
                   // Scaffold.of(context)
                   //     .showSnackBar(SnackBar(content: Text(shareResponse)));
                 },
                 color: Colors.blue,
-                child: Text(
-                  "Share Link",
-                  // style: CustomTextStyle.textFormFieldMedium
-                  //     .copyWith(color: Colors.white),
+                child: getTxtAppColor(
+                  msg : "Share Link",
                 ),
               ),
             ),
-            flex: 85,
           ),
           Expanded(
+            flex: 15,
             child: Container(
-              margin: EdgeInsets.only(right: 4, bottom: 8, top: 6),
+              margin: const EdgeInsets.only(right: 4, bottom: 8, top: 6),
               child: MaterialButton(
-                padding: EdgeInsets.symmetric(vertical: 14),
+                padding: const EdgeInsets.symmetric(vertical: 14),
                 onPressed: () {},
-                child: Image(
-                  image: AssetImage("images/ic_qr_code.png"),
+                color: Colors.blue,
+                child: const Image(
+                  image: AssetImage(AssetsConst.qrCode),
                   color: Colors.white,
                 ),
-                color: Colors.blue,
               ),
             ),
-            flex: 15,
           )
         ],
       ),
-      flex: 10,
     );
   }
 
@@ -120,25 +120,21 @@ class _InviteFriendsPageState extends State<InviteFriendsPage> {
         children: <Widget>[
           Container(
             height: 160,
-            margin: EdgeInsets.all(8),
+            margin: const EdgeInsets.all(8),
             width: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage("images/ic_refer_friends_bg.jpg"),
+                    image: AssetImage(AssetsConst.refer),
                     fit: BoxFit.cover)),
           ),
           Container(
-              margin: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-              child: Text(
-                "Invite Friends & Earn Points",
-                // style: CustomTextStyle.textFormFieldBold,
-              )),
+              margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+              child: getTxt(
+                msg: "Invite Friends & Earn Points", fontWeight: FontWeight.w600)),
           Container(
-              margin: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-              child: Text(
-                "When you invite friends to join Carter, you can 100 points to each friends.Whenever your friends consume through Carter, you will get a 5% bonus",
-                // style: CustomTextStyle.textFormFieldBold
-                //     .copyWith(color: Colors.black.withOpacity(0.8)),
+              margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+              child: getTxt(
+                msg: "When you invite friends to join Carter, you can 100 points to each friends.Whenever your friends consume through Carter, you will get a 5% bonus",
               ))
         ],
       ),
@@ -147,25 +143,17 @@ class _InviteFriendsPageState extends State<InviteFriendsPage> {
 
   createMiddle() {
     return Container(
-      margin: EdgeInsets.only(top: 14),
+      margin: const EdgeInsets.only(top: 14),
       color: Colors.white,
       child: Column(
         children: <Widget>[
           Container(
-            padding: EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
+            padding: const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text(
-                  "My Invitation",
-                  // style: CustomTextStyle.textFormFieldBold.copyWith(
-                  //     fontSize: 14, color: Colors.black.withOpacity(0.9)),
-                ),
-                Text(
-                  "Details",
-                  // style: CustomTextStyle.textFormFieldBold
-                  //     .copyWith(fontSize: 14, color: Colors.blue),
-                ),
+                getTxtAppColor(msg: "My Invitation", fontWeight: FontWeight.w500),
+                getTxtAppColor(msg: "Details"),
               ],
             ),
           ),
@@ -174,11 +162,11 @@ class _InviteFriendsPageState extends State<InviteFriendsPage> {
             height: 1,
             width: double.infinity,
           ),
-          Container(
+          SizedBox(
             height: 60,
             child: GridView.builder(
               gridDelegate:
-              SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+              const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
               itemBuilder: (context, index) {
                 return gridItem();
               },
@@ -193,8 +181,8 @@ class _InviteFriendsPageState extends State<InviteFriendsPage> {
 
   gridItem() {
     return Container(
-      padding: EdgeInsets.all(10),
-      margin: EdgeInsets.only(
+      padding: const EdgeInsets.all(10),
+      margin: const EdgeInsets.only(
         top: 8,
       ),
       height: 40,
@@ -203,7 +191,7 @@ class _InviteFriendsPageState extends State<InviteFriendsPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           const SizedBox(width: 8),
-          Icon(
+          const Icon(
             Icons.menu,
             color: Colors.blue,
           ),
@@ -211,19 +199,9 @@ class _InviteFriendsPageState extends State<InviteFriendsPage> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(
-                "0.34123205",
-                // style: CustomTextStyle.textFormFieldBold
-                //     .copyWith(color: Colors.blue),
-              ),
+              getTxtAppColor(msg: "0.34123205"),
               const SizedBox(width: 4),
-              Container(
-                child: Text(
-                  "Today Reward",
-                  // style: CustomTextStyle.textFormFieldMedium
-                  //     .copyWith(color: Colors.grey.shade500, fontSize: 12),
-                ),
-              )
+              getTxtAppColor(msg: "Today Reward")
             ],
           ),
         ],
