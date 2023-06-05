@@ -14,6 +14,8 @@ import 'package:payment_getway/view/home/search_page.dart';
 /// Profile : https://github.com/webaddicted
 
 class Home extends StatefulWidget {
+  const Home({super.key});
+
   @override
   _HomeState createState() => _HomeState();
 }
@@ -35,13 +37,13 @@ class _HomeState extends State<Home> {
       backgroundColor: Colors.grey.shade100,
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: selectedPosition,
-        items: [
-          const BottomNavigationBarItem(icon: Icon(Icons.home), label:"Home"),
-          const BottomNavigationBarItem(
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label:"Home"),
+          BottomNavigationBarItem(
               icon: Icon(Icons.search), label: "Search"),
-          const BottomNavigationBarItem(
+          BottomNavigationBarItem(
               icon: Icon(Icons.shopping_cart), label: "Cart"),
-          const BottomNavigationBarItem(
+          BottomNavigationBarItem(
               icon: Icon(Icons.person), label: "Account"),
         ],
         type: BottomNavigationBarType.fixed,
@@ -61,7 +63,7 @@ class _HomeState extends State<Home> {
   }
 
   void addHomePage() {
-    listBottomWidget.add(HomePage());
+    listBottomWidget.add(const HomePage());
     listBottomWidget.add(SearchPage());
     listBottomWidget.add(CartPage());
     listBottomWidget.add(ProfilePage1());

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:payment_getway/utils/constant/assets_const.dart';
 import 'package:payment_getway/utils/widget_helper.dart';
 
 /// Author : Deepak Sharma(Webaddicted)
@@ -30,13 +31,13 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   void shoesImage() {
-    listShoesImage.add("images/shoes_1.png");
-    listShoesImage.add("images/shoes_2.png");
-    listShoesImage.add("images/shoes_3.png");
-    listShoesImage.add("images/shoes_4.png");
-    listShoesImage.add("images/shoes_5.png");
-    listShoesImage.add("images/shoes_6.png");
-    listShoesImage.add("images/shoes_7.png");
+    listShoesImage.add(AssetsConst.shoes);
+    listShoesImage.add(AssetsConst.shoes);
+    listShoesImage.add(AssetsConst.shoes);
+    listShoesImage.add(AssetsConst.shoes);
+    listShoesImage.add(AssetsConst.shoes);
+    listShoesImage.add(AssetsConst.shoes);
+    listShoesImage.add(AssetsConst.shoes);
   }
 
   @override
@@ -63,7 +64,7 @@ class _SearchPageState extends State<SearchPage> {
   searchHeader() {
     return Container(
         color: Colors.white,
-        padding: EdgeInsets.symmetric(horizontal: 12),
+        padding: const EdgeInsets.symmetric(horizontal: 12),
         child: Row(
           children: <Widget>[
             Icon(
@@ -129,18 +130,13 @@ class _SearchPageState extends State<SearchPage> {
       rightMargin = 12;
     }
     return Container(
-      child: getTxtGreyColor(msg: strCategory, fontSize: 13),
-      // Text(
-      //   strCategory,
-      //   style: CustomTextStyle.textFormFieldBold
-      //       .copyWith(color: Colors.grey.shade800, fontSize: 12),
-      // ),
       margin: EdgeInsets.only(left: leftMargin, right: rightMargin),
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
       decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(Radius.circular(18)),
           border: Border.all(color: Colors.grey.shade300, width: 1),
           color: Colors.white),
+      child: getTxtGreyColor(msg: strCategory, fontSize: 13),
     );
   }
 
@@ -151,6 +147,7 @@ class _SearchPageState extends State<SearchPage> {
       child: Column(
         children: <Widget>[
           Container(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
@@ -164,7 +161,6 @@ class _SearchPageState extends State<SearchPage> {
                     fontSize: 11),
               ],
             ),
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           ),
           const SizedBox(height: 6),
           ConstrainedBox(
@@ -261,6 +257,7 @@ class _SearchPageState extends State<SearchPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Expanded(
+            flex: 70,
             child: Container(
               width: 120,
               decoration: BoxDecoration(
@@ -269,7 +266,6 @@ class _SearchPageState extends State<SearchPage> {
                     image: AssetImage("images/shoes_1.png"), fit: BoxFit.cover),
               ),
             ),
-            flex: 70,
           ),
           const SizedBox(height: 6),
           Container(
@@ -348,6 +344,7 @@ class _SearchPageState extends State<SearchPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Expanded(
+            flex: 70,
             child: Container(
               width: 120,
               decoration: BoxDecoration(
@@ -356,7 +353,6 @@ class _SearchPageState extends State<SearchPage> {
                     image: AssetImage("images/shoes_1.png"), fit: BoxFit.cover),
               ),
             ),
-            flex: 70,
           ),
           const SizedBox(height: 6),
           Container(
