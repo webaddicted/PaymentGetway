@@ -6,7 +6,7 @@ import 'package:payment_getway/utils/constant/string_const.dart';
 import 'package:payment_getway/utils/widget_helper.dart';
 import 'package:payment_getway/view/home/cart_page.dart';
 import 'package:payment_getway/view/home/home_page.dart';
-import 'package:payment_getway/view/home/profile_page1.dart';
+import 'package:payment_getway/view/home/profile_page.dart';
 import 'package:payment_getway/view/home/search_page.dart';
 
 /// Author : Deepak Sharma(Webaddicted)
@@ -66,7 +66,7 @@ class _HomeState extends State<Home> {
     listBottomWidget.add(const HomePage());
     listBottomWidget.add(SearchPage());
     listBottomWidget.add(CartPage());
-    listBottomWidget.add(ProfilePage1());
+    listBottomWidget.add(ProfilePage());
   }
 }
 

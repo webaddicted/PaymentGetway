@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:payment_getway/utils/constant/color_const.dart';
+
 /// Author : Deepak Sharma(Webaddicted)
 /// Email : deepaksharmatheboss@gmail.com
 /// Profile : https://github.com/webaddicted
@@ -19,7 +20,7 @@ class _HomePageUiState extends State<HomePageUi> {
   }
 
   createUi() {
-      return SafeArea(
+    return SafeArea(
       child: Column(
         children: <Widget>[
           SearchWidget(),
@@ -28,10 +29,10 @@ class _HomePageUiState extends State<HomePageUi> {
           SizedBox(
             height: 10,
             child: Container(
-              color: Color(0xFFf5f6f7),
+              color: const Color(0xFFf5f6f7),
             ),
           ),
-          PreferredSize(
+          const PreferredSize(
             preferredSize: Size.fromHeight(50.0),
             child: TabBar(
               labelColor: Colors.black,
@@ -51,7 +52,7 @@ class _HomePageUiState extends State<HomePageUi> {
           SizedBox(
             height: 10,
             child: Container(
-              color: Color(0xFFf5f6f7),
+              color: const Color(0xFFf5f6f7),
             ),
           ),
           // Expanded(
@@ -79,15 +80,19 @@ class _HomePageUiState extends State<HomePageUi> {
     );
   }
 }
+
 class SearchWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(10.0),
+      padding: const EdgeInsets.all(10.0),
       child: Theme(
+          data: Theme.of(context).copyWith(
+            primaryColor: Colors.grey[600],
+          ),
           child: TextField(
             decoration: InputDecoration(
-              border: OutlineInputBorder(
+              border: const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(10.0)),
                 borderSide: BorderSide(
                   width: 0,
@@ -95,29 +100,27 @@ class SearchWidget extends StatelessWidget {
                 ),
               ),
               filled: true,
-              prefixIcon: Icon(Icons.search),
-              fillColor: Color(0xFFF2F4F5),
-              hintStyle: new TextStyle(color: Colors.grey[600]),
+              prefixIcon: const Icon(Icons.search),
+              fillColor: const Color(0xFFF2F4F5),
+              hintStyle: TextStyle(color: Colors.grey[600]),
               hintText: "What would your like to buy?",
             ),
             autofocus: false,
-          ),
-          data: Theme.of(context).copyWith(
-            primaryColor: Colors.grey[600],
           )),
     );
   }
 }
+
 class TopPromoSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: 10, right: 10),
+      padding: const EdgeInsets.only(left: 10, right: 10),
       child: Container(
-          height: 150.0,
-          width: double.infinity,
-color: ColorConst.appColor,
-child: Container(),
+        height: 150.0,
+        width: double.infinity,
+        color: ColorConst.appColor,
+        child: Container(),
 //           child: Carousel(
 //             images: [
 //               Image.asset(
@@ -151,7 +154,7 @@ class PopularMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -161,12 +164,12 @@ class PopularMenu extends StatelessWidget {
               Container(
                 width: width,
                 height: height,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     shape: BoxShape.circle, color: Color(0xFFF2F3F7)),
                 child: RawMaterialButton(
                   onPressed: () {},
-                  shape: CircleBorder(),
-                  child: Icon(
+                  shape: const CircleBorder(),
+                  child: const Icon(
                     Icons.account_balance,
                     color: Color(0xFFAB436B),
                   ),
@@ -175,7 +178,7 @@ class PopularMenu extends StatelessWidget {
               Text(
                 "Popular",
                 style: TextStyle(
-                    color: Color(0xFF969696),
+                    color: const Color(0xFF969696),
                     fontFamily: 'Roboto-Light.ttf',
                     fontSize: customFontSize),
               )
@@ -186,12 +189,12 @@ class PopularMenu extends StatelessWidget {
               Container(
                 width: width,
                 height: height,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     shape: BoxShape.circle, color: Color(0xFFF2F3F7)),
                 child: RawMaterialButton(
                   onPressed: () {},
-                  shape: CircleBorder(),
-                  child: Icon(
+                  shape: const CircleBorder(),
+                  child: const Icon(
                     FontAwesomeIcons.clock,
                     color: Color(0xFFC1A17C),
                   ),
@@ -200,7 +203,7 @@ class PopularMenu extends StatelessWidget {
               Text(
                 "Flash Sell",
                 style: TextStyle(
-                    color: Color(0xFF969696),
+                    color: const Color(0xFF969696),
                     fontFamily: defaultFontFamily,
                     fontSize: customFontSize),
               )
@@ -211,12 +214,12 @@ class PopularMenu extends StatelessWidget {
               Container(
                 width: width,
                 height: height,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     shape: BoxShape.circle, color: Color(0xFFF2F3F7)),
                 child: RawMaterialButton(
                   onPressed: () {},
-                  shape: CircleBorder(),
-                  child: Icon(
+                  shape: const CircleBorder(),
+                  child: const Icon(
                     FontAwesomeIcons.truck,
                     color: Color(0xFF5EB699),
                   ),
@@ -225,7 +228,7 @@ class PopularMenu extends StatelessWidget {
               Text(
                 "Evaly Store",
                 style: TextStyle(
-                    color: Color(0xFF969696),
+                    color: const Color(0xFF969696),
                     fontFamily: defaultFontFamily,
                     fontSize: customFontSize),
               )
@@ -236,12 +239,12 @@ class PopularMenu extends StatelessWidget {
               Container(
                 width: width,
                 height: height,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     shape: BoxShape.circle, color: Color(0xFFF2F3F7)),
                 child: RawMaterialButton(
                   onPressed: () {},
-                  shape: CircleBorder(),
-                  child: Icon(
+                  shape: const CircleBorder(),
+                  child: const Icon(
                     FontAwesomeIcons.gift,
                     color: Color(0xFF4D9DA7),
                   ),
@@ -250,7 +253,7 @@ class PopularMenu extends StatelessWidget {
               Text(
                 "Voucher",
                 style: TextStyle(
-                    color: Color(0xFF969696),
+                    color: const Color(0xFF969696),
                     fontFamily: defaultFontFamily,
                     fontSize: customFontSize),
               )

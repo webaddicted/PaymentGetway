@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:payment_getway/utils/constant/assets_const.dart';
 import 'package:payment_getway/utils/widget_helper.dart';
 
 /// Author : Deepak Sharma(Webaddicted)
@@ -34,6 +35,7 @@ class _CartPageState extends State<CartPage> {
 
   footer(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.only(top: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.end,
@@ -42,16 +44,16 @@ class _CartPageState extends State<CartPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Container(
-                margin: EdgeInsets.only(left: 30),
-                child: Text(
+                margin: const EdgeInsets.only(left: 30),
+                child: const Text(
                   "Total",
                   // style: CustomTextStyle.textFormFieldMedium
                   //     .copyWith(color: Colors.grey, fontSize: 12),
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(right: 30),
-                child: Text(
+                margin: const EdgeInsets.only(right: 30),
+                child: const Text(
                   "\$299.00",
                   // style: CustomTextStyle.textFormFieldBlack.copyWith(
                   //     color: Colors.greenAccent.shade700, fontSize: 14),
@@ -68,10 +70,10 @@ class _CartPageState extends State<CartPage> {
               //     }));
             },
             color: Colors.green,
-            padding: EdgeInsets.only(top: 12, left: 60, right: 60, bottom: 12),
-            shape: RoundedRectangleBorder(
+            padding: const EdgeInsets.only(top: 12, left: 60, right: 60, bottom: 12),
+            shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(24))),
-            child: Text(
+            child: const Text(
               "Checkout",
               // style: CustomTextStyle.textFormFieldSemiBold
               //     .copyWith(color: Colors.white),
@@ -80,27 +82,26 @@ class _CartPageState extends State<CartPage> {
           const SizedBox(height: 8),
         ],
       ),
-      margin: EdgeInsets.only(top: 16),
     );
   }
 
   createHeader() {
     return Container(
       alignment: Alignment.topLeft,
-      child: Text(
+      margin: const EdgeInsets.only(left: 12, top: 12),
+      child: const Text(
         "SHOPPING CART",
         // style: CustomTextStyle.textFormFieldBold
         //     .copyWith(fontSize: 16, color: Colors.black),
       ),
-      margin: EdgeInsets.only(left: 12, top: 12),
     );
   }
 
   createSubTitle() {
     return Container(
       alignment: Alignment.topLeft,
-        margin: EdgeInsets.only(left: 12, top: 4),
-        child: Text(
+        margin: const EdgeInsets.only(left: 12, top: 4),
+        child: const Text(
         "Total(3) Items")
       //   style: CustomTextStyle.textFormFieldBold
       //       .copyWith(fontSize: 12, color: Colors.grey),
@@ -124,23 +125,24 @@ class _CartPageState extends State<CartPage> {
     return Stack(
       children: <Widget>[
         Container(
-          margin: EdgeInsets.only(left: 16, right: 16, top: 16),
-          decoration: BoxDecoration(
+          margin: const EdgeInsets.only(left: 16, right: 16, top: 16),
+          decoration: const BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.all(Radius.circular(16))),
           child: Row(
             children: <Widget>[
               Container(
-                margin: EdgeInsets.only(right: 8, left: 8, top: 8, bottom: 8),
+                margin: const EdgeInsets.only(right: 8, left: 8, top: 8, bottom: 8),
                 width: 80,
                 height: 80,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(14)),
+                    borderRadius: const BorderRadius.all(Radius.circular(14)),
                     color: Colors.blue.shade200,
-                    image: DecorationImage(
-                        image: AssetImage("images/shoes_1.png"))),
+                    image: const DecorationImage(
+                        image: AssetImage(AssetsConst.shoes))),
               ),
               Expanded(
+                flex: 100,
                 child: Container(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
@@ -149,7 +151,7 @@ class _CartPageState extends State<CartPage> {
                     children: <Widget>[
                       Container(
                         padding: const EdgeInsets.only(right: 8, top: 4),
-                        child: Text(
+                        child: const Text(
                           "NIKE XTM Basketball Shoeas",
                           maxLines: 2,
                           softWrap: true,
@@ -159,44 +161,41 @@ class _CartPageState extends State<CartPage> {
                       ),
                       const SizedBox(height: 6),
                       getTxtColor(msg:  "Green M",fontWeight: FontWeight.w700, txtColor: Colors.grey),
-                      Container(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            getTxtColor(msg:  "\$299.00",fontWeight: FontWeight.w700, txtColor: Colors.green),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: <Widget>[
-                                  Icon(
-                                    Icons.remove,
-                                    size: 24,
-                                    color: Colors.grey.shade700,
-                                  ),
-                                  Container(
-                                    color: Colors.grey.shade200,
-                                    padding: const EdgeInsets.only(
-                                        bottom: 2, right: 12, left: 12),
-                                    child:
-                                    getTxtBlackColor(msg: "1",fontWeight: FontWeight.w700)
-                                  ),
-                                  Icon(
-                                    Icons.add,
-                                    size: 24,
-                                    color: Colors.grey.shade700,
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          getTxtColor(msg:  "\$299.00",fontWeight: FontWeight.w700, txtColor: Colors.green),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: <Widget>[
+                                Icon(
+                                  Icons.remove,
+                                  size: 24,
+                                  color: Colors.grey.shade700,
+                                ),
+                                Container(
+                                  color: Colors.grey.shade200,
+                                  padding: const EdgeInsets.only(
+                                      bottom: 2, right: 12, left: 12),
+                                  child:
+                                  getTxtBlackColor(msg: "1",fontWeight: FontWeight.w700)
+                                ),
+                                Icon(
+                                  Icons.add,
+                                  size: 24,
+                                  color: Colors.grey.shade700,
+                                )
+                              ],
+                            ),
+                          )
+                        ],
                       ),
                     ],
                   ),
                 ),
-                flex: 100,
               )
             ],
           ),
@@ -208,14 +207,14 @@ class _CartPageState extends State<CartPage> {
             height: 24,
             alignment: Alignment.center,
             margin: const EdgeInsets.only(right: 10, top: 8),
+            decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(4)),
+                color: Colors.green),
             child: const Icon(
               Icons.close,
               color: Colors.white,
               size: 20,
             ),
-            decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(4)),
-                color: Colors.green),
           ),
         )
       ],
