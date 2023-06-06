@@ -698,17 +698,19 @@ Widget getStaggered(
     required Function widget,
     ScrollPhysics? physics,
     ScrollController? controller}) {
-  return StaggeredGridView.countBuilder(
+  return StaggeredGrid.count(
       crossAxisCount: crossAxisCount,
       mainAxisSpacing: 1.0,
       crossAxisSpacing: 1.0,
-      shrinkWrap: true,
-      controller: controller,
-      padding: const EdgeInsets.all(0),
-      staggeredTileBuilder: (int index) => StaggeredTile.extent(1, height),
-      physics: physics ?? const BouncingScrollPhysics(),
-      itemCount: itemCount,
-      itemBuilder: (BuildContext context, int index) => widget(context, index));
+      children: [widget(Get.context, 0)],
+      // shrinkWrap: true,
+      // controller: controller,
+      // padding: const EdgeInsets.all(0),
+      // staggeredTileBuilder: (int index) => StaggeredTile.extent(1, height),
+      // physics: physics ?? const BouncingScrollPhysics(),
+      // itemCount: itemCount,
+      // itemBuilder: (BuildContext context, int index) => widget(context, index)
+  );
 }
 
 Widget getHeading(
