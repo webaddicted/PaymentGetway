@@ -7,7 +7,7 @@ class ColorConst {
   // 3e2f64
   static const Color colorPurple = Colors.purple; //Colors.green;
 
-  static Color appColor =  Color(0xff01dc9d); //Colors.green;
+  static  Color appColor =  Color(0xDBFA3F3F); //Colors.green;
   // static Color APP_COLOR = colorFromHex('#32CD32');//Colors.green;
   // static Color APP_COLOR = colorFromHex('#00FA9A');//Colors.green;
   static const Color lightGreenColor =  Color(0xff01dc9d);
