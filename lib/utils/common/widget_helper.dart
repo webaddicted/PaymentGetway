@@ -5,7 +5,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:payment_getway/utils/apiutils/api_response.dart';
 import 'package:payment_getway/utils/constant/assets_const.dart';
@@ -632,14 +631,14 @@ Widget noDataFound() {
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        SizedBox(
-          width: 250,
-          height: 250,
-          child: SvgPicture.asset(
-            AssetsConst.noDataFound,
-            width: Get.width,
-          ),
-        ),
+        // SizedBox(
+        //   width: 250,
+        //   height: 250,
+        //   child: SvgPicture.asset(
+        //     AssetsConst.noDataFound,
+        //     width: Get.width,
+        //   ),
+        // ),
         getTxtAppColor(
             msg: StringConst.noDataFound,
             fontWeight: FontWeight.bold,
