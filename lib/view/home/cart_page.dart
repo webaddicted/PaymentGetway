@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:payment_getway/utils/constant/assets_const.dart';
+import 'package:payment_getway/utils/constant/color_const.dart';
 import 'package:payment_getway/utils/widget_helper.dart';
+import 'package:payment_getway/view/detail/check_out_page.dart';
 
 /// Author : Deepak Sharma(Webaddicted)
 /// Email : deepaksharmatheboss@gmail.com
@@ -53,31 +55,21 @@ class _CartPageState extends State<CartPage> {
               ),
               Container(
                 margin: const EdgeInsets.only(right: 30),
-                child: const Text(
-                  "\$299.00",
-                  // style: CustomTextStyle.textFormFieldBlack.copyWith(
-                  //     color: Colors.greenAccent.shade700, fontSize: 14),
-                ),
+                child: getTxtAppColor(msg: "\$299.00", fontWeight: FontWeight.w600),
               ),
             ],
           ),
           const SizedBox(height: 8),
           MaterialButton(
             onPressed: () {
-              // Navigator.push(context,
-              //     MaterialPageRoute(builder: (context) {
-              // CheckOutPage();
-              //     }));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context)=> CheckOutPage()));
             },
-            color: Colors.green,
+            color: ColorConst.appColor,
             padding: const EdgeInsets.only(top: 12, left: 60, right: 60, bottom: 12),
             shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(24))),
-            child: const Text(
-              "Checkout",
-              // style: CustomTextStyle.textFormFieldSemiBold
-              //     .copyWith(color: Colors.white),
-            ),
+            child: getTxtWhiteColor(msg: "Checkout", fontWeight: FontWeight.w600),
           ),
           const SizedBox(height: 8),
         ],
@@ -89,11 +81,7 @@ class _CartPageState extends State<CartPage> {
     return Container(
       alignment: Alignment.topLeft,
       margin: const EdgeInsets.only(left: 12, top: 12),
-      child: const Text(
-        "SHOPPING CART",
-        // style: CustomTextStyle.textFormFieldBold
-        //     .copyWith(fontSize: 16, color: Colors.black),
-      ),
+      child:getTxtAppColor(msg: "SHOPPING CART", fontWeight: FontWeight.w800)
     );
   }
 
@@ -101,12 +89,7 @@ class _CartPageState extends State<CartPage> {
     return Container(
       alignment: Alignment.topLeft,
         margin: const EdgeInsets.only(left: 12, top: 4),
-        child: const Text(
-        "Total(3) Items")
-      //   style: CustomTextStyle.textFormFieldBold
-      //       .copyWith(fontSize: 12, color: Colors.grey),
-      // ),
-
+        child: getTxtGreyColor(msg: "Total(3) Items", fontWeight: FontWeight.w700)
     );
   }
 

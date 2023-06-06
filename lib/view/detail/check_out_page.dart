@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:payment_getway/utils/constant/assets_const.dart';
 import 'package:payment_getway/utils/constant/color_const.dart';
+import 'package:payment_getway/utils/widget_helper.dart';
 /// Author : Deepak Sharma(Webaddicted)
 /// Email : deepaksharmatheboss@gmail.com
 /// Profile : https://github.com/webaddicted
@@ -21,14 +22,12 @@ class _CheckOutPageState extends State<CheckOutPage> {
         // resizeToAvoidBottomPadding: false,
         appBar: AppBar(
           leading: IconButton(
-              icon: const Icon(Icons.arrow_back),
+              icon: const Icon(Icons.arrow_back, color: ColorConst.blackColor),
               onPressed: () {
                 Navigator.pop(context);
               }),
-          title: const Text(
-            "ADDRESS",
-            style: TextStyle(color: Colors.white, fontSize: 14),
-          ),
+          title: getTxtBlackColor(msg: "Address"),
+          backgroundColor: ColorConst.whiteColor,
         ),
         body: Builder(builder: (context) {
           return Column(
