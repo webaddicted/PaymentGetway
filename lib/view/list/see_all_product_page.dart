@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:payment_getway/utils/constant/assets_const.dart';
 import 'package:payment_getway/utils/constant/color_const.dart';
 import 'package:payment_getway/utils/global_utilities.dart';
