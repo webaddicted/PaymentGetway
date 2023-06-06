@@ -28,7 +28,6 @@ dev_dependencies:
   paytm_allinonesdk: ^1.0.3
   http_auth:
   http:
-  webview_flutter: ^3.0.4
 
 flutter:
   uses-material-design: true

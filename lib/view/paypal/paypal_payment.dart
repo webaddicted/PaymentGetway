@@ -1,7 +1,6 @@
 import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:payment_getway/view/paypal/paypal_service.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 
 class PaypalPayment extends StatefulWidget {
   final Function? onFinish;
@@ -150,31 +149,32 @@ class PaypalPaymentState extends State<PaypalPayment> {
             onTap: () => Navigator.pop(context),
           ),
         ),
-        body: WebView(
-          initialUrl: checkoutUrl,
-          javascriptMode: JavascriptMode.unrestricted,
-          navigationDelegate: (NavigationRequest request) {
-            if (request.url.contains(returnURL)) {
-              final uri = Uri.parse(request.url);
-              final payerID = uri.queryParameters['PayerID'];
-              if (payerID != null) {
-                services
-                    .executePayment(executeUrl, payerID, accessToken)
-                    .then((id) {
-                  widget.onFinish!(id);
-                  Navigator.of(context).pop();
-                });
-              } else {
-                Navigator.of(context).pop();
-              }
-              Navigator.of(context).pop();
-            }
-            if (request.url.contains(cancelURL)) {
-              Navigator.of(context).pop();
-            }
-            return NavigationDecision.navigate;
-          },
-        ),
+        body: Container()
+        // WebView(
+        //   initialUrl: checkoutUrl,
+        //   javascriptMode: JavascriptMode.unrestricted,
+        //   navigationDelegate: (NavigationRequest request) {
+        //     if (request.url.contains(returnURL)) {
+        //       final uri = Uri.parse(request.url);
+        //       final payerID = uri.queryParameters['PayerID'];
+        //       if (payerID != null) {
+        //         services
+        //             .executePayment(executeUrl, payerID, accessToken)
+        //             .then((id) {
+        //           widget.onFinish!(id);
+        //           Navigator.of(context).pop();
+        //         });
+        //       } else {
+        //         Navigator.of(context).pop();
+        //       }
+        //       Navigator.of(context).pop();
+        //     }
+        //     if (request.url.contains(cancelURL)) {
+        //       Navigator.of(context).pop();
+        //     }
+        //     return NavigationDecision.navigate;
+        //   },
+        // ),
       );
     } else {
       return Scaffold(
