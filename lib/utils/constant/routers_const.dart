@@ -8,7 +8,7 @@ class RoutersConst {
   static const profile = '/home/profile';
   static const productDetail = '/home/productDetail';
   static const notification = '/home/notification';
-  static const checkOut = '/home/checkout';
+  static const address = '/home/address';
   static const orderPlaceSuccess = '/home/orderPlaceSuccess';
 
   static const productList = '/home/productList';

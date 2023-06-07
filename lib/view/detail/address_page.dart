@@ -10,12 +10,12 @@ import 'package:get/get.dart';
 /// Email : deepaksharmatheboss@gmail.com
 /// Profile : https://github.com/webaddicted
 
-class CheckOutPage extends StatefulWidget {
+class AddressPage extends StatefulWidget {
   @override
-  State<CheckOutPage> createState() => _CheckOutPageState();
+  State<AddressPage> createState() => _AddressPageState();
 }
 
-class _CheckOutPageState extends State<CheckOutPage> {
+class _AddressPageState extends State<AddressPage> {
   GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
 
   @override

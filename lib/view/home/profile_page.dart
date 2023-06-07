@@ -3,7 +3,7 @@ import 'package:payment_getway/data/bean/list_profile_section.dart';
 import 'package:payment_getway/utils/common/widget_helper.dart';
 import 'package:payment_getway/utils/constant/api_constant.dart';
 import 'package:payment_getway/view/detail/about_page.dart';
-import 'package:payment_getway/view/detail/check_out_page.dart';
+import 'package:payment_getway/view/detail/address_page.dart';
 import 'package:payment_getway/view/detail/notification_page.dart';
 import 'package:payment_getway/view/detail/order_place_success_page.dart';
 import 'package:payment_getway/view/detail/invite_friends_page.dart';
@@ -39,25 +39,25 @@ class _ProfilePageState extends State<ProfilePage> {
     listSection.add(createSection("Notifications", Icons.notifications,
         Colors.blue.shade800, NotificationPage()));
     listSection.add(createSection(
-        "Check Out",
-        Icons.account_balance_wallet_outlined,
+        "Product List",
+        Icons.list_alt,
         Colors.teal.shade800,
-        CheckOutPage()));
-    listSection.add(createSection(
-        "Order Place",
-        Icons.account_balance_wallet_outlined,
-        Colors.teal.shade800,
-        OrderPlaceSuccessPage()));
+        ListPage()));
     listSection.add(createSection(
         "Product Details",
-        Icons.account_balance_wallet_outlined,
+        Icons.perm_device_info,
         Colors.teal.shade800,
         DetailPage('heroTag')));
     listSection.add(createSection(
-        "Product List",
-        Icons.account_balance_wallet_outlined,
+        "Address Page",
+        Icons.place_rounded,
         Colors.teal.shade800,
-        ListPage()));
+        AddressPage()));
+    listSection.add(createSection(
+        "Order Successfully Placed",
+        Icons.incomplete_circle_rounded,
+        Colors.teal.shade800,
+        OrderPlaceSuccessPage()));
     listSection.add(createSection(
         "Paytm",
         Icons.account_balance_wallet_outlined,
@@ -70,7 +70,7 @@ class _ProfilePageState extends State<ProfilePage> {
         const RazorpayPage()));
     listSection.add(createSection(
         "Paypal Payment",
-        Icons.account_balance_wallet_outlined,
+        Icons.paypal,
         Colors.teal.shade800,
         const PaypalPaymentPage()));
     listSection.add(createSection(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:payment_getway/utils/constant/assets_const.dart';
 import 'package:payment_getway/utils/constant/color_const.dart';
 import 'package:payment_getway/utils/widget_helper.dart';
-import 'package:payment_getway/view/detail/check_out_page.dart';
+import 'package:payment_getway/view/detail/address_page.dart';
 
 /// Author : Deepak Sharma(Webaddicted)
 /// Email : deepaksharmatheboss@gmail.com
@@ -70,7 +70,7 @@ class _CartPageState extends State<CartPage> {
           MaterialButton(
             onPressed: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context)=> CheckOutPage()));
+                  MaterialPageRoute(builder: (context)=> AddressPage()));
             },
             color: ColorConst.appColor,
             padding: const EdgeInsets.only(top: 12, left: 60, right: 60, bottom: 12),

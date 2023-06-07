@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:payment_getway/utils/constant/assets_const.dart';
+import 'package:payment_getway/utils/constant/color_const.dart';
 import 'package:payment_getway/utils/global_utilities.dart';
 import 'package:payment_getway/utils/widget_helper.dart';
 
@@ -77,16 +78,14 @@ class _InviteFriendsPageState extends State<InviteFriendsPage> {
           Expanded(
             flex: 85,
             child: Container(
-              margin: const EdgeInsets.only(left: 4, right: 4, bottom: 4),
+              margin: const EdgeInsets.only(left: 4, right: 4, bottom: 8, top: 6),
               child: MaterialButton(
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 onPressed: () {
                   shareApp();
-                  // Scaffold.of(context)
-                  //     .showSnackBar(SnackBar(content: Text(shareResponse)));
                 },
-                color: Colors.blue,
-                child: getTxtAppColor(
+                color: ColorConst.appColor,
+                child: getTxtWhiteColor(
                   msg : "Share Link",
                 ),
               ),
@@ -99,11 +98,8 @@ class _InviteFriendsPageState extends State<InviteFriendsPage> {
               child: MaterialButton(
                 padding: const EdgeInsets.symmetric(vertical: 14),
                 onPressed: () {},
-                color: Colors.blue,
-                child: const Image(
-                  image: AssetImage(AssetsConst.qrCode),
-                  color: Colors.white,
-                ),
+                color: ColorConst.appColor,
+                child: const Icon(Icons.qr_code_2, color: ColorConst.whiteColor),
               ),
             ),
           )
