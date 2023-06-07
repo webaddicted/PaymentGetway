@@ -56,7 +56,7 @@ class PaytmPage extends GetView<PaytmPaymentController> {
   observeMakePaymentRespo() {
     return Obx(() {
       ApiResponse<PaytmRespo?> respo = _paymentController.makePaytmRespo.value;
-      if (respo.status == ApiStatus.completed) {
+      if (respo.status == ApiStatus.success) {
         return Container(
           child: getTxtBlackColor(msg: "Complete"),
         );

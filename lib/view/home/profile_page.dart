@@ -5,10 +5,10 @@ import 'package:payment_getway/utils/constant/api_constant.dart';
 import 'package:payment_getway/view/detail/about_page.dart';
 import 'package:payment_getway/view/detail/check_out_page.dart';
 import 'package:payment_getway/view/detail/notification_page.dart';
-import 'package:payment_getway/view/detail/order_place_page.dart';
+import 'package:payment_getway/view/detail/order_place_success_page.dart';
 import 'package:payment_getway/view/detail/invite_friends_page.dart';
-import 'package:payment_getway/view/detail/product_detail_page.dart';
-import 'package:payment_getway/view/list/see_all_product_page.dart';
+import 'package:payment_getway/view/detail/detail_page.dart';
+import 'package:payment_getway/view/list/list_page.dart';
 import 'package:payment_getway/view/paymentgetway/paypal_payment_page.dart';
 import 'package:payment_getway/view/paymentgetway/paytm_page.dart';
 import 'package:payment_getway/view/paymentgetway/razorpay_page.dart';
@@ -47,17 +47,17 @@ class _ProfilePageState extends State<ProfilePage> {
         "Order Place",
         Icons.account_balance_wallet_outlined,
         Colors.teal.shade800,
-        OrderPlacePage()));
+        OrderPlaceSuccessPage()));
     listSection.add(createSection(
         "Product Details",
         Icons.account_balance_wallet_outlined,
         Colors.teal.shade800,
-        ProductDetailsPage('heroTag')));
+        DetailPage('heroTag')));
     listSection.add(createSection(
-        "See all Product",
+        "Product List",
         Icons.account_balance_wallet_outlined,
         Colors.teal.shade800,
-        SeeAllProductPage()));
+        ListPage()));
     listSection.add(createSection(
         "Paytm",
         Icons.account_balance_wallet_outlined,

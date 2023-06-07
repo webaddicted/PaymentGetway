@@ -10,12 +10,12 @@ import 'package:payment_getway/utils/widget_helper.dart';
 
 import 'package:flutter/material.dart';
 
-class OrderPlacePage extends StatefulWidget {
+class OrderPlaceSuccessPage extends StatefulWidget {
   @override
-  _OrderPlacePageState createState() => _OrderPlacePageState();
+  _OrderPlaceSuccessPageState createState() => _OrderPlaceSuccessPageState();
 }
 
-class _OrderPlacePageState extends State<OrderPlacePage> {
+class _OrderPlaceSuccessPageState extends State<OrderPlaceSuccessPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

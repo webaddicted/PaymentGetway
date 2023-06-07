@@ -47,19 +47,19 @@ class ApiBaseHelper {
           queryParameters: params,
           options: Options(responseType: ResponseType.json)))!;
     } on SocketException catch (e) {
-      printLog("SocketException $e");
+      printLog(msg: "SocketException $e");
       response = Response(requestOptions: RequestOptions(path: 'path'));
       response.statusCode = ApiResponseCode.internetUnavailable;
       response.statusMessage = StringConst.noInternetConnection;
     } on Exception catch (e) {
-      printLog('object Exception');
+      printLog(msg: 'object Exception');
       response = Response(requestOptions: RequestOptions(path: 'path'));
       response.statusCode = ApiResponseCode.unknown;
       response.statusMessage =
           "$e ${StringConst.somethingWentWrong}";
       // response.data = e;
     }
-    printLog('response : $response');
+    printLog(msg: 'response : $response');
     return response;
   }
 

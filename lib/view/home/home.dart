@@ -38,7 +38,7 @@ class _HomeState extends State<Home> {
           BottomNavigationBarItem(
               icon: Icon(Icons.shopping_cart), label: "Cart"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person), label: "Account"),
+              icon: Icon(Icons.person), label: "Profile"),
         ],
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.grey.shade100,

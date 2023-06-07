@@ -8,7 +8,7 @@ import 'package:payment_getway/utils/widget_helper.dart';
 
 class SearchPage extends StatefulWidget {
   @override
-  _SearchPageState createState() => _SearchPageState();
+  State<SearchPage> createState() => _SearchPageState();
 }
 
 class _SearchPageState extends State<SearchPage> {

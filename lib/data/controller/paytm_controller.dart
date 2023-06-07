@@ -49,7 +49,7 @@ class PaytmPaymentController extends GetxController {
         callBackUrl,
         testing,
         txnToken);
-    makePaytmRespo.value.status = ApiStatus.completed;
+    makePaytmRespo.value.status = ApiStatus.success;
     makePaytmRespo.value.data = paytmRespo;
     Get.back();
     if (paytmRespo.status == "0") {

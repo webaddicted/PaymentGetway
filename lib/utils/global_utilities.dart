@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:payment_getway/utils/apiutils/api_response.dart';
+import 'package:logger/logger.dart';
 
 Color colorFromHex(String hexColor) {
   final hexCode = hexColor.replaceAll('#', '');
@@ -16,8 +18,14 @@ delay({int durationSec = 1, required Function click}){
   });
 }
 
-printLog(String msg){
+final logger = Logger();
+printLog({String tag = "", required String msg, ApiStatus status = ApiStatus.success}){
   if (kDebugMode) {
-    print(msg);
+    print("$tag : $msg");
+    if(status ==ApiStatus.error) {
+      logger.e("$tag : $msg");
+    }else{
+      logger.d("$tag : $msg");
+    }
   }
 }

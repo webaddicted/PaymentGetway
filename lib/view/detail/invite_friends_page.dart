@@ -21,7 +21,7 @@ class _InviteFriendsPageState extends State<InviteFriendsPage> {
     String response = "";
     try {
       String result = await platform.invokeMethod("shareApp");
-      printLog("METHOD : $result");
+      printLog(msg: "METHOD : $result");
       response = result;
     } on PlatformException catch (e) {
       response = "Failed to shared app";

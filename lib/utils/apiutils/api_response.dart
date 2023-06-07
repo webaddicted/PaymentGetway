@@ -20,7 +20,7 @@ class ApiResponse<T> {
 
   /// success
   static ApiResponse success<T>(T data) {
-    return ApiResponse<T>(status: ApiStatus.completed, data: data);
+    return ApiResponse<T>(status: ApiStatus.success, data: data);
   }
 
   /// error
@@ -72,4 +72,4 @@ class ApiError<T> {
 }
 
 /// Enum to check Api Status
-enum ApiStatus { loading, completed, error }
+enum ApiStatus { loading, success, error }
