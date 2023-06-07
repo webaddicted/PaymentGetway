@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:payment_getway/utils/constant/assets_const.dart';
 import 'package:payment_getway/utils/constant/color_const.dart';
@@ -32,7 +33,7 @@ class _ListPageState extends State<ListPage> {
     listItemColor.add(Colors.teal);
     listItemColor.add(Colors.red);
   }
-
+  ScrollController controller =  ScrollController();
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width / 2;
@@ -78,16 +79,22 @@ class _ListPageState extends State<ListPage> {
       ),
       body: Builder(
         builder: (context) {
-          return Container(
-            color: Colors.grey.shade100,
-            margin: const EdgeInsets.only(bottom: 8, left: 4, right: 4, top: 8),
-            child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3),
-              itemBuilder: (context, position) {
-                return gridItem(context, position);
-              },
-              itemCount: listImage.length,
+          return Scrollbar(
+            controller: controller,
+            thumbVisibility: true,
+            thickness: 25,
+            child: Container(
+              color: Colors.grey.shade100,
+              margin: const EdgeInsets.only(bottom: 8, left: 4, right: 4, top: 8),
+              child: GridView.builder(
+                controller: controller,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: kIsWeb?5:3),
+                itemBuilder: (context, position) {
+                  return gridItem(context, position);
+                },
+                itemCount: listImage.length,
+              ),
             ),
           );
         },
@@ -153,39 +160,42 @@ class _ListPageState extends State<ListPage> {
   }
 
   gridBottomView() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        const SizedBox(height: 6),
+    return Container(
+      margin: const EdgeInsets.only(left: 5),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          const SizedBox(height: 6),
           getTxtAppColor(msg: "Chair Dacey li - Black",fontWeight: FontWeight.w600, fontSize: 13),
-        const SizedBox(height: 6),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            getTxtGreyColor(msg: "\$80.00",fontWeight: FontWeight.w600, fontSize: 13),
-            const SizedBox(width: 2),
-            getTxtBlackColor(msg: "\$50.00",fontWeight: FontWeight.w600, fontSize: 13),
-          ],
-        ),
-        const SizedBox(height: 6),
-         Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
+          const SizedBox(height: 6),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              getTxtGreyColor(msg: "\$80.00",fontWeight: FontWeight.w600, fontSize: 13),
+              const SizedBox(width: 2),
+              getTxtBlackColor(msg: "\$50.00",fontWeight: FontWeight.w600, fontSize: 13),
+            ],
+          ),
+          const SizedBox(height: 6),
+           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
 
-            // FlutterRatingBar(
-            //   initialRating: 4,
-            //   itemSize: 14,
-            //   itemCount: 5,
-            //   fillColor: Colors.amber,
-            //   borderColor: Colors.amber.withAlpha(50),
-            //   allowHalfRating: true,
-            //   onRatingUpdate: (rating) {},
-            // ),
-            const SizedBox(width: 4),
-            getTxtAppColor(msg: "4.5",fontWeight: FontWeight.w600, fontSize: 13),
-          ],
-        )
-      ],
+              // FlutterRatingBar(
+              //   initialRating: 4,
+              //   itemSize: 14,
+              //   itemCount: 5,
+              //   fillColor: Colors.amber,
+              //   borderColor: Colors.amber.withAlpha(50),
+              //   allowHalfRating: true,
+              //   onRatingUpdate: (rating) {},
+              // ),
+              const SizedBox(width: 4),
+              getTxtAppColor(msg: "4.5",fontWeight: FontWeight.w600, fontSize: 13),
+            ],
+          )
+        ],
+      ),
     );
   }
 
@@ -199,26 +209,29 @@ class _ListPageState extends State<ListPage> {
             color: Colors.white,
             borderRadius: const BorderRadius.all(Radius.circular(6)),
             border: Border.all(color: Colors.grey.shade200)),
-        padding: const EdgeInsets.only(left: 10, top: 10),
         margin: const EdgeInsets.all(8),
         child: Column(
           children: <Widget>[
-            Container(
-              margin: const EdgeInsets.only(right: 12),
-              alignment: Alignment.topRight,
-              child: Container(
-                alignment: Alignment.center,
-                width: 28,
-                height: 28,
-                decoration: BoxDecoration(shape: BoxShape.circle, color: ColorConst.appColor),
-                child: getTxtWhiteColor(msg: "30%",
-                  textAlign: TextAlign.center,fontSize: 12),
-              ),
-            ),
-            Image(
-              image: AssetImage(listImage[position]),
-              height: 130,
-              fit: BoxFit.cover,
+            Stack(
+              children: [
+                Image(
+                  image: AssetImage(listImage[position]),
+                  width: double.infinity,
+                  fit: BoxFit.fill,
+                ),
+                Container(
+                  margin: const EdgeInsets.all(8),
+                  alignment: Alignment.topRight,
+                  child: Container(
+                    alignment: Alignment.center,
+                    width: 28,
+                    height: 28,
+                    decoration: BoxDecoration(shape: BoxShape.circle, color: ColorConst.appColor),
+                    child: getTxtWhiteColor(msg: "30%",
+                        textAlign: TextAlign.center,fontSize: 12),
+                  ),
+                ),
+              ],
             ),
             gridBottomView()
           ],
@@ -228,6 +241,27 @@ class _ListPageState extends State<ListPage> {
   }
 
   void addImage() {
+    listImage.add(AssetsConst.shoes);
+    listImage.add(AssetsConst.shoes);
+    listImage.add(AssetsConst.shoes);
+    listImage.add(AssetsConst.shoes);
+    listImage.add(AssetsConst.shoes);
+    listImage.add(AssetsConst.shoes);
+    listImage.add(AssetsConst.shoes);
+    listImage.add(AssetsConst.shoes);
+    listImage.add(AssetsConst.shoes);
+    listImage.add(AssetsConst.shoes);
+    listImage.add(AssetsConst.shoes);
+    listImage.add(AssetsConst.shoes);
+    listImage.add(AssetsConst.shoes);
+    listImage.add(AssetsConst.shoes);
+    listImage.add(AssetsConst.shoes);
+    listImage.add(AssetsConst.shoes);
+    listImage.add(AssetsConst.shoes);
+    listImage.add(AssetsConst.shoes);
+    listImage.add(AssetsConst.shoes);
+    listImage.add(AssetsConst.shoes);
+    listImage.add(AssetsConst.shoes);
     listImage.add(AssetsConst.shoes);
     listImage.add(AssetsConst.shoes);
     listImage.add(AssetsConst.shoes);

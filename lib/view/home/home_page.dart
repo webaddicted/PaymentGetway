@@ -1,9 +1,11 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:payment_getway/utils/constant/assets_const.dart';
 import 'package:payment_getway/utils/constant/color_const.dart';
 import 'package:payment_getway/utils/constant/routers_const.dart';
 import 'package:payment_getway/utils/widget_helper.dart';
 import 'package:get/get.dart';
+import 'package:payment_getway/view/home/search_page.dart';
 /// Author : Deepak Sharma(Webaddicted)
 /// Email : deepaksharmatheboss@gmail.com
 /// Profile : https://github.com/webaddicted
@@ -42,8 +44,15 @@ class _HomePageState extends State<HomePage> {
     listShoesImage.add(AssetsConst.shoes);
     listShoesImage.add(AssetsConst.shoes);
     listShoesImage.add(AssetsConst.shoes);
+    listShoesImage.add(AssetsConst.shoes);
+    listShoesImage.add(AssetsConst.shoes);
+    listShoesImage.add(AssetsConst.shoes);
+    listShoesImage.add(AssetsConst.shoes);
+    listShoesImage.add(AssetsConst.shoes);
+    listShoesImage.add(AssetsConst.shoes);
+    listShoesImage.add(AssetsConst.shoes);
   }
-
+  ScrollController controller =  ScrollController();
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -51,52 +60,98 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.grey.shade100,
       body: Builder(
         builder: (context) {
-          return SingleChildScrollView(
-            child: Column(
-              children: <Widget>[
-                Stack(
-                  children: <Widget>[
-                    Container(
-                      color: ColorConst.appColor,
-                      height: height / 4,
-                    ),
-                    /*Search Section*/
-                    Container(
-                        margin:
-                            const EdgeInsets.only(top: 48, right: 24, left: 24),
-                        child: edtRectField(hint: 'Search', icons: Icons.search)
-                        ),
-                    /*Slider Section*/
-                    Container(
-                        height: (height / 4) + 75,
-                        alignment: Alignment.bottomCenter,
-                        child: SizedBox(
-                          height: height / 5,
-                          child: PageView.builder(
-                            itemBuilder: (context, position) {
-                              return createSlider(listImage[position]);
-                            },
-                            controller: PageController(viewportFraction: .8),
-                            itemCount: listImage.length,
-                            onPageChanged: (position) {
-                              /*setState(() {
-                              selectedSliderPosition = position;
-                            });*/
-                            },
+          return Scrollbar(
+            controller: controller,
+            thumbVisibility: true,
+            thickness: 25,
+            child: SingleChildScrollView(
+              controller: controller,
+              child: Column(
+                children: <Widget>[
+                  Stack(
+                    children: <Widget>[
+                      Container(
+                        color: ColorConst.appColor,
+                        height: height / 4,
+                      ),
+                      /*Search Section*/
+                      Container(
+                          margin:
+                              const EdgeInsets.only(top: 48, right: 24, left: 24),
+                          child: searchHeader(Icons.search),
                           ),
-                        ))
-                  ],
-                ),
-                const SizedBox(height: 30),
-                GestureDetector(
-                  onTap: ()=>Get.toNamed(RoutersConst.productList),
-                  child: Row(
+                      /*Slider Section*/
+                      Container(
+                          height: kIsWeb ?(height / 2.2) + 75:(height / 4) + 75,
+                          alignment: Alignment.bottomCenter,
+                          child: SizedBox(
+                            height: kIsWeb ?height/2.5:height / 5,
+                            child: PageView.builder(
+                              itemBuilder: (context, position) {
+                                return createSlider(listImage[position]);
+                              },
+                              controller: PageController(viewportFraction: .8),
+                              itemCount: listImage.length,
+                              onPageChanged: (position) {
+                                /*setState(() {
+                                selectedSliderPosition = position;
+                              });*/
+                              },
+                            ),
+                          ))
+                    ],
+                  ),
+                  const SizedBox(height: 30),
+                  GestureDetector(
+                    onTap: ()=>Get.toNamed(RoutersConst.productList),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Padding(
+                            padding: const EdgeInsets.only(top: 16, left: 16),
+                            child: getTxtAppColor(
+                                msg: "GROUP BY",
+                                fontSize: 15,
+                                fontWeight: FontWeight.w700)),
+                        Container(
+                          margin: const EdgeInsets.only(top: 10),
+                          child: Row(
+                            children: <Widget>[
+                              getTxtAppColor(
+                                  msg: "SEE ALL",
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w700),
+                              const Icon(Icons.arrow_forward),
+                              const SizedBox(width: 16),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  /*Group By Product Listing*/
+                  ConstrainedBox(
+                    constraints: const BoxConstraints(maxHeight: 200),
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return createGroupBuyListItem(
+                            listShoesImage[index], index);
+                      },
+                      itemCount: listShoesImage.length,
+                    ),
+                  ),
+
+                  /*Most Big Product Listing*/
+                  const SizedBox(height: 30),
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Padding(
                           padding: const EdgeInsets.only(top: 16, left: 16),
                           child: getTxtAppColor(
-                              msg: "GROUP BY",
+                              msg: "MOST BIG",
                               fontSize: 15,
                               fontWeight: FontWeight.w700)),
                       Container(
@@ -114,61 +169,21 @@ class _HomePageState extends State<HomePage> {
                       )
                     ],
                   ),
-                ),
-                const SizedBox(height: 10),
-                /*Group By Product Listing*/
-                ConstrainedBox(
-                  constraints: const BoxConstraints(maxHeight: 200),
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      return createGroupBuyListItem(
-                          listShoesImage[index], index);
-                    },
-                    itemCount: listShoesImage.length,
+                  const SizedBox(height: 10),
+                  ConstrainedBox(
+                    constraints: const BoxConstraints(maxHeight: 230),
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return createMostBigListItem(
+                            listShoesImage[index], index, context);
+                      },
+                      itemCount: listShoesImage.length,
+                    ),
                   ),
-                ),
-
-                /*Most Big Product Listing*/
-                const SizedBox(height: 30),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Padding(
-                        padding: const EdgeInsets.only(top: 16, left: 16),
-                        child: getTxtAppColor(
-                            msg: "MOST BIG",
-                            fontSize: 15,
-                            fontWeight: FontWeight.w700)),
-                    Container(
-                      margin: const EdgeInsets.only(top: 10),
-                      child: Row(
-                        children: <Widget>[
-                          getTxtAppColor(
-                              msg: "SEE ALL",
-                              fontSize: 15,
-                              fontWeight: FontWeight.w700),
-                          const Icon(Icons.arrow_forward),
-                          const SizedBox(width: 16),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-                const SizedBox(height: 10),
-                ConstrainedBox(
-                  constraints: const BoxConstraints(maxHeight: 230),
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      return createMostBigListItem(
-                          listShoesImage[index], index, context);
-                    },
-                    itemCount: listShoesImage.length,
-                  ),
-                ),
-                const SizedBox(height: 10),
-              ],
+                  const SizedBox(height: 10),
+                ],
+              ),
             ),
           );
         },

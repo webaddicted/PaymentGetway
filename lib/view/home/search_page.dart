@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:payment_getway/utils/constant/assets_const.dart';
+import 'package:payment_getway/utils/constant/color_const.dart';
+import 'package:payment_getway/utils/constant/routers_const.dart';
 import 'package:payment_getway/utils/widget_helper.dart';
+import 'package:get/get.dart';
 
 /// Author : Deepak Sharma(Webaddicted)
 /// Email : deepaksharmatheboss@gmail.com
@@ -61,37 +64,6 @@ class _SearchPageState extends State<SearchPage> {
     );
   }
 
-  searchHeader() {
-    return Container(
-        color: Colors.white,
-        padding: const EdgeInsets.symmetric(horizontal: 12),
-        child: Row(
-          children: <Widget>[
-            Icon(
-              Icons.arrow_back,
-              color: Colors.grey.shade700,
-            ),
-            Expanded(
-              child: TextFormField(
-                decoration: InputDecoration(
-                    hintText: "Search for brands & products",
-                    // hintStyle: CustomTextStyle.textFormFieldRegular
-                    //     .copyWith(color: Colors.grey, fontSize: 12),
-                    // labelStyle: CustomTextStyle.textFormFieldRegular
-                    //     .copyWith(color: Colors.black, fontSize: 12),
-                    border: textFieldBorder(),
-                    enabledBorder: textFieldBorder(),
-                    focusedBorder: textFieldBorder()),
-              ),
-            )
-          ],
-        ));
-  }
-
-  OutlineInputBorder textFieldBorder() => const OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(0)),
-      borderSide: BorderSide(color: Colors.transparent));
-
   horizontalDivider() {
     return Container(
       color: Colors.grey.shade200,
@@ -119,7 +91,7 @@ class _SearchPageState extends State<SearchPage> {
       ),
     );
   }
-
+int catItem = 0;
   categoryListItem(String strCategory, int index) {
     double leftMargin = 8;
     double rightMargin = 8;
@@ -129,14 +101,21 @@ class _SearchPageState extends State<SearchPage> {
     if (index == listCategory.length - 1) {
       rightMargin = 12;
     }
-    return Container(
-      margin: EdgeInsets.only(left: leftMargin, right: rightMargin),
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
-      decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(Radius.circular(18)),
-          border: Border.all(color: Colors.grey.shade300, width: 1),
-          color: Colors.white),
-      child: getTxtGreyColor(msg: strCategory, fontSize: 13),
+    return InkWell(
+      onTap: (){
+        setState(() {
+          catItem = index;
+        });
+      },
+      child: Container(
+        margin: EdgeInsets.only(left: leftMargin, right: rightMargin),
+        padding:  const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
+        decoration: BoxDecoration(
+            borderRadius:  const BorderRadius.all(Radius.circular(18)),
+            border: Border.all(color: Colors.grey.shade300, width: 1),
+            color:  catItem == index ?ColorConst.appColor:ColorConst.whiteColor),
+        child: getTxtColor(msg: strCategory, fontSize: 13, txtColor: catItem == index ? ColorConst.whiteColor:ColorConst.greyColor),
+      ),
     );
   }
 
@@ -146,25 +125,26 @@ class _SearchPageState extends State<SearchPage> {
       color: Colors.white,
       child: Column(
         children: <Widget>[
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                getTxtColor(
-                    msg: "RECENT SEARCHES",
-                    txtColor: Colors.black.withOpacity(.5),
-                    fontSize: 11),
-                getTxtColor(
-                    msg: "RECENT SEARCHES",
-                    txtColor: Colors.pink.shade700,
-                    fontSize: 11),
-              ],
+          InkWell(
+            onTap: ()=>Get.toNamed(RoutersConst.productList),
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  getTxtAppColor(
+                      msg: "Recent Searches",
+                      fontSize: 13),
+                  getTxtAppColor(
+                      msg: "See All",
+                      fontSize: 13),
+                ],
+              ),
             ),
           ),
           const SizedBox(height: 6),
           ConstrainedBox(
-            constraints: const BoxConstraints(maxHeight: 60),
+            constraints: const BoxConstraints(maxHeight: 100),
             child: ListView.builder(
               itemBuilder: (context, index) {
                 return recentSearchListViewItem(listShoesImage[index], index);
@@ -188,30 +168,34 @@ class _SearchPageState extends State<SearchPage> {
     if (index == this.listShoesImage.length - 1) {
       rightMargin = 16;
     }
-    return Container(
-      margin: EdgeInsets.only(left: leftMargin, right: rightMargin),
-      child: Column(
-        children: <Widget>[
-          Container(
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage(listShoesImage), fit: BoxFit.cover),
-                border: Border.all(color: Colors.grey.shade300, width: 1),
-                shape: BoxShape.circle),
-          ),
-          const SizedBox(height: 4),
-          const Text(
-            "Search Item",
-            overflow: TextOverflow.ellipsis,
-            textWidthBasis: TextWidthBasis.parent,
-            softWrap: true,
-            textAlign: TextAlign.center,
-            // style: CustomTextStyle.textFormFieldRegular
-            //     .copyWith(fontSize: 10, color: Colors.black),
-          )
-        ],
+    return InkWell(
+      onTap: ()=>Get.toNamed(RoutersConst.productDetail),
+      child: Container(
+        margin: EdgeInsets.only(left: leftMargin, right: rightMargin),
+        child: Column(
+          children: <Widget>[
+            Container(
+              width: 70,
+              height: 70,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage(listShoesImage), fit: BoxFit.cover),
+                  border: Border.all(color: Colors.grey.shade300, width: 1),
+                  shape: BoxShape.circle),
+            ),
+            const SizedBox(height: 4),
+            const Text(
+              "Search Item",
+              overflow: TextOverflow.ellipsis,
+              textWidthBasis: TextWidthBasis.parent,
+              softWrap: true,
+              textAlign: TextAlign.center,
+              // style: CustomTextStyle.textFormFieldRegular
+              //     .copyWith(fontSize: 10, color: Colors.black),
+            ),
+            const SizedBox(height: 8),
+          ],
+        ),
       ),
     );
   }
@@ -225,10 +209,9 @@ class _SearchPageState extends State<SearchPage> {
         children: <Widget>[
           Container(
               margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-              child: getTxtColor(
-                  msg: "ITEMS YOU HAVE WISHLISTED",
-                  txtColor: Colors.black.withOpacity(.5),
-                  fontSize: 11)),
+              child: getTxtAppColor(
+                  msg: 'Items You Have Wishlisted',
+                  fontSize: 13)),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 8),
             child: ConstrainedBox(
@@ -249,55 +232,59 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   createWishListItem() {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 4),
-      decoration:
-          BoxDecoration(border: Border.all(color: Colors.grey.shade100)),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Expanded(
-            flex: 70,
-            child: Container(
-              width: 120,
-              decoration: BoxDecoration(
-                color: Colors.teal.shade200,
-                image: const DecorationImage(
-                    image: AssetImage(AssetsConst.shoes), fit: BoxFit.cover),
+    return InkWell(
+      onTap: ()=>Get.toNamed(RoutersConst.productDetail),
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 4),
+        decoration:
+            BoxDecoration(border: Border.all(color: Colors.grey.shade100)),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Expanded(
+              flex: 70,
+              child: Container(
+                width: 120,
+                decoration: BoxDecoration(
+                  color: Colors.teal.shade200,
+                  image: const DecorationImage(
+                      image: AssetImage(AssetsConst.shoes), fit: BoxFit.cover),
+                ),
               ),
             ),
-          ),
-          const SizedBox(height: 6),
-          Container(
+            const SizedBox(height: 6),
+            Container(
+                margin: const EdgeInsets.symmetric(horizontal: 4),
+                child: getTxtColor(
+                    msg: "Highlander",
+                    txtColor: Colors.black,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w500)),
+            const SizedBox(height: 6),
+            Container(
+                margin: const EdgeInsets.symmetric(horizontal: 4),
+                child: getTxtColor(
+                    msg: "\$12",
+                    txtColor: Colors.black,
+                    fontSize: 12)),
+            const SizedBox(height: 6),
+            Container(
               margin: const EdgeInsets.symmetric(horizontal: 4),
-              child: getTxtColor(
-                  msg: "HIGHLANDER",
-                  txtColor: Colors.black.withOpacity(0.7),
-                  fontSize: 12)),
-          const SizedBox(height: 6),
-          Container(
-              margin: const EdgeInsets.symmetric(horizontal: 4),
-              child: getTxtColor(
-                  msg: "\$12",
-                  txtColor: Colors.black.withOpacity(0.7),
-                  fontSize: 12)),
-          const SizedBox(height: 6),
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 4),
-            child: Row(
-              children: <Widget>[
-                getTxtColor(
-                    msg: "\$15", txtColor: Colors.grey.shade400, fontSize: 12),
-                const SizedBox(width: 4),
-                getTxtColor(
-                    msg: "55% OFF",
-                    txtColor: Colors.red.shade400,
-                    fontSize: 12),
-              ],
+              child: Row(
+                children: <Widget>[
+                  getTxtColor(
+                      msg: "\$15", txtColor: Colors.grey.shade400, fontSize: 12),
+                  const SizedBox(width: 4),
+                  getTxtColor(
+                      msg: "55% OFF",
+                      txtColor: Colors.red.shade400,
+                      fontSize: 12),
+                ],
+              ),
             ),
-          ),
-          const SizedBox(height: 6),
-        ],
+            const SizedBox(height: 6),
+          ],
+        ),
       ),
     );
   }
@@ -311,10 +298,9 @@ class _SearchPageState extends State<SearchPage> {
         children: <Widget>[
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-            child: getTxtColor(
-                msg: "ITEMS YOU HAVE VIEWED",
-                txtColor: Colors.black.withOpacity(.5),
-                fontSize: 12),
+            child: getTxtAppColor(
+                msg: "Items You Have Viewed",
+                fontSize: 13),
           ),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 8),
@@ -334,54 +320,36 @@ class _SearchPageState extends State<SearchPage> {
       ),
     );
   }
-
-  createViewedListItem() {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 4),
-      decoration:
-          BoxDecoration(border: Border.all(color: Colors.grey.shade100)),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Expanded(
-            flex: 70,
-            child: Container(
-              width: 120,
-              decoration: BoxDecoration(
-                color: Colors.teal.shade200,
-                image: const DecorationImage(
-                    image: AssetImage(AssetsConst.shoes), fit: BoxFit.cover),
-              ),
-            ),
-          ),
-          const SizedBox(height: 6),
-          Container(
-              margin: const EdgeInsets.symmetric(horizontal: 4),
-              child: getTxtColor(
-                  msg: "HIGHLANDER",
-                  txtColor: Colors.black.withOpacity(0.7),
-                  fontSize: 12)),
-          const SizedBox(height: 6),
-          Container(
-              margin: const EdgeInsets.symmetric(horizontal: 4),
-              child: getTxtColor(
-                  msg: "\$12",
-                  txtColor: Colors.black.withOpacity(0.7),
-                  fontSize: 12)),
-          const SizedBox(height: 6),
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 4),
-            child: Row(
-              children: <Widget>[
-                getTxtColor(
-                    msg: "\$15", txtColor: Colors.grey.shade400, fontSize: 12),
-                const SizedBox(width: 4),
-              ],
-            ),
-          ),
-          const SizedBox(height: 6),
-        ],
-      ),
-    );
-  }
 }
+searchHeader([IconData icons = Icons.arrow_back]) {
+  return Container(
+      color: Colors.white,
+      padding: const EdgeInsets.symmetric(horizontal: 12),
+      child: Row(
+        children: <Widget>[
+          InkWell(
+            onTap: ()=>Get.back(),
+            child: Icon(
+              icons,
+              color: Colors.grey.shade700,
+            ),
+          ),
+          Expanded(
+            child: TextFormField(
+              decoration: InputDecoration(
+                  hintText: "Search for brands & products",
+                  // hintStyle: CustomTextStyle.textFormFieldRegular
+                  //     .copyWith(color: Colors.grey, fontSize: 12),
+                  // labelStyle: CustomTextStyle.textFormFieldRegular
+                  //     .copyWith(color: Colors.black, fontSize: 12),
+                  border: textFieldBorder(),
+                  enabledBorder: textFieldBorder(),
+                  focusedBorder: textFieldBorder()),
+            ),
+          )
+        ],
+      ));
+}
+OutlineInputBorder textFieldBorder() => const OutlineInputBorder(
+    borderRadius: BorderRadius.all(Radius.circular(0)),
+    borderSide: BorderSide(color: Colors.transparent));

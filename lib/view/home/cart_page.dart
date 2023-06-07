@@ -14,6 +14,7 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
+  ScrollController controller =  ScrollController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,13 +23,19 @@ class _CartPageState extends State<CartPage> {
       backgroundColor: Colors.grey.shade100,
       body: Builder(
         builder: (context) {
-          return ListView(
-            children: <Widget>[
-              createHeader(),
-              createSubTitle(),
-              createCartList(),
-              footer(context)
-            ],
+          return Scrollbar(
+            controller:controller ,
+            thumbVisibility: true,
+            thickness: 25,
+            child: ListView(
+              controller: controller,
+              children: <Widget>[
+                createHeader(),
+                createSubTitle(),
+                createCartList(),
+                footer(context)
+              ],
+            ),
           );
         },
       ),

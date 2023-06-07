@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:payment_getway/utils/constant/assets_const.dart';
 import 'package:payment_getway/utils/constant/color_const.dart';
+import 'package:payment_getway/utils/constant/routers_const.dart';
+import 'package:payment_getway/utils/constant/string_const.dart';
+import 'package:payment_getway/utils/global_utilities.dart';
 import 'package:payment_getway/utils/widget_helper.dart';
+import 'package:get/get.dart';
 /// Author : Deepak Sharma(Webaddicted)
 /// Email : deepaksharmatheboss@gmail.com
 /// Profile : https://github.com/webaddicted
 
 class CheckOutPage extends StatefulWidget {
   @override
-  _CheckOutPageState createState() => _CheckOutPageState();
+  State<CheckOutPage> createState() => _CheckOutPageState();
 }
 
 class _CheckOutPageState extends State<CheckOutPage> {
@@ -52,17 +56,12 @@ class _CheckOutPageState extends State<CheckOutPage> {
                     onPressed: () {
                       /*Navigator.of(context).push(new MaterialPageRoute(
                           builder: (context) => OrderPlacePage()));*/
-                      showThankYouBottomSheet(context);
+                      // showThankYouBottomSheet(context);
+                      _settingModalBottomSheet(Get.context);
                     },
                     color: ColorConst.appColor,
                     textColor: Colors.white,
-                    child: const Text(
-                      "Place Order",
-                      // style: CustomTextStyle.textFormFieldMedium.copyWith(
-                      //     color: Colors.white,
-                      //     fontSize: 14,
-                      //     fontWeight: FontWeight.bold),
-                    ),
+                    child: getTxtWhiteColor(msg: "Place Order",fontWeight: FontWeight.w500),
                   ),
                 ),
               )
@@ -71,6 +70,130 @@ class _CheckOutPageState extends State<CheckOutPage> {
         }),
       ),
     );
+  }
+
+  void _settingModalBottomSheet(context) {
+    showModalBottomSheet(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(10.0), topRight: Radius.circular(10.0)),
+        ),
+        context: context,
+        builder: (BuildContext bc) {
+          return Container(
+              color: Colors.transparent,
+              child: Container(
+                  margin: const EdgeInsets.only(left: 10, right: 10),
+                  child: Obx(() {
+                    var value = _radioValue.value;
+                    // getTxtAppColor(
+                    //     msg:
+                    //     '${_settingController.walletAmountRespo.value.data.walletAmount ?? ""}',
+                    //     fontSize: 30,
+                    //     fontWeight: FontWeight.w800);
+                    return Wrap(
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            const SizedBox(height: 15),
+                            Center(
+                              child: getTxtAppColor(
+                                  msg: "Select Payment Mode",
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                            const SizedBox(height: 20),
+                            // showRadio("Paytm", 0, false),
+                            // showRadio("COD", 1, false),
+                            showRadio("Paytm", 0),
+                            showRadio("Razorpay", 1),
+                            showRadio("Paypal", 2),
+                            const SizedBox(height: 10),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                getTxtBlackColor(
+                                    msg: 'Total Price : ',
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                      getTxtColor(
+                                          msg:
+                                          '${StringConst.rupeeSymbol} 299',
+                                          fontSize: 17,
+                                          txtColor: ColorConst.redColor,
+                                          fontWeight: FontWeight.w600,
+                                          textAlign: TextAlign.end),
+                                      getTxtColor(
+                                          msg:
+                                          'Discount                             - ${StringConst.rupeeSymbol} 10',
+                                          fontSize: 17,
+                                          txtColor: ColorConst.greenColor,
+                                          fontWeight: FontWeight.w600,
+                                          textAlign: TextAlign.end),
+                                    getTxtBlackColor(
+                                        msg: '(include all tax)',
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w600,
+                                        textAlign: TextAlign.end),
+                                  ],
+                                )
+                              ],
+                            ),
+                            const SizedBox(height: 3),
+                            ElevatedButton(
+                                onPressed: () {
+                                  // Get.back();
+                                  printLog(msg: _radioValue.value.toString());
+                                  if(_radioValue.value==0){
+                                    Get.toNamed(RoutersConst.paytm);
+                                  }else  if(_radioValue.value==1){
+                                    Get.toNamed(RoutersConst.razorpay);
+                                  }else  if(_radioValue.value==2){
+                                    Get.toNamed(RoutersConst.paypalPayment);
+                                  }
+                                },
+                                clipBehavior: Clip.antiAlias,
+                                style: ElevatedButton.styleFrom(
+                                    padding: const EdgeInsets.only(
+                                        left: 60,
+                                        right: 60,
+                                        top: 10,
+                                        bottom: 10),
+                                    primary: ColorConst.appColor,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                        BorderRadius.circular(20))),
+                                child: getTxtWhiteColor(
+                                    msg: 'Pay',
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold)),
+                            const SizedBox(height: 10),
+                          ],
+                        ),
+                      ],
+                    );
+                  })));
+        });
+  }
+  var _radioValue = 1.obs;
+  Widget showRadio(String title, int value) {
+    return Row(children: [
+      Radio(
+        value: value,
+        groupValue: _radioValue.value,
+        onChanged: _handleRadioValueChange,
+      ),
+      getTxtBlackColor(msg: title, fontSize: 15),
+    ]);
+  }
+
+  void _handleRadioValueChange(int? value) {
+    _radioValue.value = value!;
   }
 
   showThankYouBottomSheet(BuildContext context) {
@@ -174,13 +297,9 @@ class _CheckOutPageState extends State<CheckOutPage> {
                     const EdgeInsets.only(left: 8, right: 8, top: 4, bottom: 4),
                     decoration: BoxDecoration(
                         shape: BoxShape.rectangle,
-                        color: Colors.grey.shade300,
+                        color: ColorConst.appColor,
                         borderRadius: const BorderRadius.all(Radius.circular(16))),
-                    child: const Text(
-                      "HOME",
-                      // style: CustomTextStyle.textFormFieldBlack.copyWith(
-                      //     color: Colors.indigoAccent.shade200, fontSize: 8),
-                    ),
+                    child: getTxtWhiteColor(msg: "HOME",),
                   )
                 ],
               ),
@@ -290,29 +409,15 @@ class _CheckOutPageState extends State<CheckOutPage> {
             value: 1,
             groupValue: 1,
             onChanged: (isChecked) {},
-            activeColor: Colors.tealAccent.shade400,
+            activeColor: ColorConst.appColor,
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const <Widget>[
-              Text(
-                "Standard Delivery",
-                // style: CustomTextStyle.textFormFieldMedium.copyWith(
-                //     color: Colors.black,
-                //     fontSize: 14,
-                //     fontWeight: FontWeight.w600),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Text(
-                "Get it by 20 jul - 27 jul | Free Delivery",
-                // style: CustomTextStyle.textFormFieldMedium.copyWith(
-                //   color: Colors.black,
-                //   fontSize: 12,
-                // ),
-              )
+            children: <Widget>[
+              getTxtBlackColor(msg:"Standard Delivery"),
+              const SizedBox(height: 5),
+              getTxtBlackColor(msg: "Get it by 20 jul - 27 jul | Free Delivery")
             ],
           ),
         ],

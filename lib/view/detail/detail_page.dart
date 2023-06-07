@@ -255,7 +255,9 @@ controller: controller,
                     getTxt(msg: StringConst.dummyTxt, fontWeight: FontWeight.w500),
                     const SizedBox(height: 20),
                     MaterialButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.toNamed(RoutersConst.cart);
+                      },
                       height: 40,
                       color: ColorConst.appColor,
                       padding: const EdgeInsets.only(top: 12, left: 60, right: 60, bottom: 12),
