@@ -19,6 +19,7 @@ class _OrderPlaceSuccessPageState extends State<OrderPlaceSuccessPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         // resizeToAvoidBottomPadding: false,
         backgroundColor: Colors.white,

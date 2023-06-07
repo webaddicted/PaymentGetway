@@ -21,6 +21,7 @@ class _AddressPageState extends State<AddressPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         key: _scaffoldKey,
         // resizeToAvoidBottomPadding: false,
