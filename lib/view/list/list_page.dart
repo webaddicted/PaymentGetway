@@ -82,7 +82,7 @@ class _ListPageState extends State<ListPage> {
           return Scrollbar(
             controller: controller,
             thumbVisibility: true,
-            thickness: 25,
+            thickness: kIsWeb?25:0,
             child: Container(
               color: Colors.grey.shade100,
               margin: const EdgeInsets.only(bottom: 8, left: 4, right: 4, top: 8),

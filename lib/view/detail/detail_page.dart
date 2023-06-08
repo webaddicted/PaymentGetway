@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:payment_getway/utils/constant/assets_const.dart';
 import 'package:payment_getway/utils/constant/color_const.dart';
@@ -150,7 +151,7 @@ class _DetailPageState extends State<DetailPage>
   productDetailsSection() {
     return Scrollbar(
 controller: controller,
-      thickness: 25,
+      thickness: kIsWeb?25:0,
       thumbVisibility: true,
       child: SingleChildScrollView(
         controller: controller,
@@ -173,18 +174,15 @@ controller: controller,
                           margin: const EdgeInsets.only(left: 8),
                           child: getTxtAppColor(msg: "NIKE XTM Basketball Shoes",fontWeight: FontWeight.w500),
                         ),
-                        IconButton(icon: const Icon(Icons.close), onPressed: () {})
+                        IconButton(icon: const Icon(Icons.close), onPressed: () {
+                          Get.back();
+                        })
                       ],
                     ),
                     Container(
                       margin: const EdgeInsets.only(left: 8),
                       alignment: Alignment.topLeft,
-                      child: const Text(
-                        "Colour",
-                        textAlign: TextAlign.start,
-                        // style: CustomTextStyle.textFormFieldBold
-                        //     .copyWith(color: Colors.black.withOpacity(0.8), fontSize: 12),
-                      ),
+                      child: getTxtBlackColor(msg: "Color",fontWeight:FontWeight.w600),
                     ),
                     const SizedBox(height: 8),
                     ConstrainedBox(
@@ -201,11 +199,7 @@ controller: controller,
                     Container(
                       alignment: Alignment.topLeft,
                       margin: const EdgeInsets.only(left: 8),
-                      child: const Text(
-                        "Size",
-                        // style: CustomTextStyle.textFormFieldMedium
-                        //     .copyWith(color: Colors.black.withOpacity(0.8), fontSize: 12),
-                      ),
+                      child: getTxtBlackColor(msg: "Size",fontWeight:FontWeight.w600),
                     ),
                     const SizedBox(height: 8),
                     ConstrainedBox(
@@ -224,19 +218,11 @@ controller: controller,
                       children: <Widget>[
                         Container(
                           margin: const EdgeInsets.only(left: 8),
-                          child: const Text(
-                            "Total",
-                            // style: CustomTextStyle.textFormFieldMedium
-                            //     .copyWith(color: Colors.grey, fontSize: 12),
-                          ),
+                          child: getTxtBlackColor(msg: "Total",fontWeight: FontWeight.w600),
                         ),
                         Container(
                           margin: const EdgeInsets.only(right: 8),
-                          child: const Text(
-                            "\$299.00",
-                            // style: CustomTextStyle.textFormFieldBlack.copyWith(
-                            //     color: Colors.greenAccent.shade700, fontSize: 14),
-                          ),
+                          child: getTxtAppColor(msg: "\$299.00", fontWeight: FontWeight.w600, fontSize: 14),
                         ),
                       ],
                     ),

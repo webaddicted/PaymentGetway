@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:payment_getway/utils/constant/assets_const.dart';
 import 'package:payment_getway/utils/constant/color_const.dart';
@@ -26,7 +27,7 @@ class _CartPageState extends State<CartPage> {
           return Scrollbar(
             controller:controller ,
             thumbVisibility: true,
-            thickness: 25,
+            thickness: kIsWeb?25:0,
             child: ListView(
               controller: controller,
               children: <Widget>[

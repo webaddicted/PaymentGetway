@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
           return Scrollbar(
             controller: controller,
             thumbVisibility: true,
-            thickness: 25,
+            thickness: kIsWeb?25:0,
             child: SingleChildScrollView(
               controller: controller,
               child: Column(

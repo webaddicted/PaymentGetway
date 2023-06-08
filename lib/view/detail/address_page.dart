@@ -32,6 +32,7 @@ class _AddressPageState extends State<AddressPage> {
                 Navigator.pop(context);
               }),
           title: getTxtBlackColor(msg: "Address"),
+          centerTitle: true,
           backgroundColor: ColorConst.whiteColor,
         ),
         body: Builder(builder: (context) {
@@ -101,7 +102,7 @@ class _AddressPageState extends State<AddressPage> {
                             Center(
                               child: getTxtAppColor(
                                   msg: "Select Payment Mode",
-                                  fontSize: 18,
+                                  fontSize: 17,
                                   fontWeight: FontWeight.w600),
                             ),
                             const SizedBox(height: 20),
@@ -119,21 +120,47 @@ class _AddressPageState extends State<AddressPage> {
                                     msg: 'Total Price : ',
                                     fontSize: 16,
                                     fontWeight: FontWeight.w600),
+                                getTxtGreyColor(
+                                    msg:
+                                    '${StringConst.rupeeSymbol} 299',
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.w600,
+                                    textAlign: TextAlign.end),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                getTxtAppColor(
+                                    msg: 'Discount : ',
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600),
+                                getTxtAppColor(
+                                    msg:
+                                    '- ${StringConst.rupeeSymbol} 100',
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.w600,
+                                    textAlign: TextAlign.end),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                getTxtColor(
+                                    msg: 'Pay : ',
+                                    fontSize: 16,
+                                    txtColor: ColorConst.redColor,
+                                    fontWeight: FontWeight.w600),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                       getTxtColor(
                                           msg:
-                                          '${StringConst.rupeeSymbol} 299',
+                                          '${StringConst.rupeeSymbol} 199',
                                           fontSize: 17,
                                           txtColor: ColorConst.redColor,
-                                          fontWeight: FontWeight.w600,
-                                          textAlign: TextAlign.end),
-                                      getTxtColor(
-                                          msg:
-                                          'Discount                             - ${StringConst.rupeeSymbol} 10',
-                                          fontSize: 17,
-                                          txtColor: ColorConst.greenColor,
                                           fontWeight: FontWeight.w600,
                                           textAlign: TextAlign.end),
                                     getTxtBlackColor(
@@ -149,7 +176,6 @@ class _AddressPageState extends State<AddressPage> {
                             ElevatedButton(
                                 onPressed: () {
                                   // Get.back();
-                                  printLog(msg: _radioValue.value.toString());
                                   if(_radioValue.value==0){
                                     Get.toNamed(RoutersConst.paytm);
                                   }else  if(_radioValue.value==1){
@@ -187,9 +213,9 @@ class _AddressPageState extends State<AddressPage> {
       Radio(
         value: value,
         groupValue: _radioValue.value,
-        onChanged: _handleRadioValueChange,
+        onChanged: _handleRadioValueChange,activeColor: ColorConst.appColor,
       ),
-      getTxtBlackColor(msg: title, fontSize: 15),
+      getTxtBlackColor(msg: title, fontSize: 15, fontWeight: FontWeight.w500),
     ]);
   }
 
@@ -515,13 +541,7 @@ class _AddressPageState extends State<AddressPage> {
               const SizedBox(
                 height: 4,
               ),
-              const Text(
-                "PRICE DETAILS",
-                // style: CustomTextStyle.textFormFieldMedium.copyWith(
-                //     fontSize: 12,
-                //     color: Colors.black,
-                //     fontWeight: FontWeight.w600),
-              ),
+              getTxtBlackColor(msg: "PRICE DETAILS",fontWeight: FontWeight.w600),
               const SizedBox(
                 height: 4,
               ),
@@ -560,16 +580,8 @@ class _AddressPageState extends State<AddressPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  const Text(
-                    "Total",
-                    // style: CustomTextStyle.textFormFieldSemiBold
-                    //     .copyWith(color: Colors.black, fontSize: 12),
-                  ),
-                  Text(
-                    getFormattedCurrency(2013),
-                    // style: CustomTextStyle.textFormFieldMedium
-                    //     .copyWith(color: Colors.black, fontSize: 12),
-                  )
+                   getTxtBlackColor(msg: "Total",fontWeight: FontWeight.w600),
+                  getTxtBlackColor(msg: "${StringConst.rupeeSymbol} 2013",fontWeight: FontWeight.w600),
                 ],
               )
             ],
@@ -580,19 +592,6 @@ class _AddressPageState extends State<AddressPage> {
   }
 
   String getFormattedCurrency(double amount) {
-    // FlutterMoneyFormatter fmf = FlutterMoneyFormatter(amount: amount,
-    //     settings: MoneyFormatterSettings(
-    //     symbol: '₹',
-    //     thousandSeparator: ',',
-    //     decimalSeparator: '.',
-    //     symbolAndNumberSeparator: ' ',
-    //     fractionDigits: 3,
-    //     compactFormatType: CompactFormatType.short
-    // ));
-    // fmf.symbol = "₹";
-    // fmf.thousandSeparator = ",";
-    // fmf.decimalSeparator = ".";
-    // fmf.spaceBetweenSymbolAndNumber = true;
     return amount.toString();
   }
 
