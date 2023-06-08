@@ -5,7 +5,7 @@ import 'package:payment_getway/data/bean/paytm_respo.dart';
 import 'package:payment_getway/data/repo/welcome_repo.dart';
 import 'package:payment_getway/utils/apiutils/api_response.dart';
 import 'package:payment_getway/utils/constant/string_const.dart';
-import 'package:payment_getway/utils/widget_helper.dart';
+import 'package:payment_getway/utils/common/widget_helper.dart';
 
 class PaytmPaymentController extends GetxController {
   static PaytmPaymentController get to => Get.find();

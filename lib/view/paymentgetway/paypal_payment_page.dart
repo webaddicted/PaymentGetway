@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:payment_getway/utils/constant/color_const.dart';
 import 'package:payment_getway/utils/constant/string_const.dart';
-import 'package:payment_getway/utils/widget_helper.dart';
+import 'package:payment_getway/utils/common/widget_helper.dart';
 import 'package:payment_getway/view/paypal/paypal_payment.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 
@@ -35,7 +35,7 @@ class _PaypalPaymentPageState extends State<PaypalPaymentPage> {
             Stack(
               children: <Widget>[
                 IconButton(
-                  icon: Icon(Icons.shopping_cart),
+                  icon: const Icon(Icons.shopping_cart),
                   onPressed: () {
                     Scaffold.of(context).openEndDrawer();
                   },
@@ -76,7 +76,7 @@ class _PaypalPaymentPageState extends State<PaypalPaymentPage> {
         ),
         child: Text(
           '$totalItems',
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 13,
           ),

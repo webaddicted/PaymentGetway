@@ -5,7 +5,7 @@ import 'package:payment_getway/data/controller/paytm_controller.dart';
 import 'package:payment_getway/utils/apiutils/api_response.dart';
 import 'package:payment_getway/utils/constant/color_const.dart';
 import 'package:payment_getway/utils/constant/string_const.dart';
-import 'package:payment_getway/utils/widget_helper.dart';
+import 'package:payment_getway/utils/common/widget_helper.dart';
 import 'package:payment_getway/view/paymentgetway/paytm_config.dart';
 
 /// Author : Deepak Sharma(Webaddicted)

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:payment_getway/utils/constant/color_const.dart';
 import 'package:payment_getway/view/home/cart_page.dart';
 import 'package:payment_getway/view/home/home_page.dart';
 import 'package:payment_getway/view/home/profile_page.dart';
@@ -42,7 +43,7 @@ class _HomeState extends State<Home> {
         ],
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.grey.shade100,
-        selectedItemColor: Colors.blue,
+        selectedItemColor: ColorConst.appColor,
         unselectedItemColor: Colors.black,
         onTap: (position) {
           setState(() {

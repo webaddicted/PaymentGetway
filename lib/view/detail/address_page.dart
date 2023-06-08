@@ -4,8 +4,9 @@ import 'package:payment_getway/utils/constant/color_const.dart';
 import 'package:payment_getway/utils/constant/routers_const.dart';
 import 'package:payment_getway/utils/constant/string_const.dart';
 import 'package:payment_getway/utils/global_utilities.dart';
-import 'package:payment_getway/utils/widget_helper.dart';
+import 'package:payment_getway/utils/common/widget_helper.dart';
 import 'package:get/get.dart';
+import 'package:payment_getway/utils/theme/text_style.dart';
 /// Author : Deepak Sharma(Webaddicted)
 /// Email : deepaksharmatheboss@gmail.com
 /// Profile : https://github.com/webaddicted
@@ -16,8 +17,8 @@ class AddressPage extends StatefulWidget {
 }
 
 class _AddressPageState extends State<AddressPage> {
-  GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
-
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
+  final _radioValue = 0.obs;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -31,7 +32,7 @@ class _AddressPageState extends State<AddressPage> {
               onPressed: () {
                 Navigator.pop(context);
               }),
-          title: getTxtBlackColor(msg: "Address"),
+          title: getTxtBlackColor(msg: "Address", fontWeight: FontWeight.w600),
           centerTitle: true,
           backgroundColor: ColorConst.whiteColor,
         ),
@@ -59,7 +60,7 @@ class _AddressPageState extends State<AddressPage> {
                       /*Navigator.of(context).push(new MaterialPageRoute(
                           builder: (context) => OrderPlacePage()));*/
                       // showThankYouBottomSheet(context);
-                      _settingModalBottomSheet(Get.context);
+                      _payBottomSheet(Get.context);
                     },
                     color: ColorConst.appColor,
                     textColor: Colors.white,
@@ -74,7 +75,141 @@ class _AddressPageState extends State<AddressPage> {
     );
   }
 
-  void _settingModalBottomSheet(context) {
+  selectedAddressSection() {
+    return Container(
+      margin: const EdgeInsets.all(4),
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(4)),
+      ),
+      child: Card(
+        elevation: 0,
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(4))),
+        child: Container(
+          decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(Radius.circular(4)),
+              border: Border.all(color: Colors.grey.shade200)),
+          padding: const EdgeInsets.only(left: 12, top: 8, right: 12),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              const SizedBox(
+                height: 6,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  getTxtBlackColor(msg: "Deepak Sharma (Default)", fontWeight: FontWeight.w600),
+                  Container(
+                    padding:
+                    const EdgeInsets.only(left: 8, right: 8, top: 4, bottom: 4),
+                    decoration: const BoxDecoration(
+                        shape: BoxShape.rectangle,
+                        color: ColorConst.appColor,
+                        borderRadius: BorderRadius.all(Radius.circular(16))),
+                    child: getTxtWhiteColor(msg: "HOME"),
+                  )
+                ],
+              ),
+              createAddressText("Apex Circle, Usha Colony, Malviya Nagar", 16),
+              createAddressText("Jaipur - 302017", 6),
+              createAddressText("Rajasthan", 6),
+              const SizedBox(height: 6),
+              RichText(
+                text: TextSpan(children: [
+                  TextSpan(
+                    text: "Mobile : ",
+                    style: AppTextStyle.normalBlack12.copyWith(fontSize: 13, fontWeight: FontWeight.w600)
+                  ),
+                  TextSpan(
+                      text: "+91-9024061407",
+                      style: AppTextStyle.normalBlack12.copyWith(fontSize: 13, color: Colors.grey.shade800)
+                  ),
+                ]),
+              ),
+              const SizedBox(height: 16),
+              Container(
+                color: Colors.grey.shade300,
+                height: 1,
+                width: double.infinity,
+              ),
+              addressAction()
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  addressAction() {
+    return Row(
+      children: <Widget>[
+        const Spacer(
+          flex: 2,
+        ),
+        MaterialButton(
+          onPressed: () {},
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          child: getTxtBlackColor(msg: "Edit / Change", fontWeight: FontWeight.w600),
+        ),
+        const Spacer(flex: 3),
+        Container(
+          height: 20,
+          width: 1,
+          color: Colors.grey,
+        ),
+        const Spacer(flex: 3),
+        MaterialButton(
+          onPressed: () {},
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          child: getTxtBlackColor(msg: "Add New Address", fontWeight: FontWeight.w600),
+        ),
+        const Spacer(flex: 2),
+      ],
+    );
+  }
+
+  createAddressText(String strAddress, double topMargin) {
+    return Container(
+      margin: EdgeInsets.only(top: topMargin),
+      child: getTxtBlackColor(msg: strAddress),
+    );
+  }
+
+  standardDelivery() {
+    return Container(
+      decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(Radius.circular(4)),
+          border:
+          Border.all(color: Colors.tealAccent.withOpacity(0.4), width: 1),
+          color: Colors.tealAccent.withOpacity(0.2)),
+      margin: const EdgeInsets.all(8),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          Radio(
+            value: 1,
+            groupValue: 1,
+            onChanged: (isChecked) {},
+            activeColor: ColorConst.appColor,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              getTxtBlackColor(msg:"Standard Delivery",fontWeight: FontWeight.w600),
+              const SizedBox(height: 5),
+              getTxtBlackColor(msg: "Get it by 20 jul - 27 jul | Free Delivery")
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _payBottomSheet(context) {
     showModalBottomSheet(
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
@@ -207,7 +342,7 @@ class _AddressPageState extends State<AddressPage> {
                   })));
         });
   }
-  var _radioValue = 1.obs;
+
   Widget showRadio(String title, int value) {
     return Row(children: [
       Radio(
@@ -221,235 +356,6 @@ class _AddressPageState extends State<AddressPage> {
 
   void _handleRadioValueChange(int? value) {
     _radioValue.value = value!;
-  }
-
-  showThankYouBottomSheet(BuildContext context) {
-    return _scaffoldKey.currentState!.showBottomSheet((context) {
-      return Container(
-        height: 400,
-        decoration: BoxDecoration(
-            color: Colors.white,
-            border: Border.all(color: Colors.grey.shade200, width: 2),
-            borderRadius: const BorderRadius.only(
-                topRight: Radius.circular(16), topLeft: Radius.circular(16))),
-        child: Column(
-          children: <Widget>[
-            const Expanded(
-              flex: 5,
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: Image(
-                  image: AssetImage(AssetsConst.thankYou),
-                  width: 300,
-                ),
-              ),
-            ),
-            Expanded(
-              flex: 5,
-              child: Container(
-                margin: const EdgeInsets.only(left: 16, right: 16),
-                child: Column(
-                  children: <Widget>[
-                    RichText(
-                        textAlign: TextAlign.center,
-                        text: const TextSpan(children: [
-                          TextSpan(
-                            text:
-                            "\n\nThank you for your purchase. Our company values each and every customer. We strive to provide state-of-the-art devices that respond to our clients’ individual needs. If you have any questions or feedback, please don’t hesitate to reach out.",
-                            // style: CustomTextStyle.textFormFieldMedium.copyWith(
-                            //     fontSize: 14, color: Colors.grey.shade800),
-                          )
-                        ])),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    MaterialButton(
-                      onPressed: () {},
-                      padding: const EdgeInsets.only(left: 48, right: 48),
-                      color: Colors.pink,
-                      shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(24))),
-                      child: const Text(
-                        "Track Order",
-                        // style: CustomTextStyle.textFormFieldMedium
-                        //     .copyWith(color: Colors.white),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            )
-          ],
-        ),
-      );
-    },
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(16), topRight: Radius.circular(16))),
-        backgroundColor: Colors.white,
-        elevation: 2);
-  }
-
-  selectedAddressSection() {
-    return Container(
-      margin: const EdgeInsets.all(4),
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(4)),
-      ),
-      child: Card(
-        elevation: 0,
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(4))),
-        child: Container(
-          decoration: BoxDecoration(
-              borderRadius: const BorderRadius.all(Radius.circular(4)),
-              border: Border.all(color: Colors.grey.shade200)),
-          padding: const EdgeInsets.only(left: 12, top: 8, right: 12),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              const SizedBox(
-                height: 6,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  const Text(
-                    "James Francois (Default)",
-                    // style: CustomTextStyle.textFormFieldSemiBold
-                    //     .copyWith(fontSize: 14),
-                  ),
-                  Container(
-                    padding:
-                    const EdgeInsets.only(left: 8, right: 8, top: 4, bottom: 4),
-                    decoration: BoxDecoration(
-                        shape: BoxShape.rectangle,
-                        color: ColorConst.appColor,
-                        borderRadius: const BorderRadius.all(Radius.circular(16))),
-                    child: getTxtWhiteColor(msg: "HOME",),
-                  )
-                ],
-              ),
-              createAddressText(
-                  "431, Commerce House, Nagindas Master, Fort", 16),
-              createAddressText("Mumbai - 400023", 6),
-              createAddressText("Maharashtra", 6),
-              const SizedBox(
-                height: 6,
-              ),
-              RichText(
-                text: const TextSpan(children: [
-                  TextSpan(
-                      text: "Mobile : ",
-                      // style: CustomTextStyle.textFormFieldMedium
-                      //     .copyWith(fontSize: 12, color: Colors.grey.shade800)
-                        ),
-                  TextSpan(
-                      text: "02222673745",
-                      // style: CustomTextStyle.textFormFieldBold
-                      //     .copyWith(color: Colors.black, fontSize: 12)
-                          ),
-                ]),
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              Container(
-                color: Colors.grey.shade300,
-                height: 1,
-                width: double.infinity,
-              ),
-              addressAction()
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  createAddressText(String strAddress, double topMargin) {
-    return Container(
-      margin: EdgeInsets.only(top: topMargin),
-      child: Text(
-        strAddress,
-        // style: CustomTextStyle.textFormFieldMedium
-        //     .copyWith(fontSize: 12, color: Colors.grey.shade800),
-      ),
-    );
-  }
-
-  addressAction() {
-    return Row(
-      children: <Widget>[
-        const Spacer(
-          flex: 2,
-        ),
-        MaterialButton(
-          onPressed: () {},
-          splashColor: Colors.transparent,
-          highlightColor: Colors.transparent,
-          child: const Text(
-            "Edit / Change",
-            // style: CustomTextStyle.textFormFieldSemiBold
-            //     .copyWith(fontSize: 12, color: Colors.indigo.shade700),
-          ),
-        ),
-        const Spacer(
-          flex: 3,
-        ),
-        Container(
-          height: 20,
-          width: 1,
-          color: Colors.grey,
-        ),
-        const Spacer(
-          flex: 3,
-        ),
-        MaterialButton(
-          onPressed: () {},
-          splashColor: Colors.transparent,
-          highlightColor: Colors.transparent,
-          child: const Text("Add New Address",
-              // style: CustomTextStyle.textFormFieldSemiBold
-              //     .copyWith(fontSize: 12, color: Colors.indigo.shade700)
-                ),
-        ),
-        const Spacer(
-          flex: 2,
-        ),
-      ],
-    );
-  }
-
-  standardDelivery() {
-    return Container(
-      decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(Radius.circular(4)),
-          border:
-          Border.all(color: Colors.tealAccent.withOpacity(0.4), width: 1),
-          color: Colors.tealAccent.withOpacity(0.2)),
-      margin: const EdgeInsets.all(8),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          Radio(
-            value: 1,
-            groupValue: 1,
-            onChanged: (isChecked) {},
-            activeColor: ColorConst.appColor,
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              getTxtBlackColor(msg:"Standard Delivery"),
-              const SizedBox(height: 5),
-              getTxtBlackColor(msg: "Get it by 20 jul - 27 jul | Free Delivery")
-            ],
-          ),
-        ],
-      ),
-    );
   }
 
   checkoutItem() {
@@ -491,29 +397,31 @@ class _AddressPageState extends State<AddressPage> {
             BoxDecoration(border: Border.all(color: Colors.grey, width: 1)),
             child: const Image(
               image: AssetImage(
-                AssetsConst.shoes,
+                AssetsConst.shoes
               ),
-              width: 35,
+              width: 70,
               height: 45,
               fit: BoxFit.fitHeight,
             ),
           ),
-          const SizedBox(
-            width: 8,
-          ),
-          RichText(
-            text: const TextSpan(children: [
-              TextSpan(
-                  text: "Estimated Delivery : ",
-                  // style: CustomTextStyle.textFormFieldMedium
-                  //     .copyWith(fontSize: 12)
+          const SizedBox(width: 8),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              getTxtBlackColor(msg: "NIKE XTM Basketball Shoes",fontWeight: FontWeight.w500),
+              RichText(
+                text:  TextSpan(children: [
+                  TextSpan(
+                      text: "Estimated Delivery : ",
+                      style: AppTextStyle.normalBlack12.copyWith(fontWeight: FontWeight.w500)
+                  ),
+                  TextSpan(
+                      text: "21 Jul 2023 ",
+                      style: AppTextStyle.normalBlack12.copyWith(fontWeight: FontWeight.w500)
+                          )
+                ]),
               ),
-              TextSpan(
-                  text: "21 Jul 2019 ",
-                  // style: CustomTextStyle.textFormFieldMedium
-                  //     .copyWith(fontSize: 12, fontWeight: FontWeight.w600)
-                      )
-            ]),
+            ],
           )
         ],
       ),
@@ -538,9 +446,7 @@ class _AddressPageState extends State<AddressPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              const SizedBox(
-                height: 4,
-              ),
+              const SizedBox(height: 4),
               getTxtBlackColor(msg: "PRICE DETAILS",fontWeight: FontWeight.w600),
               const SizedBox(
                 height: 4,
@@ -601,16 +507,8 @@ class _AddressPageState extends State<AddressPage> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Text(
-            key,
-            // style: CustomTextStyle.textFormFieldMedium
-            //     .copyWith(color: Colors.grey.shade700, fontSize: 12),
-          ),
-          Text(
-            value,
-            // style: CustomTextStyle.textFormFieldMedium
-            //     .copyWith(color: color, fontSize: 12),
-          )
+          Text(key),
+          Text(value)
         ],
       ),
     );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:payment_getway/utils/widget_helper.dart';
+import 'package:payment_getway/utils/common/widget_helper.dart';
 
 /// Author : Deepak Sharma(Webaddicted)
 /// Email : deepaksharmatheboss@gmail.com

@@ -305,6 +305,7 @@ AppBar getAppBar({required String title, double fontSize = 15}) {
 AppBar getAppBarWithBackBtn(
     {String title = '',
     Color bgColor = ColorConst.whiteColor,
+    Color txtColor = ColorConst.blackColor,
     double fontSize = 15,
     String titleTag = '',
     Widget? icon,
@@ -326,7 +327,7 @@ AppBar getAppBarWithBackBtn(
         tag: titleTag,
         child: getTxtColor(
             msg: title,
-            txtColor: ColorConst.blackColor,
+            txtColor: txtColor,
             fontSize: fontSize,
             fontWeight: FontWeight.bold)),
   );
@@ -764,3 +765,36 @@ Widget apiHandler<T>(
     }
   }
 }
+getSnackbar(
+    {required String title, required String subTitle, bool isSuccess = true}) {
+  Get.snackbar(title, subTitle,
+      backgroundColor:
+      isSuccess ? ColorConst.greenColor : ColorConst.redColor,
+      colorText: ColorConst.whiteColor,
+      snackPosition: SnackPosition.BOTTOM,
+      duration: const Duration(seconds: 3));
+}
+
+Widget btn(
+    {required String txt,
+      Color color = ColorConst.lightGreenColor,
+      double height = 45,
+      double width = double.infinity,
+      bool isRoundBtn = false,
+      double borderRadius = 0,
+      required Function btnClick}) =>
+    ButtonTheme(
+      minWidth: width,
+      height: height,
+      child: ElevatedButton(
+        onPressed: () => btnClick(),
+        clipBehavior: Clip.antiAlias,
+        style: ElevatedButton.styleFrom(
+            primary: color,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(borderRadius))),
+        child: getTxtWhiteColor(
+            msg: txt, fontSize: 15, fontWeight: FontWeight.bold),
+      ),
+    );
+
