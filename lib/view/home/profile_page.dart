@@ -3,26 +3,16 @@ import 'package:payment_getway/data/bean/list_profile_section.dart';
 import 'package:payment_getway/utils/common/widget_helper.dart';
 import 'package:payment_getway/utils/constant/api_constant.dart';
 import 'package:payment_getway/view/detail/about_page.dart';
-import 'package:payment_getway/view/detail/address_page.dart';
 import 'package:payment_getway/view/detail/notification_page.dart';
-import 'package:payment_getway/view/detail/order_place_success_page.dart';
 import 'package:payment_getway/view/detail/invite_friends_page.dart';
-import 'package:payment_getway/view/detail/detail_page.dart';
-import 'package:payment_getway/view/list/list_page.dart';
-import 'package:payment_getway/view/paymentgetway/paypal_payment_page.dart';
-import 'package:payment_getway/view/paymentgetway/paytm_page.dart';
-import 'package:payment_getway/view/paymentgetway/razorpay_page.dart';
-
 /// Author : Deepak Sharma(Webaddicted)
 /// Email : deepaksharmatheboss@gmail.com
 /// Profile : https://github.com/webaddicted
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
-
-
   @override
-  _ProfilePageState createState() => _ProfilePageState();
+  State<ProfilePage> createState() => _ProfilePageState();
 }
 
 class _ProfilePageState extends State<ProfilePage> {
@@ -30,7 +20,6 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     createListItem();
   }
@@ -38,44 +27,7 @@ class _ProfilePageState extends State<ProfilePage> {
   void createListItem() {
     listSection.add(createSection("Notifications", Icons.notifications,
         Colors.blue.shade800, NotificationPage()));
-    listSection.add(createSection(
-        "Product List",
-        Icons.list_alt,
-        Colors.teal.shade800,
-        ListPage()));
-    listSection.add(createSection(
-        "Product Details",
-        Icons.perm_device_info,
-        Colors.teal.shade800,
-        DetailPage('heroTag')));
-    listSection.add(createSection(
-        "Address Page",
-        Icons.place_rounded,
-        Colors.teal.shade800,
-        AddressPage()));
-    listSection.add(createSection(
-        "Order Successfully Placed",
-        Icons.incomplete_circle_rounded,
-        Colors.teal.shade800,
-        OrderPlaceSuccessPage()));
-    listSection.add(createSection(
-        "Paytm",
-        Icons.account_balance_wallet_outlined,
-        Colors.teal.shade800,
-        PaytmPage()));
-    listSection.add(createSection(
-        "Razorpay Pay",
-        Icons.account_balance_wallet_outlined,
-        Colors.teal.shade800,
-        const RazorpayPage()));
-    listSection.add(createSection(
-        "Paypal Payment",
-        Icons.paypal,
-        Colors.teal.shade800,
-        const PaypalPaymentPage()));
-    listSection.add(createSection(
-        "Invite Friends",
-        Icons.supervised_user_circle_outlined,
+    listSection.add(createSection("Invite Friends", Icons.supervised_user_circle_outlined,
         Colors.indigo.shade800,
         InviteFriendsPage()));
     listSection.add(createSection("About Us", Icons.help_outline,

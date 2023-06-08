@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:payment_getway/utils/constant/assets_const.dart';
 import 'package:payment_getway/utils/constant/color_const.dart';
+import 'package:payment_getway/utils/constant/list_data.dart';
 import 'package:payment_getway/utils/constant/routers_const.dart';
 import 'package:payment_getway/utils/common/widget_helper.dart';
 import 'package:get/get.dart';
@@ -16,13 +17,12 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
   List<String> listCategory = [];
-  List<String> listShoesImage = [];
-
+  List<String> listShoesImage = ListData.getLargeDataList();
+  int catItem = 0;
   @override
   void initState() {
     super.initState();
     createCategoryList();
-    shoesImage();
   }
 
   createCategoryList() {
@@ -31,16 +31,6 @@ class _SearchPageState extends State<SearchPage> {
     listCategory.add("KIDS");
     listCategory.add("PERSONAL CARE");
     listCategory.add("HOME");
-  }
-
-  void shoesImage() {
-    listShoesImage.add(AssetsConst.shoes);
-    listShoesImage.add(AssetsConst.shoes);
-    listShoesImage.add(AssetsConst.shoes);
-    listShoesImage.add(AssetsConst.shoes);
-    listShoesImage.add(AssetsConst.shoes);
-    listShoesImage.add(AssetsConst.shoes);
-    listShoesImage.add(AssetsConst.shoes);
   }
 
   @override
@@ -91,7 +81,7 @@ class _SearchPageState extends State<SearchPage> {
       ),
     );
   }
-int catItem = 0;
+
   categoryListItem(String strCategory, int index) {
     double leftMargin = 8;
     double rightMargin = 8;
@@ -321,6 +311,7 @@ int catItem = 0;
     );
   }
 }
+
 searchHeader([IconData icons = Icons.arrow_back]) {
   return Container(
       color: Colors.white,
@@ -350,6 +341,7 @@ searchHeader([IconData icons = Icons.arrow_back]) {
         ],
       ));
 }
+
 OutlineInputBorder textFieldBorder() => const OutlineInputBorder(
     borderRadius: BorderRadius.all(Radius.circular(0)),
     borderSide: BorderSide(color: Colors.transparent));

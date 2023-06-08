@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:payment_getway/utils/constant/assets_const.dart';
 import 'package:payment_getway/utils/constant/color_const.dart';
+import 'package:payment_getway/utils/constant/list_data.dart';
 import 'package:payment_getway/utils/constant/routers_const.dart';
 import 'package:payment_getway/utils/common/widget_helper.dart';
 import 'package:get/get.dart';
@@ -12,15 +12,14 @@ class ListPage extends StatefulWidget {
 }
 
 class _ListPageState extends State<ListPage> {
-  List<String> listImage = [];
+  List<String> listImage = ListData.getLargeDataList();
   List<Color> listItemColor = [];
+  ScrollController controller =  ScrollController();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   int selectedColor = 0;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    addImage();
     addItemColor();
   }
 
@@ -31,7 +30,7 @@ class _ListPageState extends State<ListPage> {
     listItemColor.add(Colors.teal);
     listItemColor.add(Colors.red);
   }
-  ScrollController controller =  ScrollController();
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width / 2;
@@ -43,7 +42,7 @@ class _ListPageState extends State<ListPage> {
         bottom: PreferredSize(
             child: filterSortListOption(),
             preferredSize: const Size(double.infinity, 44)),
-        title: getTxtAppColor(msg: "GROUP BY",),
+        title: getTxtAppColor(msg: "NIKE XTM Basketball",fontWeight: FontWeight.w600),
         elevation: 1,
         centerTitle: true,
         actions: <Widget>[
@@ -87,7 +86,7 @@ class _ListPageState extends State<ListPage> {
               child: GridView.builder(
                 controller: controller,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: kIsWeb?5:3),
+                    crossAxisCount: kIsWeb?5:2),
                 itemBuilder: (context, position) {
                   return gridItem(context, position);
                 },
@@ -147,17 +146,13 @@ class _ListPageState extends State<ListPage> {
             color: Colors.grey,
           ),
           const SizedBox(width: 4),
-          Text(
-            title,
-            // style: CustomTextStyle.textFormFieldBold
-            //     .copyWith(color: Colors.black.withOpacity(0.8), fontSize: 12),
-          )
+          Text(title)
         ],
       ),
     );
   }
 
-  gridBottomView() {
+  viewItem() {
     return Container(
       margin: const EdgeInsets.only(left: 5),
       child: Column(
@@ -174,24 +169,24 @@ class _ListPageState extends State<ListPage> {
               getTxtBlackColor(msg: "\$50.00",fontWeight: FontWeight.w600, fontSize: 13),
             ],
           ),
-          const SizedBox(height: 6),
-           Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-
-              // FlutterRatingBar(
-              //   initialRating: 4,
-              //   itemSize: 14,
-              //   itemCount: 5,
-              //   fillColor: Colors.amber,
-              //   borderColor: Colors.amber.withAlpha(50),
-              //   allowHalfRating: true,
-              //   onRatingUpdate: (rating) {},
-              // ),
-              const SizedBox(width: 4),
-              getTxtAppColor(msg: "4.5",fontWeight: FontWeight.w600, fontSize: 13),
-            ],
-          )
+          // const SizedBox(height: 6),
+          getTxtAppColor(msg: "4.5",fontWeight: FontWeight.w600, fontSize: 13),
+          //  Row(
+          //   crossAxisAlignment: CrossAxisAlignment.start,
+          //   children: <Widget>[
+          //     // FlutterRatingBar(
+          //     //   initialRating: 4,
+          //     //   itemSize: 14,
+          //     //   itemCount: 5,
+          //     //   fillColor: Colors.amber,
+          //     //   borderColor: Colors.amber.withAlpha(50),
+          //     //   allowHalfRating: true,
+          //     //   onRatingUpdate: (rating) {},
+          //     // ),
+          //     const SizedBox(width: 4),
+          //     getTxtAppColor(msg: "4.5",fontWeight: FontWeight.w600, fontSize: 13),
+          //   ],
+          // )
         ],
       ),
     );
@@ -224,49 +219,18 @@ class _ListPageState extends State<ListPage> {
                     alignment: Alignment.center,
                     width: 28,
                     height: 28,
-                    decoration: BoxDecoration(shape: BoxShape.circle, color: ColorConst.appColor),
+                    decoration: const BoxDecoration(shape: BoxShape.circle, color: ColorConst.appColor),
                     child: getTxtWhiteColor(msg: "30%",
                         textAlign: TextAlign.center,fontSize: 12),
                   ),
                 ),
               ],
             ),
-            gridBottomView()
+            viewItem()
           ],
         ),
       ),
     );
-  }
-
-  void addImage() {
-    listImage.add(AssetsConst.shoes);
-    listImage.add(AssetsConst.shoes);
-    listImage.add(AssetsConst.shoes);
-    listImage.add(AssetsConst.shoes);
-    listImage.add(AssetsConst.shoes);
-    listImage.add(AssetsConst.shoes);
-    listImage.add(AssetsConst.shoes);
-    listImage.add(AssetsConst.shoes);
-    listImage.add(AssetsConst.shoes);
-    listImage.add(AssetsConst.shoes);
-    listImage.add(AssetsConst.shoes);
-    listImage.add(AssetsConst.shoes);
-    listImage.add(AssetsConst.shoes);
-    listImage.add(AssetsConst.shoes);
-    listImage.add(AssetsConst.shoes);
-    listImage.add(AssetsConst.shoes);
-    listImage.add(AssetsConst.shoes);
-    listImage.add(AssetsConst.shoes);
-    listImage.add(AssetsConst.shoes);
-    listImage.add(AssetsConst.shoes);
-    listImage.add(AssetsConst.shoes);
-    listImage.add(AssetsConst.shoes);
-    listImage.add(AssetsConst.shoes);
-    listImage.add(AssetsConst.shoes);
-    listImage.add(AssetsConst.shoes);
-    listImage.add(AssetsConst.shoes);
-    listImage.add(AssetsConst.shoes);
-    listImage.add(AssetsConst.shoes);
   }
 
   filterBottomSheet(context) {

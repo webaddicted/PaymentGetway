@@ -11,9 +11,8 @@ import 'package:payment_getway/view/home/search_page.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
-
   @override
-  _HomeState createState() => _HomeState();
+  State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
@@ -34,12 +33,9 @@ class _HomeState extends State<Home> {
         currentIndex: selectedPosition,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label:"Home"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.search), label: "Search"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart), label: "Cart"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.person), label: "Profile"),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search"),
+          BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: "Cart"),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
         ],
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.grey.shade100,
@@ -61,42 +57,6 @@ class _HomeState extends State<Home> {
     listBottomWidget.add(const HomePage());
     listBottomWidget.add(SearchPage());
     listBottomWidget.add(CartPage());
-    listBottomWidget.add(ProfilePage());
+    listBottomWidget.add(const ProfilePage());
   }
 }
-
-
-// class HomePage extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     var homeIcon = IconButton(
-//         icon: const Icon(
-//           Icons.arrow_back_ios,
-//           color: ColorConst.WHITE_COLOR,
-//         ),
-//         onPressed: () => Navigator.pop(context));
-//     return Scaffold(
-//         appBar: getAppBarWithBackBtn(
-//             title: StrConst.TITLE_HOME,
-//             txtColor: ColorConst.WHITE_COLOR,
-//             bgColor: ColorConst.APP_COLOR,
-//             icon: homeIcon),
-//         body: _createUi());
-//   }
-//
-//   Widget _createUi() {
-//     return Center(
-//         child: Column(
-//             mainAxisAlignment: MainAxisAlignment.center,
-//             children: <Widget>[
-//           btn(
-//               txt: 'Razore Pay',
-//               btnClick: () => Get.toNamed(RoutersConst.razorpay)),
-//           btn(
-//               txt: 'Paytm Pay',
-//               btnClick: () => Get.toNamed(RoutersConst.paytm)),
-//
-//           // RaisedButton(onPressed: openCheckout, child: Text('Open'))
-//         ]));
-//   }
-// }

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-
+import 'package:payment_getway/utils/common/widget_helper.dart';
+import 'package:get/get.dart';
 /// Author : Deepak Sharma(Webaddicted)
 /// Email : deepaksharmatheboss@gmail.com
 /// Profile : https://github.com/webaddicted
 
-import 'package:flutter/material.dart';
 
 class AboutPage extends StatefulWidget {
   @override
@@ -18,24 +18,20 @@ class _AboutPageState extends State<AboutPage> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: const Text(
-          "About Us",
-          // style: CustomTextStyle.textFormFieldBold.copyWith(fontSize: 18),
-        ),
+        title: getTxtBlackColor(msg: "Address", fontWeight: FontWeight.w600),
+        centerTitle: true,
         leading: IconButton(
             icon: const Icon(
               Icons.arrow_back,
               color: Colors.black,
             ),
-            onPressed: () {
-              Navigator.of(context).pop();
-            }),
+            onPressed: ()=> Get.back()),
       ),
       body: SingleChildScrollView(
         child: Container(
           color: Colors.white,
           padding: const EdgeInsets.all(8),
-          child: const Text(
+          child:getTxtBlackColor(msg:
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry.\n\nLorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. \nIt has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.\n \nIt was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. \nIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. \n\nThe point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page \neditors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.\n Various versions have evolved over the years, sometimes by accident, sometimes on purpose\n (injected humour and the like).",
             // style: CustomTextStyle.textFormFieldMedium
             //     .copyWith(fontSize: 16, color: Colors.grey.shade800),

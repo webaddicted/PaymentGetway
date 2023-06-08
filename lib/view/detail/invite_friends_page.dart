@@ -4,14 +4,14 @@ import 'package:payment_getway/utils/constant/assets_const.dart';
 import 'package:payment_getway/utils/constant/color_const.dart';
 import 'package:payment_getway/utils/global_utilities.dart';
 import 'package:payment_getway/utils/common/widget_helper.dart';
-
+import 'package:get/get.dart';
 /// Author : Deepak Sharma(Webaddicted)
 /// Email : deepaksharmatheboss@gmail.com
 /// Profile : https://github.com/webaddicted
 
 class InviteFriendsPage extends StatefulWidget {
   @override
-  _InviteFriendsPageState createState() => _InviteFriendsPageState();
+  State<InviteFriendsPage>  createState() => _InviteFriendsPageState();
 }
 
 class _InviteFriendsPageState extends State<InviteFriendsPage> {
@@ -25,7 +25,7 @@ class _InviteFriendsPageState extends State<InviteFriendsPage> {
       printLog(msg: "METHOD : $result");
       response = result;
     } on PlatformException catch (e) {
-      response = "Failed to shared app";
+      response = "Failed to shared app $e";
     }
     setState(() {
       shareResponse = response;
@@ -38,19 +38,13 @@ class _InviteFriendsPageState extends State<InviteFriendsPage> {
     return Scaffold(
       backgroundColor: Colors.grey.shade50,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: const Text(
-          "Invite Friends",
-          // style: CustomTextStyle.textFormFieldBold.copyWith(fontSize: 18),
-        ),
         leading: IconButton(
-            icon: const Icon(
-              Icons.arrow_back,
-              color: Colors.black,
+            icon: const Icon(Icons.arrow_back, color: ColorConst.blackColor),
+            onPressed: () => Get.back()
             ),
-            onPressed: () {
-              Navigator.of(context).pop();
-            }),
+        title: getTxtBlackColor(msg: "Address", fontWeight: FontWeight.w600),
+        centerTitle: true,
+        backgroundColor: ColorConst.whiteColor,
       ),
       body: Builder(
         builder: (context) {

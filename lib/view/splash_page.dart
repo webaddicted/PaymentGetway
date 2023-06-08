@@ -7,7 +7,7 @@ import 'package:payment_getway/utils/global_utilities.dart';
 
 class SplashPage extends StatefulWidget {
   @override
-  _SplashPageState createState() => _SplashPageState();
+  State<SplashPage> createState() => _SplashPageState();
 }
 
 class _SplashPageState extends State<SplashPage>
@@ -53,7 +53,7 @@ class _SplashPageState extends State<SplashPage>
                 alignment: Alignment.bottomCenter,
                 child: Container(
                   margin: const EdgeInsets.only(bottom: 70),
-                  child: CircularProgressIndicator(
+                  child: const CircularProgressIndicator(
                     valueColor:
                         AlwaysStoppedAnimation<Color>(ColorConst.appColor),
                   ),

@@ -7,12 +7,9 @@ import 'package:payment_getway/utils/common/widget_helper.dart';
 /// Email : deepaksharmatheboss@gmail.com
 /// Profile : https://github.com/webaddicted
 
-
-import 'package:flutter/material.dart';
-
 class OrderPlaceSuccessPage extends StatefulWidget {
   @override
-  _OrderPlaceSuccessPageState createState() => _OrderPlaceSuccessPageState();
+  State<OrderPlaceSuccessPage> createState() => _OrderPlaceSuccessPageState();
 }
 
 class _OrderPlaceSuccessPageState extends State<OrderPlaceSuccessPage> {
@@ -37,15 +34,13 @@ class _OrderPlaceSuccessPageState extends State<OrderPlaceSuccessPage> {
         ),
         body: Column(
           children: <Widget>[
-            Expanded(
+            const Expanded(
               flex: 5,
-              child: Container(
-                child: const Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Image(
-                    image: AssetImage(AssetsConst.thankYou),
-                    width: 300,
-                  ),
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: Image(
+                  image: AssetImage(AssetsConst.thankYou),
+                  width: 300,
                 ),
               ),
             ),

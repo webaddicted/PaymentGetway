@@ -3,7 +3,6 @@ import 'package:payment_getway/utils/constant/assets_const.dart';
 import 'package:payment_getway/utils/constant/color_const.dart';
 import 'package:payment_getway/utils/constant/routers_const.dart';
 import 'package:payment_getway/utils/constant/string_const.dart';
-import 'package:payment_getway/utils/global_utilities.dart';
 import 'package:payment_getway/utils/common/widget_helper.dart';
 import 'package:get/get.dart';
 import 'package:payment_getway/utils/theme/text_style.dart';
@@ -30,7 +29,7 @@ class _AddressPageState extends State<AddressPage> {
           leading: IconButton(
               icon: const Icon(Icons.arrow_back, color: ColorConst.blackColor),
               onPressed: () {
-                Navigator.pop(context);
+                Get.back();
               }),
           title: getTxtBlackColor(msg: "Address", fontWeight: FontWeight.w600),
           centerTitle: true,
@@ -326,7 +325,7 @@ class _AddressPageState extends State<AddressPage> {
                                         right: 60,
                                         top: 10,
                                         bottom: 10),
-                                    primary: ColorConst.appColor,
+                                    backgroundColor: ColorConst.appColor,
                                     shape: RoundedRectangleBorder(
                                         borderRadius:
                                         BorderRadius.circular(20))),

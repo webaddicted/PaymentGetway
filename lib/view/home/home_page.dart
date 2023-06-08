@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:payment_getway/utils/constant/assets_const.dart';
 import 'package:payment_getway/utils/constant/color_const.dart';
+import 'package:payment_getway/utils/constant/list_data.dart';
 import 'package:payment_getway/utils/constant/routers_const.dart';
 import 'package:payment_getway/utils/common/widget_helper.dart';
 import 'package:get/get.dart';
@@ -14,45 +14,15 @@ class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
-  _HomePageState createState() => _HomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  List<String> listImage = [];
-  List<String> listShoesImage = [];
+  List<String> listImage = ListData.getFiveDataList();
+  List<String> listShoesImage = ListData.getLargeDataList();
   int selectedSliderPosition = 0;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    sliderImage();
-    shoesImage();
-  }
-
-  void sliderImage() {
-    listImage.add(AssetsConst.shoes);
-    listImage.add(AssetsConst.shoes);
-    listImage.add(AssetsConst.shoes);
-  }
-
-  void shoesImage() {
-    listShoesImage.add(AssetsConst.shoes);
-    listShoesImage.add(AssetsConst.shoes);
-    listShoesImage.add(AssetsConst.shoes);
-    listShoesImage.add(AssetsConst.shoes);
-    listShoesImage.add(AssetsConst.shoes);
-    listShoesImage.add(AssetsConst.shoes);
-    listShoesImage.add(AssetsConst.shoes);
-    listShoesImage.add(AssetsConst.shoes);
-    listShoesImage.add(AssetsConst.shoes);
-    listShoesImage.add(AssetsConst.shoes);
-    listShoesImage.add(AssetsConst.shoes);
-    listShoesImage.add(AssetsConst.shoes);
-    listShoesImage.add(AssetsConst.shoes);
-    listShoesImage.add(AssetsConst.shoes);
-  }
   ScrollController controller =  ScrollController();
+
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -193,9 +163,7 @@ class _HomePageState extends State<HomePage> {
 
   createSlider(String image) {
     return InkWell(
-      onTap: ()=>{
-      Get.toNamed(RoutersConst.productDetail)
-      },
+      onTap: ()=>Get.toNamed(RoutersConst.productDetail),
       child: Card(
         margin: const EdgeInsets.all(10),
         shape: const RoundedRectangleBorder(

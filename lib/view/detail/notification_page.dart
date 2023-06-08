@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:payment_getway/utils/common/widget_helper.dart';
-
+import 'package:get/get.dart';
+import 'package:payment_getway/utils/constant/color_const.dart';
 /// Author : Deepak Sharma(Webaddicted)
 /// Email : deepaksharmatheboss@gmail.com
 /// Profile : https://github.com/webaddicted
 
 class NotificationPage extends StatefulWidget {
   @override
-  _NotificationPageState createState() => _NotificationPageState();
+  State<NotificationPage> createState() => _NotificationPageState();
 }
 
 class _NotificationPageState extends State<NotificationPage> {
@@ -15,19 +16,13 @@ class _NotificationPageState extends State<NotificationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Text(
-          "Notifications",
-          // style: CustomTextStyle.textFormFieldBold.copyWith(fontSize: 18),
-        ),
         leading: IconButton(
-            icon: Icon(
-              Icons.arrow_back,
-              color: Colors.black,
-            ),
-            onPressed: () {
-              Navigator.of(context).pop();
-            }),
+            icon: const Icon(Icons.arrow_back, color: ColorConst.blackColor),
+            onPressed: () => Get.back()
+        ),
+        title: getTxtBlackColor(msg: "Address", fontWeight: FontWeight.w600),
+        centerTitle: true,
+        backgroundColor: ColorConst.whiteColor,
       ),
       body: ListView.builder(
         itemBuilder: (context, index) {
@@ -58,46 +53,67 @@ class _NotificationPageState extends State<NotificationPage> {
 
   createNotificationListItem(int index) {
     return Dismissible(
+      key: const Key("key_1"),
+      direction: DismissDirection.endToStart,
+      onDismissed: (DismissDirection direction) {
+        getDummyList().removeAt(index);
+      },
+      background: Container(
+        color: Colors.green,
+        child: const Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Icon(
+              Icons.delete,
+              color: Colors.white,
+            ),
+            SizedBox(width: 16)
+          ],
+        ),
+      ),
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 4, horizontal: 4),
+        margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
         width: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(10), bottomLeft: Radius.circular(10))),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Expanded(
+              flex: 02,
               child: Container(
                 width: 4,
-                margin: EdgeInsets.only(right: 4),
-                decoration: BoxDecoration(
+                margin: const EdgeInsets.only(right: 4),
+                decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(10),
                       bottomLeft: Radius.circular(10)),
                   color: Colors.green,
                 ),
               ),
-              flex: 02,
             ),
             Expanded(
+              flex: 98,
               child: Column(
                 children: <Widget>[
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     mainAxisSize: MainAxisSize.max,
                     children: <Widget>[
-                      Text(
+                      const Text(
                         "Payment Complete",
                         // style: CustomTextStyle.textFormFieldBlack
                         //     .copyWith(color: Colors.black, fontSize: 16),
                       ),
-                      IconButton(icon: Icon(Icons.close), onPressed: () {})
+                      IconButton(icon: const Icon(Icons.close), onPressed: () {})
                     ],
                   ),
                   Container(
-                    margin: EdgeInsets.only(right: 6),
-                    child: Text(
+                    margin: const EdgeInsets.only(right: 6),
+                    child: const Text(
                       "Thank you for your recent payment. Your monthly subscription has been activated until June 2020.",
                       softWrap: true,
                       textAlign: TextAlign.start,
@@ -107,28 +123,7 @@ class _NotificationPageState extends State<NotificationPage> {
                   )
                 ],
               ),
-              flex: 98,
             )
-          ],
-        ),
-      ),
-      key: Key("key_1"),
-      direction: DismissDirection.endToStart,
-      onDismissed: (DismissDirection direction) {
-        getDummyList().removeAt(index);
-      },
-      background: Container(
-        color: Colors.green,
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Icon(
-              Icons.delete,
-              color: Colors.white,
-            ),
-            const SizedBox(width: 16)
           ],
         ),
       ),
