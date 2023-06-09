@@ -28,6 +28,7 @@ dev_dependencies:
   paytm_allinonesdk: ^1.2.1
   http_auth:
   http:
+  flutter_svg: ^2.0.6
 
 flutter:
   uses-material-design: true

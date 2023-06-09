@@ -1,5 +1,5 @@
 class StringConst {
-  static const String appName = 'Online Pay';
+  static const String appName = 'Payment Getway';
   static bool debug = false;
 //  {START TITLE}
   static var dummyTxt =
@@ -24,4 +24,11 @@ class StringConst {
   static var titleHome = appName;
   static var titlePaytm = 'Paytm';
   static var titlePaypalPayment = 'Paypal Paytm';
+  static var getStart = 'Get Start';
+  static var sliderTitle1 = 'Smooth payments made easy';
+  static var sliderTitle2 = 'Streamline payments, effortless';
+  static var sliderTitle3 = 'SecureFlow: Smooth Payments';
+  static var sliderDesc1 = 'Effortless transactions made secure. Experience seamless payments with our trusted gateway, simplifying your financial interactions.';
+  static var sliderDesc2 = 'Streamline payments, ignite growth! Our gateway delivers secure, seamless transactions, empowering your business with convenience and peace of mind.';
+  static var sliderDesc3 = 'Transforming payments effortlessly - our gateway ensures secure, seamless transactions for your convenience and peace of mind.';
 }

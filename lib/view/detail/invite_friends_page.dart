@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:payment_getway/utils/constant/assets_const.dart';
 import 'package:payment_getway/utils/constant/color_const.dart';
+import 'package:payment_getway/utils/constant/string_const.dart';
 import 'package:payment_getway/utils/global_utilities.dart';
 import 'package:payment_getway/utils/common/widget_helper.dart';
 import 'package:get/get.dart';
@@ -109,7 +110,7 @@ class _InviteFriendsPageState extends State<InviteFriendsPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
-            height: 160,
+            height: 300,
             margin: const EdgeInsets.all(8),
             width: double.infinity,
             decoration: const BoxDecoration(
@@ -124,7 +125,7 @@ class _InviteFriendsPageState extends State<InviteFriendsPage> {
           Container(
               margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               child: getTxt(
-                msg: "When you invite friends to join Carter, you can 100 points to each friends.Whenever your friends consume through Carter, you will get a 5% bonus",
+                msg: "When you invite friends to join ${StringConst.appName}, you can 100 points to each friends.Whenever your friends consume through Carter, you will get a 5% bonus",
               ))
         ],
       ),
@@ -150,15 +151,14 @@ class _InviteFriendsPageState extends State<InviteFriendsPage> {
           Container(
             color: Colors.grey.shade200,
             height: 1,
-            width: double.infinity,
-          ),
+            width: double.infinity),
           SizedBox(
             height: 60,
             child: GridView.builder(
               gridDelegate:
               const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
               itemBuilder: (context, index) {
-                return gridItem();
+                return gridItem(index);
               },
               itemCount: 2,
               shrinkWrap: true,
@@ -169,7 +169,7 @@ class _InviteFriendsPageState extends State<InviteFriendsPage> {
     );
   }
 
-  gridItem() {
+  gridItem(int index) {
     return Container(
       padding: const EdgeInsets.all(10),
       margin: const EdgeInsets.only(
@@ -182,16 +182,16 @@ class _InviteFriendsPageState extends State<InviteFriendsPage> {
         children: <Widget>[
           const SizedBox(width: 8),
           const Icon(
-            Icons.menu,
-            color: Colors.blue,
+            Icons.monetization_on_outlined,
+            color: ColorConst.appColor,
           ),
           const SizedBox(width: 6),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              getTxtAppColor(msg: "0.34123205"),
+              getTxtBlackColor(msg: "Rajesh Kumar", fontWeight: FontWeight.w600),
               const SizedBox(width: 4),
-              getTxtAppColor(msg: "Today Reward")
+              getTxtAppColor(msg: "${StringConst.rupeeSymbol} ${200*(index+1)}")
             ],
           ),
         ],

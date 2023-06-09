@@ -29,8 +29,8 @@ class _SplashPageState extends State<SplashPage>
     delay(
         durationSec: 5,
         click: () {
-          // Get.offAllNamed(RoutersConst.onboard_page);
-          Get.offAllNamed(RoutersConst.home);
+          Get.offAllNamed(RoutersConst.onboardPage);
+          // Get.offAllNamed(RoutersConst.home);
         });
   }
 
