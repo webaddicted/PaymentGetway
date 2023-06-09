@@ -14,7 +14,7 @@ import 'package:payment_getway/view/paymentgetway/paypal_payment_page.dart';
 import 'package:payment_getway/view/paymentgetway/paytm_page.dart';
 import 'package:payment_getway/view/paymentgetway/razorpay_page.dart';
 import 'package:payment_getway/utils/constant/routers_const.dart';
-import 'package:payment_getway/view/splash_page.dart';
+import 'package:payment_getway/view/splash/splash_page.dart';
 
 RoutesPage() => [
   GetPage(name: RoutersConst.initialRoute, page: () => SplashPage()),

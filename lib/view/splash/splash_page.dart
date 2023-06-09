@@ -45,8 +45,8 @@ class _SplashPageState extends State<SplashPage>
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               SizedBox(
-                  width: animation.value * 250,
-                  height: animation.value * 250, //Adapt.px(500),
+                  width: animation.value * 180,
+                  height: animation.value * 180, //Adapt.px(500),
                   child: Image.asset(AssetsConst.logoImg)),
               const SizedBox(height: 180),
               Align(
