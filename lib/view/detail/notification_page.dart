@@ -20,7 +20,7 @@ class _NotificationPageState extends State<NotificationPage> {
             icon: const Icon(Icons.arrow_back, color: ColorConst.blackColor),
             onPressed: () => Get.back()
         ),
-        title: getTxtBlackColor(msg: "Address", fontWeight: FontWeight.w600),
+        title: getTxtBlackColor(msg: "Notification", fontWeight: FontWeight.w600),
         centerTitle: true,
         backgroundColor: ColorConst.whiteColor,
       ),
