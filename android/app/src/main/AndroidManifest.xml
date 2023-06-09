@@ -1,7 +1,6 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.webaddicted.payment_getway">
-   <application
-        android:label="PaymentGetway"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application
+        android:label="Payment Getway"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
