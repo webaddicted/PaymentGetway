@@ -18,7 +18,7 @@ class _AboutPageState extends State<AboutPage> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: getTxtBlackColor(msg: "Address", fontWeight: FontWeight.w600),
+        title: getTxtBlackColor(msg: "About Us", fontWeight: FontWeight.w600),
         centerTitle: true,
         leading: IconButton(
             icon: const Icon(

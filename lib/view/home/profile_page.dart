@@ -202,9 +202,12 @@ class _ProfilePageState extends State<ProfilePage> {
       return InkWell(
         splashColor: Colors.teal.shade200,
         onTap: () {
-          Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => listSection.widget));
-        },
+          if(listSection.title=='Logout') {
+            onWillPop();
+          }else {
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => listSection.widget));
+          }},
         child: Container(
           margin: const EdgeInsets.only(left: 16, right: 12),
           padding: const EdgeInsets.only(top: 12, bottom: 12),

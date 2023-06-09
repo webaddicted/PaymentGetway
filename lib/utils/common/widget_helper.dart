@@ -352,7 +352,7 @@ onWillPop() async {
       MaterialButton(
           child: getTxtBlackColor(msg: StringConst.yes, fontSize: 17),
           onPressed: () async {
-            Get.back();
+            SystemNavigator.pop();
           }),
       MaterialButton(
           child: getTxtBlackColor(msg: StringConst.no),
