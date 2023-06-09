@@ -39,19 +39,16 @@
 -
 
 ## IntroScreen
-<img src="https://github.com/webaddicted/PaymentGetway/raw/main/screenshot/intro.jpg" height="500">
+<img src="https://github.com/webaddicted/PaymentGetway/raw/main/screenshot/intro.png" height="500">
 
 ## HomeScreen
-<img src="https://github.com/webaddicted/PaymentGetway/raw/main/screenshot/home.jpg" height="500">
-
-## ProfileScreen
-<img src="https://github.com/webaddicted/E-Commerce-Disinfectant/raw/main/screenshot/profile.jpg" height="500">
+<img src="https://github.com/webaddicted/PaymentGetway/raw/main/screenshot/home.png" height="500">
 
 ## DetailScreen
-<img src="https://github.com/webaddicted/PaymentGetway/raw/main/screenshot/detail.jpg" height="500">
+<img src="https://github.com/webaddicted/PaymentGetway/raw/main/screenshot/detail.png" height="500">
 
 ## Invite Friends
-<img src="https://github.com/webaddicted/PaymentGetway/raw/main/screenshot/invite.jpg" height="500">
+<img src="https://github.com/webaddicted/PaymentGetway/raw/main/screenshot/invite.png" height="500">
 
 
 ## LICENSE
