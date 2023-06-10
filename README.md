@@ -7,7 +7,7 @@
 
 ***You can Install and test latest Payment Getway app from below 👇***
 
-[![Rallis](https://img.shields.io/badge/PaymentGetway-Apk-brightgreen.svg?style=for-the-badge&logo=android)](https://github.com/webaddicted/PaymentGetway/blob/main/apk/app.apk)
+[![PaymentGetway](https://img.shields.io/badge/PaymentGetway-Apk-brightgreen.svg?style=for-the-badge&logo=android)](https://github.com/webaddicted/PaymentGetway/blob/main/apk/app.apk)
 
 
 <!-- ## GIF -->
@@ -21,22 +21,30 @@
 - [x] Flutter Android, iOS, Web
 - [x] Image Library
 - [x] Form Validation
-- [x] Image Capture
+- [x] Image Cache
 - [x] Validation
-- [x] App Version Check
 - [x] DIO
 - [x] Shared Preference
-- [x] OnBoarding
+- [x] Paytm
+- [x] Rezorpay
+- [x] Paypal
 
 
 ## Screens
-- [Intro Module](#IntroScreen)
-- [Login Module](#LoginScreen)
-- [Home Module](#HomeScreen)
-- [Profile Module](#ProfileScreen)
-- [Order Module](#OrderScreen)
-- [Detail Module](#DetailScreen)
--
+- [Intro Screen](#IntroScreen)
+- [Onboarding Screen](#IntroScreen)
+- [Home Screen](#HomeScreen)
+- [Search Screen](#HomeScreen)
+- [Cart Screen](#HomeScreen)
+- [Profile Screen](#HomeScreen)
+- [Product List Screen](#DetailScreen)
+- [Detail Screen](#DetailScreen)
+- [Place Order Screen](#DetailScreen)
+- [PaymentMode Selection Dialog](#DetailScreen)
+- [Notification](#InviteFriends)
+- [Invite Friends](#InviteFriends)
+- [About Us](#InviteFriends)
+- [Logout](#InviteFriends)
 
 ## IntroScreen
 <img src="https://github.com/webaddicted/PaymentGetway/raw/main/screenshot/intro.png" height="500">
@@ -47,7 +55,7 @@
 ## DetailScreen
 <img src="https://github.com/webaddicted/PaymentGetway/raw/main/screenshot/detail.png" height="500">
 
-## Invite Friends
+## InviteFriends
 <img src="https://github.com/webaddicted/PaymentGetway/raw/main/screenshot/invite.png" height="500">
 
 
