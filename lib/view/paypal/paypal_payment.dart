@@ -143,7 +143,7 @@ class PaypalPaymentState extends State<PaypalPayment> {
     if (checkoutUrl != null) {
       return Scaffold(
         appBar: AppBar(
-          backgroundColor: Theme.of(context).backgroundColor,
+          backgroundColor: Theme.of(context).colorScheme.background,
           leading: GestureDetector(
             child: const Icon(Icons.arrow_back_ios),
             onTap: () => Navigator.pop(context),

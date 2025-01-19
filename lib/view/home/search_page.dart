@@ -92,19 +92,25 @@ class _SearchPageState extends State<SearchPage> {
       rightMargin = 12;
     }
     return InkWell(
-      onTap: (){
+      onTap: () {
         setState(() {
           catItem = index;
         });
       },
       child: Container(
         margin: EdgeInsets.only(left: leftMargin, right: rightMargin),
-        padding:  const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
         decoration: BoxDecoration(
-            borderRadius:  const BorderRadius.all(Radius.circular(18)),
+            borderRadius: const BorderRadius.all(Radius.circular(18)),
             border: Border.all(color: Colors.grey.shade300, width: 1),
-            color:  catItem == index ?ColorConst.appColor:ColorConst.whiteColor),
-        child: getTxtColor(msg: strCategory, fontSize: 13, txtColor: catItem == index ? ColorConst.whiteColor:ColorConst.greyColor),
+            color:
+                catItem == index ? ColorConst.appColor : ColorConst.whiteColor),
+        child: getTxtColor(
+            msg: strCategory,
+            fontSize: 13,
+            txtColor: catItem == index
+                ? ColorConst.whiteColor
+                : ColorConst.greyColor),
       ),
     );
   }
@@ -116,18 +122,14 @@ class _SearchPageState extends State<SearchPage> {
       child: Column(
         children: <Widget>[
           InkWell(
-            onTap: ()=>Get.toNamed(RoutersConst.productList),
+            onTap: () => Get.toNamed(RoutersConst.productList),
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  getTxtAppColor(
-                      msg: "Recent Searches",
-                      fontSize: 13),
-                  getTxtAppColor(
-                      msg: "See All",
-                      fontSize: 13),
+                  getTxtAppColor(msg: "Recent Searches", fontSize: 13),
+                  getTxtAppColor(msg: "See All", fontSize: 13),
                 ],
               ),
             ),
@@ -159,7 +161,7 @@ class _SearchPageState extends State<SearchPage> {
       rightMargin = 16;
     }
     return InkWell(
-      onTap: ()=>Get.toNamed(RoutersConst.productDetail),
+      onTap: () => Get.toNamed(RoutersConst.productDetail),
       child: Container(
         margin: EdgeInsets.only(left: leftMargin, right: rightMargin),
         child: Column(
@@ -183,7 +185,6 @@ class _SearchPageState extends State<SearchPage> {
               // style: CustomTextStyle.textFormFieldRegular
               //     .copyWith(fontSize: 10, color: Colors.black),
             ),
-            const SizedBox(height: 8),
           ],
         ),
       ),
@@ -200,8 +201,7 @@ class _SearchPageState extends State<SearchPage> {
           Container(
               margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
               child: getTxtAppColor(
-                  msg: 'Items You Have Wishlisted',
-                  fontSize: 13)),
+                  msg: 'Items You Have Wishlisted', fontSize: 13)),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 8),
             child: ConstrainedBox(
@@ -223,7 +223,7 @@ class _SearchPageState extends State<SearchPage> {
 
   createWishListItem() {
     return InkWell(
-      onTap: ()=>Get.toNamed(RoutersConst.productDetail),
+      onTap: () => Get.toNamed(RoutersConst.productDetail),
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 4),
         decoration:
@@ -254,16 +254,16 @@ class _SearchPageState extends State<SearchPage> {
             Container(
                 margin: const EdgeInsets.symmetric(horizontal: 4),
                 child: getTxtColor(
-                    msg: "\$12",
-                    txtColor: Colors.black,
-                    fontSize: 12)),
+                    msg: "\$12", txtColor: Colors.black, fontSize: 12)),
             const SizedBox(height: 6),
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 4),
               child: Row(
                 children: <Widget>[
                   getTxtColor(
-                      msg: "\$15", txtColor: Colors.grey.shade400, fontSize: 12),
+                      msg: "\$15",
+                      txtColor: Colors.grey.shade400,
+                      fontSize: 12),
                   const SizedBox(width: 4),
                   getTxtColor(
                       msg: "55% OFF",
@@ -288,9 +288,7 @@ class _SearchPageState extends State<SearchPage> {
         children: <Widget>[
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-            child: getTxtAppColor(
-                msg: "Items You Have Viewed",
-                fontSize: 13),
+            child: getTxtAppColor(msg: "Items You Have Viewed", fontSize: 13),
           ),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 8),
@@ -319,7 +317,7 @@ searchHeader([IconData icons = Icons.arrow_back]) {
       child: Row(
         children: <Widget>[
           InkWell(
-            onTap: ()=>Get.back(),
+            onTap: () => Get.back(),
             child: Icon(
               icons,
               color: Colors.grey.shade700,

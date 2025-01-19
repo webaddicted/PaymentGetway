@@ -124,7 +124,7 @@ TextStyle _getFontStyle(
     double fontSize = 15,
     Color? bgColor,
     FontWeight fontWeight = FontWeight.normal,
-    String fontFamily = AssetsConst.zillasLabFont,
+    String fontFamily = AssetsConst.poppinsFonts,
     TextDecoration txtDecoration = TextDecoration.none}) {
   return TextStyle(
       color: txtColor,
@@ -136,7 +136,6 @@ TextStyle _getFontStyle(
 }
 
 //  {END TEXT VIEW}
-
 
 Widget edtDobField(
     {required TextEditingController control,
@@ -242,8 +241,6 @@ Widget edtDateField(Function dateClick,
   );
 }
 
-
-
 Widget edtCommentField(TextEditingController edtController) {
   return TextFormField(
     textCapitalization: TextCapitalization.words,
@@ -269,7 +266,7 @@ Widget raisedRoundAppColorBtn(String txt, Function btnClick) => ButtonTheme(
         onPressed: () => btnClick,
         clipBehavior: Clip.antiAlias,
         style: ElevatedButton.styleFrom(
-            primary: ColorConst.appColor,
+            backgroundColor: ColorConst.appColor,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20))),
         child: getTxtWhiteColor(
@@ -287,7 +284,7 @@ Widget raisedRoundColorBtn(String txt, Color color, Function() btnClick) =>
         },
         clipBehavior: Clip.antiAlias,
         style: ElevatedButton.styleFrom(
-            primary: color,
+            backgroundColor: color,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20))),
         child: getTxtWhiteColor(
@@ -700,17 +697,17 @@ Widget getStaggered(
     ScrollPhysics? physics,
     ScrollController? controller}) {
   return StaggeredGrid.count(
-      crossAxisCount: crossAxisCount,
-      mainAxisSpacing: 1.0,
-      crossAxisSpacing: 1.0,
-      children: [widget(Get.context, 0)],
-      // shrinkWrap: true,
-      // controller: controller,
-      // padding: const EdgeInsets.all(0),
-      // staggeredTileBuilder: (int index) => StaggeredTile.extent(1, height),
-      // physics: physics ?? const BouncingScrollPhysics(),
-      // itemCount: itemCount,
-      // itemBuilder: (BuildContext context, int index) => widget(context, index)
+    crossAxisCount: crossAxisCount,
+    mainAxisSpacing: 1.0,
+    crossAxisSpacing: 1.0,
+    children: [widget(Get.context, 0)],
+    // shrinkWrap: true,
+    // controller: controller,
+    // padding: const EdgeInsets.all(0),
+    // staggeredTileBuilder: (int index) => StaggeredTile.extent(1, height),
+    // physics: physics ?? const BouncingScrollPhysics(),
+    // itemCount: itemCount,
+    // itemBuilder: (BuildContext context, int index) => widget(context, index)
   );
 }
 
@@ -765,24 +762,24 @@ Widget apiHandler<T>(
     }
   }
 }
+
 getSnackbar(
     {required String title, required String subTitle, bool isSuccess = true}) {
   Get.snackbar(title, subTitle,
-      backgroundColor:
-      isSuccess ? ColorConst.greenColor : ColorConst.redColor,
+      backgroundColor: isSuccess ? ColorConst.greenColor : ColorConst.redColor,
       colorText: ColorConst.whiteColor,
       snackPosition: SnackPosition.BOTTOM,
       duration: const Duration(seconds: 3));
 }
 
 Widget btn(
-    {required String txt,
-      Color color = ColorConst.lightGreenColor,
-      double height = 45,
-      double width = double.infinity,
-      bool isRoundBtn = false,
-      double borderRadius = 0,
-      required Function btnClick}) =>
+        {required String txt,
+        Color color = ColorConst.lightGreenColor,
+        double height = 45,
+        double width = double.infinity,
+        bool isRoundBtn = false,
+        double borderRadius = 0,
+        required Function btnClick}) =>
     ButtonTheme(
       minWidth: width,
       height: height,
@@ -790,11 +787,10 @@ Widget btn(
         onPressed: () => btnClick(),
         clipBehavior: Clip.antiAlias,
         style: ElevatedButton.styleFrom(
-            primary: color,
+            backgroundColor: color,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(borderRadius))),
         child: getTxtWhiteColor(
             msg: txt, fontSize: 15, fontWeight: FontWeight.bold),
       ),
     );
-

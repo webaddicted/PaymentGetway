@@ -6,6 +6,7 @@ import 'package:payment_getway/utils/constant/routers_const.dart';
 import 'package:payment_getway/utils/common/widget_helper.dart';
 import 'package:get/get.dart';
 import 'package:payment_getway/view/home/search_page.dart';
+
 /// Author : Deepak Sharma(Webaddicted)
 /// Email : deepaksharmatheboss@gmail.com
 /// Profile : https://github.com/webaddicted
@@ -21,7 +22,7 @@ class _HomePageState extends State<HomePage> {
   List<String> listImage = ListData.getFiveDataList();
   List<String> listShoesImage = ListData.getLargeDataList();
   int selectedSliderPosition = 0;
-  ScrollController controller =  ScrollController();
+  ScrollController controller = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +34,7 @@ class _HomePageState extends State<HomePage> {
           return Scrollbar(
             controller: controller,
             thumbVisibility: true,
-            thickness: kIsWeb?25:0,
+            thickness: kIsWeb ? 25 : 0,
             child: SingleChildScrollView(
               controller: controller,
               child: Column(
@@ -46,16 +47,17 @@ class _HomePageState extends State<HomePage> {
                       ),
                       /*Search Section*/
                       Container(
-                          margin:
-                              const EdgeInsets.only(top: 48, right: 24, left: 24),
-                          child: searchHeader(Icons.search),
-                          ),
+                        margin:
+                            const EdgeInsets.only(top: 48, right: 24, left: 24),
+                        child: searchHeader(Icons.search),
+                      ),
                       /*Slider Section*/
                       Container(
-                          height: kIsWeb ?(height / 2.2) + 75:(height / 4) + 75,
+                          height:
+                              kIsWeb ? (height / 2.2) + 75 : (height / 4) + 75,
                           alignment: Alignment.bottomCenter,
                           child: SizedBox(
-                            height: kIsWeb ?height/2.5:height / 5,
+                            height: kIsWeb ? height / 2.5 : height / 5,
                             child: PageView.builder(
                               itemBuilder: (context, position) {
                                 return createSlider(listImage[position]);
@@ -73,7 +75,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   const SizedBox(height: 30),
                   GestureDetector(
-                    onTap: ()=>Get.toNamed(RoutersConst.productList),
+                    onTap: () => Get.toNamed(RoutersConst.productList),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
@@ -91,7 +93,8 @@ class _HomePageState extends State<HomePage> {
                                   msg: "SEE ALL",
                                   fontSize: 15,
                                   fontWeight: FontWeight.w700),
-                              const Icon(Icons.arrow_forward_ios_outlined, size: 15,color: ColorConst.appColor),
+                              const Icon(Icons.arrow_forward_ios_outlined,
+                                  size: 15, color: ColorConst.appColor),
                               const SizedBox(width: 16),
                             ],
                           ),
@@ -132,7 +135,8 @@ class _HomePageState extends State<HomePage> {
                                 msg: "SEE ALL",
                                 fontSize: 15,
                                 fontWeight: FontWeight.w700),
-                            const Icon(Icons.arrow_forward_ios_outlined, size: 15,color: ColorConst.appColor),
+                            const Icon(Icons.arrow_forward_ios_outlined,
+                                size: 15, color: ColorConst.appColor),
                             const SizedBox(width: 16),
                           ],
                         ),
@@ -163,7 +167,7 @@ class _HomePageState extends State<HomePage> {
 
   createSlider(String image) {
     return InkWell(
-      onTap: ()=>Get.toNamed(RoutersConst.productDetail),
+      onTap: () => Get.toNamed(RoutersConst.productDetail),
       child: Card(
         margin: const EdgeInsets.all(10),
         shape: const RoundedRectangleBorder(
@@ -171,7 +175,8 @@ class _HomePageState extends State<HomePage> {
         child: Container(
           decoration: BoxDecoration(
               borderRadius: const BorderRadius.all(Radius.circular(14)),
-              image: DecorationImage(image: AssetImage(image), fit: BoxFit.cover)),
+              image:
+                  DecorationImage(image: AssetImage(image), fit: BoxFit.cover)),
         ),
       ),
     );
@@ -187,11 +192,11 @@ class _HomePageState extends State<HomePage> {
       rightMargin = 10;
     }
     return InkWell(
-      onTap: ()=>Get.toNamed(RoutersConst.productDetail),
+      onTap: () => Get.toNamed(RoutersConst.productDetail),
       child: Container(
         margin: EdgeInsets.only(left: leftMargin, right: rightMargin),
-        decoration:
-            const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8))),
+        decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(8))),
         child: Column(
           children: <Widget>[
             Expanded(
@@ -201,9 +206,7 @@ class _HomePageState extends State<HomePage> {
                 height: 200,
                 decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage(image),
-                        fit: BoxFit.cover
-                    ),
+                        image: AssetImage(image), fit: BoxFit.cover),
                     color: Colors.blue.shade200,
                     borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(8),
@@ -224,15 +227,14 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 4),
                     getTxtAppColor(
                         msg: "NIKE Kyire II",
                         fontSize: 15,
                         fontWeight: FontWeight.w700),
-                    const SizedBox(height: 4),
                     getTxtColor(
                         msg: "Exquisite you need him",
-                        fontSize: 15,
+                        fontSize: 12,
                         fontWeight: FontWeight.w700,
                         txtColor: Colors.black.withOpacity(.7)),
                   ],
@@ -256,7 +258,7 @@ class _HomePageState extends State<HomePage> {
     //   rightMargin = 10;
     // }
     return InkWell(
-      onTap: ()=>Get.toNamed(RoutersConst.productDetail),
+      onTap: () => Get.toNamed(RoutersConst.productDetail),
       child: Container(
         width: 160,
         margin: const EdgeInsets.only(left: 5, right: 5),
@@ -270,15 +272,13 @@ class _HomePageState extends State<HomePage> {
               child: Container(
                 height: 180,
                 decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(image),
-                        fit: BoxFit.cover
-                    ),
-                    color: Colors.teal.shade200,
-                    // borderRadius: BorderRadius.only(
-                    //     topLeft: Radius.circular(radius),
-                    //     topRight: Radius.circular(radius))
-                      ),
+                  image: DecorationImage(
+                      image: AssetImage(image), fit: BoxFit.cover),
+                  color: Colors.teal.shade200,
+                  // borderRadius: BorderRadius.only(
+                  //     topLeft: Radius.circular(radius),
+                  //     topRight: Radius.circular(radius))
+                ),
               ),
             ),
             const SizedBox(height: 8),
